@@ -1,0 +1,95 @@
+@font-face {
+	font-family: 'aggregationfont';
+	src:url('fonts/icomoon.eot');
+	src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('fonts/icomoon.woff2') format('woff'),
+		url('fonts/icomoon.ttf') format('truetype'),
+		url('fonts/icomoon.svg#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+	font-family: 'aggregationfont';
+	content: attr(data-icon);
+	speak: none;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Use the following CSS code if you want to have a class per icon */
+/*
+Instead of a list of all class selectors,
+you can use the generic selector below, but it's slower:
+[class*="icon-"] {
+*/
+.fontic-newspaper, .fontic-image, .fontic-film, .fontic-earth, .fontic-spinner, .fontic-tag,
+.fontic-camera, .fontic-arrow-right, .fontic-arrow-left, .fontic-home, .fontic-cog, .fontic-cogs,
+ .fontic-bookmark, .fontic-bookmarks, .fontic-books, .fontic-file {
+	font-family: 'aggregationfont';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+.fontic-newspaper:before {
+	content: "\e000";
+}
+.fontic-image:before {
+	content: "\e001";
+}
+.fontic-film:before {
+	content: "\e002";
+}
+.fontic-earth:before {
+	content: "\e003";
+}
+.fontic-spinner:before {
+	content: "\e004";
+}
+.fontic-tag:before {
+	content: "\e005";
+}
+.fontic-camera:before {
+	content: "\e006";
+}
+.fontic-arrow-right:before {
+	content: "\e007";
+}
+.fontic-arrow-left:before {
+	content: "\e008";
+}
+.fontic-home:before {
+	content: "\e009";
+}
+.fontic-cog:before {
+	content: "\e00a";
+}
+.fontic-cogs:before {
+	content: "\e00b";
+}
+.fontic-bookmark:before {
+	content: "\e00c";
+}
+.fontic-bookmarks:before {
+	content: "\e00d";
+}
+.fontic-books:before {
+	content: "\e00e";
+}
+.fontic-file:before {
+	content: "\e00f";
+}
+
+.fontic-stanford {
+	background: url(".././img/stanford.png") no-repeat 8px 3px;
+}
+

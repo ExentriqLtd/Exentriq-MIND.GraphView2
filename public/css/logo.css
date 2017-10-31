@@ -1,0 +1,9 @@
+@font-face 
+	{
+	font-family: 'hari';
+	src:url('fonts/Evolution.eot');
+	src:url('fonts/Evolution.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Evolution.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+	}

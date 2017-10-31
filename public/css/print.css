@@ -1,0 +1,75 @@
+/*
+ * HTML Tags
+ */
+
+body {
+	font-family: 'Open Sans', Arial, sans-serif;
+}
+
+
+ul {
+  list-style-type: none;
+}
+
+/*
+ * BS Components Mods
+ */
+
+.well {
+	background-color: #f8faf9;
+	border-color: #bac7c0;
+}
+
+
+.container-main {
+	padding: 0px;
+}
+
+/*
+ * Graph Description
+ */
+
+.graph-description {
+	margin: 40px 0;
+}
+
+.page-header .breadcrumb{
+	padding: 0px;
+	background: #fff;
+	margin: 0px;
+}
+
+.page-header .breadcrumb li{
+	color: #bd4a3d;
+	font-size: 38.5px;
+	font-weight: bold;
+	line-height: 40px;
+}
+
+.page-header .breadcrumb .divider{
+	color: #bd4a3d;
+}
+
+.inference{
+	padding: 0 20px;
+}
+
+hr{
+	margin: 50px 20px;
+	border-top: 1px solid #eeeeee;
+}
+
+/*
+ * Edges
+ */
+
+.node-item {
+	margin: 10px 0;
+	background-color: #ededed;
+}
+
+.node-name {
+	margin: 5px 0;
+	/*padding-left: 28px;*/
+}
+

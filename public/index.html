@@ -1,0 +1,644 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+    <title>Exentriq Graph</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="external/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="external/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/loader.css">
+    <link rel="stylesheet" type="text/css" href="css/graph.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="css/logo.css">
+    <link rel="stylesheet" type="text/css" href="css/topbar.css">
+    <link rel="stylesheet" type="text/css" href="css/info.css">
+    <link rel="stylesheet" type="text/css" href="css/tooltip.css">
+    <link rel="stylesheet" type="text/css" href="css/card.css">
+    <link rel="stylesheet" type="text/css" href="css/modal.css">
+    <link rel="stylesheet" type="text/css" href="css/wikipedia.css">
+    <link rel="stylesheet" type="text/css" href="css/admin.css">
+    <script type="text/javascript">
+        // Load them google fonts before starting...!
+        WebFontConfig =
+        {
+            google:
+            {
+                families: [ 'Snippet', 'Arvo:700italic', 'Podkova:700',"Raleway:600" ]
+            },
+
+        };
+        (function() {
+            var wf = document.createElement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+                    '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })();
+    </script>
+    <script src="external/jquery.js"></script>
+    <script src="external/underscore.js"></script>
+    <script src="external/bootstrap/js/bootstrap.min.js"></script>
+    <script src="external/jquery.mousewheel.js"></script>
+    <script src="external/masonry.js"></script>
+    <script src="external/jsrender.js"></script>
+    <script src="external/jquery.easing.js"></script>
+    <script src="external/jquery.path.js"></script>
+    <script src="external/pixi.dev.js"></script>
+    <script src="external/typeahead.js"></script>
+
+    <script src="settings.js"></script>
+    <script src="endpoints.js"></script>
+    <script src="lib/utils.js"></script>
+    <script src="lib/tooltip.js"></script>
+    <script src="lib/breadcrumbs.js"></script>
+    <script src="lib/datamanager.js"></script>
+    <script src="lib/filtermanager.js"></script>
+    <script src="lib/admin.js"></script>
+
+    <script src="lib/cardmanager.js"></script>
+    <script src="lib/bookmarks.js"></script>
+
+    <script src="lib/fasttemplater.js"></script>
+
+    <script src="bundle.js"></script>
+    <!--<script src="bundlesvg.js"></script>-->
+
+
+    <script src="lib/graphmanager.js"></script>
+    <script src="main.js"></script>
+    <!--
+    <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/1.1.0/annyang.min.js"></script>
+    <script>
+    if (annyang)
+        {
+        // Let's define our first command. First the text we expect, and then the function it should call
+        var commands =
+            {
+            'search *term': function(term)
+                {
+                $("#searchfield").val(term);
+                startSearch(term,term,"");
+                },
+            'cerca *term': function(term)
+                {
+                $("#searchfield").val(term);
+                startSearch(term,term,"");
+                }
+            };
+        annyang.setLanguage("it-IT")
+        // Add our commands to annyang
+          annyang.addCommands(commands);
+
+          // Start listening. You can call this here, or attach this call to an event, button, etc.
+          annyang.start();
+          }
+    </script>
+    -->
+</head>
+
+<body>
+<div id="mainblocks" class="fullsize">
+    <div id="graph" >
+        <div id="filtercontainer" style="display:none;">
+            <div id="filtertitle">
+                CATEGORIES
+            </div>
+            <div id="filterlist">
+            </div>
+        </div>
+        <div id="infoloader" style="display:none;" ></div>
+        <div id="rightbar" style="display:none;">
+            <!--
+            <div class="togglearea">
+            </div>
+            -->
+            <div class="toggle" data-placement="left" data-original-title="DETAILS">
+                <i class="fa fa-2x fa-arrow-circle-o-right"></i>
+            </div>
+            <div id="containers">
+                <div id="cardcontainer" class="scrollable">
+                </div>
+                <div id="edgecontainer">
+                    <div class="controls">
+                        <div id="edgestart" class="edgetitle"></div>
+                        <div id="edgeend" class="edgetitle"></div>
+                        <i data-original-title="CLOSE EDGE INFO" id="edgeclose" class="fa fa-times-circle"></i>
+                        <i id="edgeicon" class="fa fa-arrows-v"></i>
+                    </div>
+                    <div id="edgedata" class="scrollable"></div>
+                </div>
+                <div id="infocontainer">
+                    <div class="controls">
+                        <a data-original-title="BOOKMARK" id="infobookmark" href="#"><i class="fa fa-star-o"></i></a>
+                        <span id="infotitle"></span>
+                        <i data-original-title="CLOSE INFO" id="infoclose" class="fa fa-times-circle"></i>
+                        <i data-original-title="SUMMARIZE" id="infosummary" class="fa fa-lightbulb-o"></i>
+                    </div>
+                    <div id="infoframe" src="" class="scrollable"></div>
+                </div>
+                <div id="carrotcontainer">
+                    <div class="controls" id="carrotcontrols" >
+                        <span id="carrottitle"></span>
+                    </div>
+                    <div id="carrotdata" class="scrollable"></div>
+                </div>
+            </div>
+            <div id="hyperselector">
+                <a id="mainmethod" data-source="home" href="#main" class="selected">
+                    <i class="fontic-home"></i>
+                    <span>Main</span>
+                </a>
+                <a id="hsbing" data-source="bing-web"	 href="#">
+                    <i class="fontic-earth"></i>
+                    <span>Web</span>
+                </a>
+                <a id="hsnews" data-source="news"	 href="#">
+                    <i class="fontic-newspaper"></i>
+                    <span>News</span>
+                </a>
+                <a id="hsimages" data-source="images"	 href="#">
+                    <i class="fontic-image"></i>
+                    <span>Images</span>
+                </a>
+                <a id="hsvideos" data-source="videos"	 href="#">
+                    <i class="fontic-film"></i>
+                    <span>Videos</span>
+                </a>
+                <!--
+                <a data-source="documents"  href="#">
+                    <i class="fontic-file"></i>
+                    <span>Docs</span>
+                </a>
+                -->
+            </div>
+
+            <div id="smallloadercontainer" style="display:none;">
+                <div id="smallloader">
+                    <div class="spinner" aria-hidden="true"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="historyslider" style="display:none;">
+            <div id="history" class="scrollable"></div>
+            <div class="toggle" data-placement="right" data-original-title="HISTORY">
+                <i class="fa fa-2x fa-arrow-circle-o-right"></i>
+            </div>
+            <div class="camera" data-placement="right" data-original-title="SNAPSHOT">
+                <i class="fa fa-lg fa-camera"></i>
+            </div>
+            <div id="switcher" class="switcher" data-mode="svg" data-placement="right" data-original-title="TREE VIEW">
+                <img src="img/tree-icon.png"/>
+                <i class="fa fa-circle-o-notch fa-spin"></i>
+            </div>
+        </div>
+        <div id="disambiguation" class="scrollable">
+
+        </div>
+        <div id="pdfviewer" class="scrollable"></div>
+        <div id="adminpanel" class="scrollable">
+            <a class="btn" target="_blank" href="http://prod.hariscience.com:8000/en-US/account/insecurelogin?username=admin&password=s3arch-here&return_to=%2Fen-US%2Fapp%2Fsearch%2fdashboards" data-placement="left" id="splunkstat">
+                <i class="fa fa-lg fa-tachometer"></i> STATISTICS
+            </a>
+            <button data-placement="left" id="adduser">
+                <i class="fa fa-lg fa-plus-circle"></i> ADD USER
+            </button>
+            <div id="userlist" class="scrollable">
+            </div>
+
+            <form method="post" id="splunklogin" action="http://prod.hariscience.com:8000/en-US/account/login" target="_blank">
+                <input type="hidden" name="cval" value="666666">
+                <input type="hidden" name="username" value="admin">
+                <input type="hidden" name="password" value="s3arch-here">
+                <input type="hidden" name="return_to" value="/it-IT/app/search/dashboards">
+            </form>
+        </div>
+    </div>
+
+    <div id="tooltip" class="tipsy tipsy-s">
+        <div class="tipsy-safe"></div>
+        <div class="tipsy-arrow"></div>
+        <div class="tipsy-inner"></div>
+    </div>
+
+    <div id="loader" style="display:none;">
+        <div class="spinner" aria-hidden="true"></div>
+    </div>
+</div>
+
+
+<div id="topbar">
+
+    <div id="loginbox" >
+        <div class="form-horizontal">
+            <input type="text" class="" id="username" placeholder="Username">
+            <input type="password" class="" id="password" placeholder="Password">
+            <button id="login" >LOGIN</button>
+        </div>
+    </div>
+
+    <div id="searchbox">
+        <button data-original-title="ADD NODE" data-placement="left" id="addnode" style="display:none;">
+            <i class="fa fa-lg fa-plus-circle"></i>
+        </button>
+        <input id="searchfield" placeholder="Search" type="text"><button id="startsearch" >DISCOVER</button>
+        <button id="toggleendpoint" data-endpoint="docs" style="display:none;">NEW</button>
+        <!--<div id="overinput" style="display:none;"></div>-->
+    </div>
+
+    <div id="topbaractions">
+        <a id="exportInference" href="#" style="display:none;">
+            <i class="fa fa-cloud-download" data-placement="left" data-original-title="EXPORT" ></i>
+            <span class="counter badge" data-count="0">0</span>
+        </a>
+    </div>
+</div>
+
+<div id="mask" style="display:none;">
+</div>
+<div id="siteModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 id="siteModalTitle" class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <iframe src=""></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">MARK AS IRRELEVANT</h4>
+            </div>
+            <div class="modal-body">
+                <p>Thank you for the suggestion.</p>
+                <p>Please spend a few moments to tell us why you think this element was inappropriate</p>
+                <textarea class="form-control" id="deletenote"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">CANCEL</button>
+                <button id="deleteconfirm" type="button" class="btn btn-primary" data-dismiss="modal">SEND</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="addUserModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Add User</h4>
+            </div>
+            <form class="form" id="addUserForm">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label >Username</label>
+                        <input name="username" type="name" class="form-control" placeholder="Username" required>
+                    </div>
+                    <div id="passwordfield" class="form-group">
+                        <label >Password</label>
+                        <input name="password" type="password" class="form-control" placeholder="Password" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email address</label>
+                        <input name="email" type="email" class="form-control" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Role</label>
+                        <select name="role" class="form-control" required>
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">CANCEL</button>
+                    <button type="submit" id="addconfirm" class="btn btn-primary">SAVE</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="inferencepanel" style="width:100%;height:100%;display:none;">
+</div>
+
+<canvas id="svg-canvas" width="980" height="400px;" style="display:none;">
+</canvas>
+
+
+<ul id="breadcrumbs" class="breadcrumb" style="position: absolute; bottom: -21px; left: 0px;display:none;"></ul>
+
+<div id="bookmarkanimation" style="display:none;">
+    <i class="fa fa-star" style="color: orange;font-size: 1.5em;"></i>
+</div>
+
+<script id="userList" type="text/x-jsrender">
+
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>USERNAME</th>
+				<th>EMAIL</th>
+				<th>ROLE</th>
+				<th class="useraction"></th>
+			</tr>
+		</thead>
+		<tbody>
+			{{for users}}
+				<tr data-username="{{:username}}" data-email="{{:email}}" data-role="{{:role}}">
+					<td>{{:username}}</td>
+					<td>{{:email}}</td>
+					<td>{{:role}}</td>
+					<td class="useraction">
+						<i data-original-title="EDIT USER" class="edituser fa fa-pencil-square-o"></i>
+						<i data-original-title="REMOVE USER"class="removeuser fa fa-times-circle"></i>
+					</td>
+				</tr>
+			{{/for}}
+		</tbody>
+	</table>
+
+</script>
+
+<!--
+bookmarks_main data:
+
+origin
+basepath
+random
+body
+-->
+<script type="text/fasttemplate" id="bookmarks_main">
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Discovey Report</title>
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=OpenSans:400italic,700italic,400,700">
+        <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="{{basepath}}/css/inference.css?rand={{random}}">
+        <link rel="stylesheet" type="text/css" href="{{basepath}}/css/print.css?rand={{random}}">
+    </head>
+    <body class="background" style="width:100%;height:100%;">
+    <div class="container-main">
+        {{body}}
+    </div>
+    </body>
+
+    <scr ipt src="http://code.jquery.com/jquery-1.11.0.min.js"></scr ipt>
+    <scr ipt type="text/javascript">
+        console.log("PDF START");
+        setTimeout(function()
+        {
+        console.log("PDF REQUEST");
+        var html = document.documentElement.innerHTML;
+
+        var imageregex = /"data\:image\/png;base64,(.*)"/g;
+        var images= html.match(imageregex);
+        html=html.replace('class="background"','');
+        for(var x=0;x<images.length;x++)
+        {
+        html=html.replace(images[x],'"image'+x+'.png"');
+        html=html.replace('class="graphimage"','width="800px"');
+        images[x]=images[x].replace('"','');
+        images[x]=images[x].replace('data:image/png;base64,','');
+        }
+
+        var downloadwait = $('<span class="waitinglink"><i class="fa fa-lg fa-spinner fa-spin"></i> Generating PDF</span>');
+
+        $(".container-main").append(downloadwait);
+        $.post("{{origin}}/rest/terms/saveInferencePath",
+        {
+        inferencePath:html,
+        images:images.join(";"),
+        parameters:"--zoom 0.7"
+        },
+        function(data)
+        {
+        console.log(data);
+        downloadwait.remove()
+        var url = "{{origin}}"+data;
+        var downloadlink = $('<a class="downloadlink" href="'+url+'"><i class="glyphicon glyphicon-download-alt"></i> Download</a>');
+
+        $(".container-main").append(downloadlink);
+        }
+        );
+        },500);
+    </scr ipt>
+
+    </html>
+
+</script>
+
+<!--
+bookmarks_main data:
+
+title
+graphTab
+-->
+<script type="text/fasttemplate" id="bookmarks_block">
+
+    <div itemId="{{graphTab}}" id="inference_{{graphTab}}" class="inference block_pdf">
+        <div class="block_pdf">
+            <h1 style="padding-right: 200px;">Discovery Report on "{{title}}"</h1>
+            <div class="page-header" itemId="{{graphTab}}" id="historybread{{graphTab}}" >
+
+            </div>
+            <center class="graphimagecontainer">
+                <img class="graphimage" itemId="{{graphTab}}" id="hdimg{{graphTab}}"></img>
+            </center>
+        </div>
+        <div id="bookmarkscontainer_{{graphTab}}" class="block_pdf" style="display:none;">
+            <h3>The concepts and correlations constructing the inferential outcome derive from the following analysis: </h3>
+            <ul class="unstyled" id="bookmarks_{{graphTab}}">
+            </ul>
+            <br/>
+        </div>
+        <div id="referencecontainer_{{graphTab}}" class="block_pdf" style="display:none;">
+            <h3>References : </h3>
+            <ul class="unstyled" id="references_{{graphTab}}">
+            </ul>
+        </div>
+    </div>
+    <hr>
+
+</script>
+
+<!--
+bookmarks_ref data:
+
+refid
+url
+
+to <a href="{{url}}">{{title}}</a> and its context
+-->
+<script type="text/fasttemplate" id="bookmarks_ref">
+
+    <li class="ref"  class="block_pdf">
+        <a href="{{url}}" data-refid="{{refid}}">[{{refid}}] {{url}}</a>
+    </li>
+
+</script>
+<!--
+bookmarks_node data:
+
+nodeid
+title
+url
+text
+refid
+thumbnail
+class
+topic
+
+to <a href="{{url}}">{{title}}</a> and its context
+-->
+<script type="text/fasttemplate" id="bookmarks_node">
+    <li class="node-item block_pdf clearfix {{class}}" id="{{nodeid}}">
+        <div class="node-name">
+            <h4 class="sub-section-title">Concept <a href="{{url}}">{{title}}<sup> [{{refid}}]</sup></a> {{topic}} is described as:</h4>
+            <p>{{text}}</p>
+            <h4 class="sub-section-title external_title" style="display:none;">External contents</h4>
+            <ul class="external_list" style="display:none;">
+            </ul>
+            <div class="node-thumb left" style="background-image: url({{thumbnail}});"></div>
+        </div>
+    </li>
+</script>
+
+<!--
+bookmarks_edge_block data:
+
+edgeid
+fromlabel
+fromurl
+fromthumb
+fromclass
+tolabel
+tourl
+tothumb
+toclass
+
+-->
+<script type="text/fasttemplate" id="bookmarks_edge_block">
+
+    <li class="edge-item block_pdf clearfix {{fromclass}} {{toclass}}" id="{{edgeid}}" >
+        <div class="edge-name">
+            <h4 class="sub-section-title">Concept <a href="{{fromurl}}">{{fromlabel}}<sup> [{{fromref}}]</sup></a> is correlated to the concept  <a href="{{tourl}}">{{tolabel}}<sup> [{{fromref}}]</sup></a> by the following sentences:</h4>
+
+            <ul class="sentence_list">
+            </ul>
+            <div class="node-thumb left" style="background-image: url({{fromthumb}});"></div>
+            <div class="node-thumb right" style="background-image: url({{tothumb}});" ></div>
+        </div>
+    </li>
+
+</script>
+
+
+<!--
+bookmarks_edge_sentence data:
+
+url
+title
+text
+refid
+-->
+<script type="text/fasttemplate" id="bookmarks_edge_sentence">
+
+    <li class="clearfix block_pdf">
+        <p>{{text}} (<a href="{{url}}">{{title}}<sup> [{{refid}}]</sup></a>)</p>
+    </li>
+
+</script>
+
+
+<!--
+bookmarks_main data:
+
+random
+body
+-->
+<script type="text/fasttemplate" id="info_metadata">
+
+    <div id="info_metadata">
+        <h4>DOCUMENT INFO :</h4>
+        <br>
+        <table>
+            <tr><td class="info_label">Title</td><td> {{title}}</td></tr>
+            <tr><td class="info_label">Author/Creator</td><td> {{author}}</td></tr>
+            <tr><td class="info_label">Contributor</td><td> {{contributor}}</td></tr>
+            <tr><td class="info_label">Publication Date</td><td> {{published}}</td></tr>
+            <tr><td class="info_label">Journal Title</td><td> {{journalTitle}}</td></tr>
+            <tr><td class="info_label">Journal Publisher</td><td> {{journalPublisher}}</td></tr>
+        </table>
+    </div>
+
+</script>
+
+<!--
+disambiguation_item data:
+
+sense
+term
+color
+
+to <a href="{{url}}">{{title}}</a> and its context
+-->
+<script type="text/fasttemplate" id="disambiguation_itemold">
+    <div class="col-sm-4">
+        <div class="disambiguationitem" data-sense="{{sense}}" data-terms="{{term}}"  style="background:{{color}};border-color:{{color}};color:{{color}};">
+            <h3>{{label}}</h3>
+            <p>{{sublist}}</p>
+            <h4>Relevance {{relevance}}%</h4>
+        </div>
+    </div>
+</script>
+<script type="text/fasttemplate" id="disambiguation_item_search">
+    <div class="col-sm-4">
+        <div class="disambiguationitem" data-sense="{{sense}}" data-terms="{{term}}"  style="background:{{color}};border-color:{{color}};color:{{color}};">
+            <i class="disambiguationcategoryicon fa fa-arrow-circle-o-right" data-original-title="'{{term}}' in {{label}}"></i>
+            <h3 class="disambiguationcategoryheader" data-original-title="'{{term}}' in {{label}}">{{label}}</h3>
+            <!--<p>{{sublist}}</p>-->
+            <div class="disambiguationsubitemcontainer" {{disambiguationstyle}} >{{subelements}}</div>
+            {{more}}
+        </div>
+
+    </div>
+</script>
+<script type="text/fasttemplate" id="disambiguation_item_add">
+    <div class="col-sm-4">
+        <div class="disambiguationitem" data-sense="{{sense}}" data-terms="{{term}}"  style="background:{{color}};border-color:{{color}};color:{{color}};">
+            <h3 class="categoryheader">{{label}}</h3>
+            <!--<p>{{sublist}}</p>-->
+            <div class="disambiguationsubitemcontainer" {{disambiguationstyle}} >{{subelements}}</div>
+            {{more}}
+        </div>
+
+    </div>
+</script>
+<script type="text/fasttemplate" id="disambiguation_all">
+    <div class="col-sm-4">
+        <div class="disambiguationitem allcategories" data-action="search" data-sense="" data-terms="{{term}}" >
+            <h3>All Categories</h3>
+        </div>
+    </div>
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,282 @@
+/*
+ * HTML Tags
+ */
+
+body {
+	font-family: 'Open Sans', Arial, sans-serif;
+}
+body.background 
+	{
+	background-color: #eef2f3;
+	}
+.waitinglink
+	{
+	position: absolute;
+	top: 25px;
+	right: 20px;
+	font-size: 1.5em;
+	color: black !important;
+	text-decoration: none !important;
+	}
+.downloadlink
+	{
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	font-size: 2em;
+	color: black !important;
+	text-decoration: none !important;
+	}
+p {
+  color: #3b3939;
+}
+a {
+  color: #5493b8;
+}
+
+.block_pdf
+	{
+	page-break-inside:avoid;	
+	}
+
+/*
+ * BS Components Mods
+ */
+
+.well {
+	background-color: #f8faf9;
+	border-color: transparent;
+
+}
+
+/*
+ * Page Header
+ */
+
+.header-main {
+	margin: 0;
+	background: url(../img/header-bg.jpg) repeat-x left top;
+	border-bottom: 1px solid #000;
+}
+
+.header-main img {
+ 	display: inline-block;
+ 	padding: 17px 0 17px 20px;
+}
+
+.container-main {
+	padding: 0px;
+}
+.graphimagecontainer
+	{
+	background: white;
+
+	}
+.graphimage
+	{
+	max-width: 100%;
+height: auto;
+max-height: 100%;
+
+	}
+/*
+ * Graph Description
+ */
+
+.graph-description {
+	margin: 40px 0;
+}
+
+.page-header .breadcrumb{
+	padding: 0px;
+	background: #fff;
+	margin: 0px;
+}
+
+.page-header .breadcrumb li{
+	color: #bd4a3d;
+	font-size: 38.5px;
+	font-weight: bold;
+	line-height: 40px;
+}
+
+.page-header .breadcrumb .divider{
+	color: #bd4a3d;
+}
+
+.inference{
+	padding: 0 20px;
+}
+
+hr {
+	margin: 25px 20px;
+	border-top: 1px solid #bdc1c1;
+}
+
+/*
+ * Edges
+ */
+
+.node-item {
+	margin: 10px 0;
+	background-color: #ededed;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+	min-height: 80px;
+	padding:0 15px;
+	position: relative;
+
+}
+.edge-item {
+	margin: 10px 0;
+	background-color: #ededed;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+	min-height: 160px;
+	padding:0 15px;
+	position: relative;
+
+}
+.node-name {
+	margin: 5px 0;
+	padding-left: 140px;
+}
+.edge-name {
+	margin: 5px 0;
+	padding-left: 140px;
+	padding-right: 140px;
+}
+.node-thumb
+	{
+	position: absolute;
+	top:15px;
+	border-radius: 65px;
+	display: block;
+	border: 3px solid #ccc;
+	width: 130px;
+	height: 130px;
+	background-size: cover;
+	background-position: 50% 50%;
+	display: none;
+	}
+.node-thumb.left
+	{
+	left:15px;
+	}
+.node-thumb.right
+	{
+	right:15px;
+	}
+
+.node-full
+	{
+	min-height: 160px;
+	}
+.node-full .node-thumb
+	{
+	display: block;
+	}
+.node-left .node-thumb.left
+	{
+	display: block;
+	}
+.node-right .node-thumb.right
+	{
+	display: block;
+	}
+ .node-icon {
+ 	display: block;
+ 	width: 50px;
+ 	height: 50px;
+ 	background-color: #d44322;
+ 	border: 4px solid #c63f20;
+ 	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+	webkit-box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 0.8);
+	box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 0.8);
+	margin-top: 11px;
+	margin-left: 10px;
+ }
+
+
+
+.iloading{
+	background: url("/img/ajax-loader.gif") no-repeat;
+	width: 32px;
+	height: 32px;
+	display: block;
+	margin: 0 auto;
+	margin-top: 25px;
+	margin-left: 25px;
+}
+
+ul, ol
+	{
+	margin-left: 0;
+	padding: 0;
+	list-style: none;
+	}
+li
+	{list-style: none;	}
+
+.container-node-icon
+
+	{
+	position: absolute;
+	top: 50%;
+	left: 0px;
+	margin-top: -40px;
+
+	}
+
+
+/*
+ * Bookmarks
+ */
+
+.bookmarks {
+  background-color: #fff;
+  border: 2px solid #becacc;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+}
+.bookmarks .node-item {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #eef2f3;
+  border: 2px solid #becacc;
+}
+.section-title {
+  margin-top: 0px;
+  color: #54b87f;
+  text-transform: uppercase;
+}
+.sub-section-title {
+   /* margin-top: 0; */
+  font-size: 22px;
+  line-height: 34px;
+  color: #54b87f;
+}
+
+.node-description {
+  width: 74%;
+  float: right;
+}
+.node-description.full {
+  float: none;
+  width: 100%;
+}
+.node-img-wrapper {
+  float: left;
+  width: 25%;
+}
+.node-img-wrapper img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #becacc;
+}

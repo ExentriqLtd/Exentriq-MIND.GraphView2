@@ -1,0 +1,17 @@
+/node_modules
+
+#idea files
+*.idea
+.idea/workspace.xml
+.idea/vcs.xml
+
+.env
+.tern-project
+.env.bak
+
+npm-debug.log
+logs/
+
+.idea/vcs.xml
+
+.env

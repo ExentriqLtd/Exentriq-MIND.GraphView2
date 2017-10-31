@@ -1,0 +1,17 @@
+{
+  "name": "exentriq-graph",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Exentriq Graph API",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "debug": "~2.2.0",
+    "dotenv": "^2.0.0",
+    "elasticsearch": "^10.1.3",
+    "express": "^4.14.0",
+    "express-session": "^1.13.0",
+    "request": "^2.79.0"
+  }
+}

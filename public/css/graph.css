@@ -1,0 +1,31 @@
+#graph svg .node circle 
+	{
+	cursor: pointer;
+	fill: #fff;
+	stroke-width: 1.5px;
+	}
+
+#graph svg .node text 
+	{
+	font-size: 11px;
+	cursor: pointer;
+	}
+
+#graph svg path.link 
+	{
+	fill: none;
+	}
+	
+#graph #svgcontainer
+	{
+	width: 100%;
+	height: 100%;
+	overflow-x: auto;
+	overflow-y: hidden;
+	}
+	
+.breadcrumb 
+	{
+	bottom:0 !important;
+	margin-bottom:0 !important;
+	}

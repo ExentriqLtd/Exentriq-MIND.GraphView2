@@ -1,0 +1,1418 @@
+#infoframe html,
+#infoframe body,
+#infoframe div,
+#infoframe span,
+#infoframe h1,
+#infoframe h2,
+#infoframe h3,
+#infoframe h4,
+#infoframe h5,
+#infoframe h6,
+#infoframe p,
+#infoframe blockquote,
+#infoframe pre,
+#infoframe a,
+#infoframe abbr,
+#infoframe acronym,
+#infoframe address,
+#infoframe big,
+#infoframe cite,
+#infoframe code,
+#infoframe del,
+#infoframe ins,
+#infoframe em,
+#infoframe img,
+#infoframe small,
+#infoframe strike,
+#infoframe strong,
+#infoframe sub,
+#infoframe sup,
+#infoframe tt,
+#infoframe b,
+#infoframe u,
+#infoframe i,
+#infoframe center,
+#infoframe dl,
+#infoframe dt,
+#infoframe dd,
+#infoframe ol,
+#infoframe ul,
+#infoframe li,
+#infoframe fieldset,
+#infoframe form,
+#infoframe label,
+#infoframe legend,
+#infoframe input,
+#infoframe textarea,
+#infoframe button,
+#infoframe select,
+#infoframe table,
+#infoframe caption,
+#infoframe tbody,
+#infoframe tfoot,
+#infoframe thead,
+#infoframe tr,
+#infoframe th,
+#infoframe td,
+#infoframe audio,
+#infoframe video {
+	/*
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  */
+}
+#infoframe .infobox
+	{
+	width: 100% !important;
+	margin-bottom: 20px !important;
+	}
+
+#infoframe.summarized .contents > p:after
+	{
+	content: "...";
+	display: block;
+	text-align: center;
+	font-size: 2em;
+	line-height: 0.5em;
+	}	
+
+#infoframe.summarized .contents > p
+	{
+	background: #fafafa;
+	padding: 5px 5px 15px 5px;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	-moz-box-shadow: 0 0 5px rgba(0,0,0,0.2);;
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.2);
+	margin: 10px 0;
+	}
+#infoframe .contents > p .exactsentence
+	{
+	background: rgb(253, 255, 150);
+	}
+#infoframe .contents > p.selected
+	{
+	-webkit-box-shadow: 0 0 10px 1px rgba(255,109,53, 1);
+	-moz-box-shadow: 0 0 10px 1px rgba(255,109,53, 1);
+	box-shadow: 0 0 10px 1px rgba(255,109,53, 1);
+	}
+#infoframe.summarized .contents > p .bookmarkclass
+	{
+	font-size: 21px;
+	font-style: normal;
+	vertical-align: middle;
+	margin-right: 5px;
+	margin-left: 3px;
+	color: #1da397;
+	cursor: pointer;
+	}
+#infoframe .thumb,
+#infoframe .thumb .thumbinner,
+#infoframe .thumb .thumbinner img
+	{
+	width: 100% !important;
+	height: auto !important;
+	}
+#infoframe .thumbcaption
+	{
+	font-size: 0.8em;
+	color : #333;
+	margin-bottom: 20px;
+	}
+#infoframe .list-header {
+  font-weight: bold;
+  font-size: .85em;
+  padding: .5em 16px .4em;
+  background-color: #eee;
+  color: #777;
+}
+#infoframe .listThumb {
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+#infoframe .listThumb.needsPhoto {
+  -o-background-size: 100% auto;
+  -webkit-background-size: 100% auto;
+  background-size: 100% auto;
+  background-color: #3b6fba;
+  background-image: url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/common/../specials/images/camera.png?2014-04-17T13:58:20Z);
+}
+#infoframe .listThumbH {
+  -o-background-size: auto 100%;
+  -webkit-background-size: auto 100%;
+  background-size: auto 100%;
+}
+#infoframe .listThumbV {
+  -o-background-size: 100% auto;
+  -webkit-background-size: 100% auto;
+  background-size: 100% auto;
+}
+#infoframe .page-list {
+  overflow: hidden;
+}
+#infoframe .page-list li {
+  color: #666;
+  position: relative;
+  border-bottom: solid 1px #eee;
+  padding: 20px 16px;
+  margin: -1px 0 0;
+  line-height: 1;
+}
+#infoframe .page-list li > a {
+  display: block;
+  color: #666;
+}
+#infoframe .page-list li > a:active,
+#infoframe .page-list li > a:hover,
+#infoframe .page-list li > a:visited {
+  text-decoration: none;
+  color: #666;
+}
+#infoframe .page-list.thumbs li,
+#infoframe .page-list.side-list li {
+  padding-left: 85px;
+}
+#infoframe .page-list.thumbs .title {
+  padding-right: 24px;
+}
+#infoframe .page-list .title h3 {
+  font: inherit;
+  font-weight: bold;
+  color: #404040;
+}
+#infoframe .page-list .title h3,
+#infoframe .page-list .title .mw-mf-user,
+#infoframe .page-list .title .component {
+  margin-bottom: .5em;
+}
+#infoframe .page-list .listThumb {
+  position: absolute;
+  width: 70px;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+#infoframe .page-list.side-list .listThumb {
+  padding: 20px 16px;
+  color: #252525;
+}
+#infoframe .page-list.side-list .listThumb p {
+  line-height: 1.2;
+  margin: 0 0 .5em;
+}
+#infoframe .page-list .title.new h3 {
+  color: #CC0000;
+}
+#infoframe .page-list p {
+  font-size: .9em;
+  line-height: normal;
+}
+#infoframe .page-list .mw-mf-comment {
+  margin: .25em 0 0;
+}
+#infoframe .page-list .info,
+#infoframe .page-list .component {
+  color: #777;
+  line-height: 1.2;
+}
+#infoframe .page-list .info {
+  font-size: .7em;
+  text-transform: uppercase;
+}
+#infoframe .button,
+#infoframe button,
+#infoframe input[type=submit] {
+  display: inline-block;
+  border-radius: 3px;
+  white-space: nowrap;
+  line-height: 1;
+  cursor: pointer;
+  margin: 0;
+}
+#infoframe .content .button,
+#infoframe .content button,
+#infoframe .content input[type=submit],
+#infoframe .panel .button,
+#infoframe .panel button,
+#infoframe .panel input[type=submit],
+#infoframe .buttonBar .button,
+#infoframe .buttonBar button,
+#infoframe .buttonBar input[type=submit] {
+  padding: .8em 1.2em;
+  text-align: center;
+  border: 1px #33589f solid;
+  color: white;
+  background-color: #3366BB;
+  background-image: -moz-linear-gradient(top,#3670C8 0,#3366BB 100%);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#3670C8),color-stop(100%,#3366BB));
+  background-image: -webkit-linear-gradient(top,#3670C8 0,#3366BB 100%);
+  background-image: linear-gradient(#3670C8 0,#3366BB 100%);
+}
+#infoframe .content .button:hover,
+#infoframe .content button:hover,
+#infoframe .content input[type=submit]:hover,
+#infoframe .panel .button:hover,
+#infoframe .panel button:hover,
+#infoframe .panel input[type=submit]:hover,
+#infoframe .buttonBar .button:hover,
+#infoframe .buttonBar button:hover,
+#infoframe .buttonBar input[type=submit]:hover {
+  background-color: #3f77d7;
+  background-image: -moz-linear-gradient(top,#4c84da 0,#3f77d7 100%);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#4c84da),color-stop(100%,#3f77d7));
+  background-image: -webkit-linear-gradient(top,#4c84da 0,#3f77d7 100%);
+  background-image: linear-gradient(#4c84da 0,#3f77d7 100%);
+}
+#infoframe .content .button:active,
+#infoframe .content button:active,
+#infoframe .content input[type=submit]:active,
+#infoframe .panel .button:active,
+#infoframe .panel button:active,
+#infoframe .panel input[type=submit]:active,
+#infoframe .buttonBar .button:active,
+#infoframe .buttonBar button:active,
+#infoframe .buttonBar input[type=submit]:active {
+  background-color: #2a549c;
+  background-image: -moz-linear-gradient(top,#2d5ea9 0,#2a549c 100%);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#2d5ea9),color-stop(100%,#2a549c));
+  background-image: -webkit-linear-gradient(top,#2d5ea9 0,#2a549c 100%);
+  background-image: linear-gradient(#2d5ea9 0,#2a549c 100%);
+}
+#infoframe .content .button:visited,
+#infoframe .content button:visited,
+#infoframe .content input[type=submit]:visited,
+#infoframe .panel .button:visited,
+#infoframe .panel button:visited,
+#infoframe .panel input[type=submit]:visited,
+#infoframe .buttonBar .button:visited,
+#infoframe .buttonBar button:visited,
+#infoframe .buttonBar input[type=submit]:visited {
+  color: #fff;
+}
+#infoframe .content .button:disabled,
+#infoframe .content button:disabled,
+#infoframe .content input[type=submit]:disabled,
+#infoframe .panel .button:disabled,
+#infoframe .panel button:disabled,
+#infoframe .panel input[type=submit]:disabled,
+#infoframe .buttonBar .button:disabled,
+#infoframe .buttonBar button:disabled,
+#infoframe .buttonBar input[type=submit]:disabled {
+  color: #bed1f1;
+  background-color: #7798d2;
+  background-image: -moz-linear-gradient(top,#7798d2 0,#7798d2 100%);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#7798d2),color-stop(100%,#7798d2));
+  background-image: -webkit-linear-gradient(top,#7798d2 0,#7798d2 100%);
+  background-image: linear-gradient(#7798d2 0,#7798d2 100%);
+  border-color: #648acc;
+}
+#infoframe .content .button.inline,
+#infoframe .content button.inline,
+#infoframe .content input[type=submit].inline,
+#infoframe .panel .button.inline,
+#infoframe .panel button.inline,
+#infoframe .panel input[type=submit].inline,
+#infoframe .buttonBar .button.inline,
+#infoframe .buttonBar button.inline,
+#infoframe .buttonBar input[type=submit].inline {
+  display: inline;
+  padding: 0;
+  line-height: inherit;
+  color: #002bb8;
+  background: none;
+  border: none;
+  text-shadow: none;
+}
+#infoframe .content .button.inline:hover,
+#infoframe .content button.inline:hover,
+#infoframe .content input[type=submit].inline:hover,
+#infoframe .panel .button.inline:hover,
+#infoframe .panel button.inline:hover,
+#infoframe .panel input[type=submit].inline:hover,
+#infoframe .buttonBar .button.inline:hover,
+#infoframe .buttonBar button.inline:hover,
+#infoframe .buttonBar input[type=submit].inline:hover {
+  text-decoration: underline;
+}
+#infoframe .content .button.wide,
+#infoframe .content button.wide,
+#infoframe .content input[type=submit].wide,
+#infoframe .panel .button.wide,
+#infoframe .panel button.wide,
+#infoframe .panel input[type=submit].wide,
+#infoframe .buttonBar .button.wide,
+#infoframe .buttonBar button.wide,
+#infoframe .buttonBar input[type=submit].wide {
+  display: block;
+}
+#infoframe .content-header .button,
+#infoframe .content-header button,
+#infoframe .content-header input[type=submit],
+#infoframe .header .button,
+#infoframe .header button,
+#infoframe .header input[type=submit] {
+  line-height: 28px;
+  padding: 0 1.25em;
+  text-decoration: none;
+  background-color: #e9e9ea;
+  background-image: -moz-linear-gradient(top,#fff 45%,#e9e9ea 100%);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(45%,#fff),color-stop(100%,#e9e9ea));
+  background-image: -webkit-linear-gradient(top,#fff 45%,#e9e9ea 100%);
+  background-image: linear-gradient(#fff 45%,#e9e9ea 100%);
+  color: #58595b;
+  border: 1px solid #9ea0a3;
+}
+#infoframe .content-header .button-bar,
+#infoframe .header .button-bar {
+  text-align: center;
+}
+#infoframe .content-header .button-bar li,
+#infoframe .header .button-bar li {
+  display: inline-block;
+  vertical-align: middle;
+}
+#infoframe .content-header .button-bar li .button,
+#infoframe .content-header .button-bar li button,
+#infoframe .header .button-bar li .button,
+#infoframe .header .button-bar li button {
+  border-radius: 0;
+  border-right: none;
+}
+#infoframe .content-header .button-bar li .button:disabled,
+#infoframe .content-header .button-bar li button:disabled,
+#infoframe .header .button-bar li .button:disabled,
+#infoframe .header .button-bar li button:disabled {
+  color: #9ea0a3;
+}
+#infoframe .content-header .button-bar li:active .button,
+#infoframe .content-header .button-bar li:active button,
+#infoframe .header .button-bar li:active .button,
+#infoframe .header .button-bar li:active button {
+  background-color: #e9e9ea;
+  background-image: -moz-linear-gradient(top,#c8cacb 0,#e9e9ea 100%);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#c8cacb),color-stop(100%,#e9e9ea));
+  background-image: -webkit-linear-gradient(top,#c8cacb 0,#e9e9ea 100%);
+  background-image: linear-gradient(#c8cacb 0,#e9e9ea 100%);
+}
+#infoframe .content-header .button-bar li.active .button,
+#infoframe .content-header .button-bar li.active button,
+#infoframe .header .button-bar li.active .button,
+#infoframe .header .button-bar li.active button {
+  background: #c8cacb;
+  font-weight: bold;
+}
+#infoframe .content-header .button-bar li:first-child .button,
+#infoframe .content-header .button-bar li:first-child button,
+#infoframe .header .button-bar li:first-child .button,
+#infoframe .header .button-bar li:first-child button {
+  border-radius: 3px 0 0 3px;
+}
+#infoframe .content-header .button-bar li:last-child .button,
+#infoframe .content-header .button-bar li:last-child button,
+#infoframe .header .button-bar li:last-child .button,
+#infoframe .header .button-bar li:last-child button {
+  border-radius: 0 3px 3px 0;
+  border-right: 1px solid #9ea0a3;
+}
+
+#infoframe button {
+  border: none;
+  background-color: transparent;
+}
+#infoframe body {
+  line-height: 1;
+  -webkit-tap-highlight-color: transparent;
+}
+#infoframe input {
+  line-height: normal;
+}
+#infoframe ol,
+#infoframe ul {
+  list-style: none;
+}
+#infoframe table {
+  border-collapse: collapse;
+  margin : 0 !important;
+  width: 100% !important;
+}
+#infoframe #mw-mf-viewport {
+  position: relative;
+  height: 100%;
+}
+#infoframe #mw-mf-page-center {
+  width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 3;
+}
+#infoframe #mw-mf-page-left {
+  float: left;
+  min-height: 100%;
+  background: #4E4E4E;
+  border-left: solid 12px #252525;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#infoframe #mw-mf-page-left,
+#infoframe .navigation-drawer {
+  display: none;
+}
+#infoframe .notifications-overlay.navigation-drawer {
+  right: 0;
+  height: 100%;
+  width: auto;
+  box-shadow: -5px 0 0 0 rgba(0,0,0,0.3);
+}
+#infoframe #mw-mf-page-left ul {
+  background-color: #4E4E4E;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#infoframe #mw-mf-page-left ul:first-child {
+  border-bottom: 12px solid #252525;
+}
+#infoframe #mw-mf-page-left ul:first-child li:first-child {
+  border-top: none;
+}
+#infoframe #mw-mf-page-left ul li {
+  position: relative;
+  font-size: 1.2em;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.6);
+  border-bottom: 1px solid #3e3e3e;
+  border-top: 1px solid #717171;
+}
+#infoframe #mw-mf-page-left ul li:hover {
+  background-color: #5C5C5C;
+  border-left: solid 12px #3366BB;
+  margin-left: -12px;
+}
+#infoframe #mw-mf-page-left ul li .icon-secondary {
+  border: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-position: center center;
+  background-size: 18px 18px;
+  text-indent: -999px;
+  overflow: hidden;
+  padding-right: 0;
+  width: 0;
+  border-left: 1px solid #717171;
+}
+#infoframe #mw-mf-page-left ul li .icon-profile {
+  padding-right: 40px;
+}
+#infoframe #mw-mf-page-left ul li a {
+  color: white;
+  display: block;
+  padding: 13px 10px 11px 34px;
+  line-height: 22px;
+  background-repeat: no-repeat;
+  -o-background-size: 24px 24px;
+  -webkit-background-size: 24px 24px;
+  background-size: 24px 24px;
+  background-position: left center;
+  margin-left: 9px;
+}
+#infoframe #mw-mf-page-left ul li a:hover {
+  text-decoration: none;
+}
+#infoframe #mw-mf-page-left ul li.icon-home a {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAAAwklEQVR42u3RYQ2DMBDF8UmoBCQgAQlIQAISkICESqiESqgEJJyD/7IsZIxslNAjhOR+/djkveTdw5gVWtyZ8QMg1OeEOwKzTj++JrHktZcX1pLaNRj5TWg0lo9s6UuXn8jxh6eiQ9gjUaktn7lGwfJ5fenyeQG3b/njEnUu3lNGaLeWT2gY/i0vaAk4veXz18Dh0Sd07/iKxFnGV0Egzk+pKn7e+hINCpaJlxck4uJN+gXN1+9gBVZgBVZwowJj7uYJzjt74/BBFlgAAAAASUVORK5CYII=);
+  background-image: url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/common/images/menu/home.png?2014-04-17T13:58:20Z) !ie;
+}
+#infoframe #mw-mf-page-left ul li.icon-random a {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAABgUlEQVR42u3WUZHDIBSFYSQgIRIiAQlIiAQkREIkIAEJkRAJSMDBvzu7nTSdwlxuaR92Zr/nEpJz4UzNn4E1n8HEQqTA298Yz0bmzpv3wLFy8GwzY5gJJNqOsZQzMvtKygf9Fk3KO3pRDiOQKLwqN8OopCzJBPzT0Of6BhtaBVtdG+obLGitl6+/Sq3s9RucuCqmjgOdvfn1rm8K4ba40JKYsJVfrPUNfP08E9DaGwe1/plY6vSFwV678ng6ibXNyl3G3t7/QG9rlfFVYWMlI1DVNgVJwuFISCZTIy5M13npa1s+knP36KOiMDQbyIWRxyKSazuOD1mubb3MykbpqW2L3n6uzVzoa1sefVDVtr7acKra1v8XIvYVxqPC8tNT7egKy1mW6toGdxmhlpcLIw9NJ8q1XR4uoVbuqe1wblvQ2X/XyrUdcQTF4w+2+h0YL4yIxxoZExqFRGAyGuTOlFdm8wqimLI3I/DNlBesGYetpDybd+I4U3bmE3B4rPn37QtbAHEqV4OXXQAAAABJRU5ErkJggg==);
+  background-image: url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/common/images/menu/random.png?2014-04-17T13:58:20Z) !ie;
+}
+#infoframe #mw-mf-page-left ul li.icon-watchlist a {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAM1BMVEX////////////////////////////////////////////////////////////////////lEOhHAAAAEHRSTlMAECAwQFBgcICQoLDA0ODwVOCoyAAAAPBJREFUeNrN1MuuwyAMRVHzTgjg8/9fW8kdpGlwiaU7uGuWCexYFvRXAu9kUgEyGUAyFQGoZLADYGORNBmKpMlSZGsaEMlQJKqhSLClSCRDkdgNRWJYikSgCR+vMk41XskBDINCRA3PsVyx4anuScRF1X3K7sAaR/pQsNIcXYS+Gs83V6EbgSYSQ1EdTfl5FmdSbcrwVU75XVWe3UA/HJjwhiJRDEWiWYqEMxSJ/KCoh/38OEhRL5sfednEeOP0LmyLpnTb/PLRpBdtdArjVxNPNt9VvUmKjttZmbWmqmy+70pTQw/q6+ynbyxpYqF/7AV+dDAWUUBTeAAAAABJRU5ErkJggg==);
+  background-image: url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/common/images/menu/watchlist.png?2014-04-17T13:58:20Z) !ie;
+}
+#infoframe #mw-mf-page-left ul li.icon-uploads a {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAM1BMVEX////////////////////////////////////////////////////////////////////lEOhHAAAAEHRSTlMAECAwQFBgcICQoLDA0ODwVOCoyAAAANZJREFUeNrtk0kOwyAMRZlCIAz2/U/bllaCxEamu6rKW5L/FGNjdfNvaBeeOL0Ydwk/JKdkdMKBbKS8BTwBVs5/Y+iKBODuvqUK2SsVkSHR/IGNYpHF8vk5x/WiKAAXIZCEUFMShfPATRGFMOY9oEy1Uoem8/a4CJh3/cB9Y9uWmxD5v/tpqwAJxfRKybwNk9ez3pXXMvJ5fjGwCzTfDSrQfDfoE6T5uZH7u6PnDil7W01BoKudl4VdNTQsCgfdBirwa60DiELd1Ij2MXdi62geCJu6+SUejUg7X53rg78AAAAASUVORK5CYII=);
+  background-image: url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/common/images/menu/uploads.png?2014-04-17T13:58:20Z) !ie;
+}
+#infoframe #mw-mf-page-left ul li.icon-nearby a {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAABYElEQVR42s2XW5HDMAxFBcEQAiEQDCEQCsEQAiEQDMEQCsEQDCEMTmd29mNbbca5dTrT01/Z1uOqUuwsTETWn18iEuw6mMk0XqkkwhWX3zlmZx16hJU+jdnegUDhLDfT4Y6A/AQZlahcv+DJLITfwicqvuDhfPZ3nilM3glntb2rnXzkiItjsjPQ3PXHsTYXg5j/1rGOzroHm5OfIudZ0/8uR9zvhydtlFOa+8tqPZy54NKnHqjuhOSP6JJW5Lt1YXJFlvo4dO2T2MvMWsg012jSkZ1JiHcz03u5Ejp/FC5BWtmg/n+QGzs4SZyB4oZJIrw4UQbGJhHPTmYlcmOl4mmfHPn62Cei0b5nbdFj0P3XY1jsHZjo4PSvwja60+krmCfbCCQcwsIoD0RPslGYOaaahF7q2RT6G6i2TY9+L7RrP2WLpv7xjih2NSyC+ofTtJiAnqZsn4JFV4/edNG+iwdmrLsywuvssQAAAABJRU5ErkJggg==);
+  background-image: url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/common/images/menu/nearby.png?2014-04-17T13:58:20Z) !ie;
+}
+#infoframe #mw-mf-page-left ul li.icon-settings a {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAABWUlEQVR42u2XW5GEMBBFkYAEJCABCUhAAhIiAQmRgIRIiAQkxMHZral9FDRJhx4+pnb29t9U7j0zk04HmncRE2FfdwMcB706gE4FSEe98CR6DSAd9fHAr4ERz8ZRkYVOOGrjvw1MbJQU6PcOPd4kibDH2xEs3KOU6Sh6EnfIi+gCwhqvI+zx1j6KOIZHTYVmGNQRkev2w7o20xJBAZzaXGbtQEKqLwOkxZV27OIuMFz9yczCsRVipfQhXJhVQQesjSrmZwBTBaB7BjA0FSLZAW0VINgBfRVgswPGKgB2wFIRP+qADvdVqzg0huH4kzbVtNwsI5VhEcuGeOUSpyVe/EpMUIugxRtam+0EMZ6e4GhqC9bMlTPu/nlvvdE8JUXCZ6X/B68/9OBV2FCxRsbrCP84TI6tED4eHEJ5hN99EuRIoMs7dMSivQQqDl0a4O1fxE9m57Cv5lX0Ac1pSK7vK+NJAAAAAElFTkSuQmCC);
+  background-image: url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/common/images/menu/settings.png?2014-04-17T13:58:20Z) !ie;
+}
+#infoframe #mw-mf-page-left ul li.icon-user .icon-secondary-logout,
+#infoframe #mw-mf-page-left ul li.icon-loginout a {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAM1BMVEX////////////////////////////////////////////////////////////////////lEOhHAAAAEHRSTlMAECAwQFBgcICQoLDA0ODwVOCoyAAAAUBJREFUeNrVldtygCAMRAWCeOGS///atgwYypo6zrQP3SdH9kziEnD5LRGZN3aXmcv6Aoj8qfKiBletbwH6C8DQDDj7UziRufgRcIk5e82/lhaOAKk+7IqfWzgC2PbqUPwAONYJz112aClzE3RlixQYAHe99jgMVcV9j9XUBRwUuvywcUdb2qCA+AUY1wwUqBYETMESRw8PAQk8i7+nZwHA5SonBRCQEmHetFUD7Lx5m5REQHqKM7CoQHwC8pTKE1BHKPtnQGRCTUADwtOh56pznoxN83tY73uv6IAOotrTOH14ntM9sOO5xgnWZl+6VO5fOdb5/g5Y0Y8FZO+wK9/9Ef8hTYmGwifLpYHZdeW9/uAoJL5EyseB1DCAQD/KpHt7ceiVrFCnWXTZY7ZHmiyAjNnk3aEDZShsXyK7/At9ALbFLhjlKY4EAAAAAElFTkSuQmCC);
+  background-image: url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/common/images/menu/loginout.png?2014-04-17T13:58:20Z) !ie;
+}
+#infoframe #mw-mf-page-left ul li.icon-user a {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAABwElEQVR42u3VPyiEYRzA8Z+TvAiLk41JTBb/BwOLGExKYdOFBaVY3SCbwXIWjAbFDQaL4aSUPxn9C4v/1EmuiPd8B+p68/Ye3nvPU8+vPuPver713vNIPB7/YiCACC5h4n+P5fDrUG4EmQhDyRF0QNkRLKkecK96QFwH6AAdoAN0QDoDrrCJ6A/3XrCNI5jpCIihF/IpCxNJ7obhT9itwanXAcOQbyw47B3AgFhU482rABOFNgHNDrtBiI09rwJi8NkcosphdwhiY83LT6jO5hD9DnuLNnu5ePAyYAf5lkOU4jaJz6/dspeBUDqu0TOMoROTeExy7x1z6MYgIvoh0wE6QAfoAB2Q6oAoulCMUTzBzTExhwYEcON2wAwkQTn24cZcoxWSYNztgBDEIhsDOMZv5g5BFEEs+twOiKER8g0f2jGNXbzDbs4xjx7k2PyeHwep+BO/YgTiwEAZatGGJlSiCOKgCRepvoVWUAFxUQGCePPqGjWxjHrIH5RgCo/pfAdOMItO+B0OnIcWBBHBy398yJ5xhi2sYgOHiOqXWAfoAB2QOPeqByypHtChckAYmaoGrMOAqBJg4hIRBGBAIB/Ncg60Su6S/AAAAABJRU5ErkJggg==);
+  background-image: url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/common/images/menu/user.png?2014-04-17T13:58:20Z) !ie;
+}
+#infoframe #mw-mf-page-left ul li.icon-anon a {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAABwUlEQVR42u3YPyiEcRzH8d95pOsWg38p3YYF+TOalIH8uUK5shMjgzIQEiWjwUIGdSSxGBTDrVKXnDqckn+DP8nk6O68rzz1dOmhw3me6/upV89yw/Mefr+nTsXjcZ0TvfDjBjFYfsaX34PtpqBhC/qiCGINPou6MAZ4oC8AN5TF+YwB69BXCWW3gHskFoKyY4A+nwRIgARIgARIQCYGlGMADigTGkaQZ/KbYgxDgzLhwABKfyNAwxPOMYlWVKHo49mGaVzhCOoLZ7jGLDyoRhEq0IJxhHEHx88DgA7EYLYI6r8R0IA3mC2K9t8+A15c4bOdoAnqm9oQxme7RPdfHWIXejCDFUygE9kpHMQcdGEMi5iAF065hSRAAiRAAiRAAjI9INvOAYNI7Bh9cEGlqAbz2EdzugKWYdwDZlCKLKgv5KIfBzBuM10BJVjCC5L3ilPsYAEjmPqI3kUIESQvjNp0H+JCjOIWqSyCVTTC8Z+3UA68mMMGAnhG8h5xiG0MocDq12g+6lAGl3wHJEACJCCjAkJI7N6OAZXQt263ADcC0OcxBlzAZ1FrCCIKfVvQCLDl9uCEsktADDfwo9f4/+k7B58r6oI7dCcAAAAASUVORK5CYII=);
+  background-image: url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/common/images/menu/anon.png?2014-04-17T13:58:20Z) !ie;
+}
+#infoframe #mw-mf-page-left ul.hlist li {
+  font-size: 0.8em;
+  margin: 0;
+  border: none;
+}
+#infoframe #mw-mf-page-left ul.hlist li a {
+  color: #ccc;
+  border: none;
+  padding: .7em 12px;
+  margin-left: 0;
+}
+#infoframe body.navigation-enabled #mw-mf-viewport {
+  overflow: hidden;
+  min-height: 100%;
+  height: auto !important;
+}
+#infoframe body.navigation-enabled #mw-mf-page-center {
+  background: #fff;
+  position: absolute;
+  height: 100%;
+  left: 240px;
+  border-left: solid 1px #000;
+  box-shadow: -5px 0 0 0 rgba(0,0,0,0.1);
+}
+#infoframe body.navigation-enabled .navigation-drawer,
+#infoframe body.navigation-enabled #mw-mf-page-left {
+  display: block;
+}
+#infoframe body.navigation-enabled .transparent-shield {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  background: rgba(255,255,255,0.8);
+}
+#infoframe .primary-navigation-enabled {
+  border-left: solid 12px #252525;
+  background: #4E4E4E;
+}
+#infoframe .primary-navigation-enabled #mw-mf-viewport {
+  margin-left: -12px;
+}
+#infoframe .primary-navigation-enabled #mw-mf-page-left {
+  width: 240px;
+}
+#infoframe .primary-navigation-enabled .position-fixed {
+  left: 240px !important;
+}
+@media all and (min-width: 768px) {
+  #infoframe .beta.secondary-navigation-enabled #mw-mf-page-center,
+  #infoframe .alpha.secondary-navigation-enabled #mw-mf-page-center {
+    left: -60% !important;
+    right: 60% !important;
+    width: auto;
+  }
+  #infoframe .beta.secondary-navigation-enabled #mw-mf-page-center .main-header-button,
+  #infoframe .alpha.secondary-navigation-enabled #mw-mf-page-center .main-header-button {
+    visibility: hidden;
+  }
+  #infoframe .beta .notifications-overlay.navigation-drawer,
+  #infoframe .alpha .notifications-overlay.navigation-drawer {
+    left: 40%;
+  }
+}
+#infoframe .beta #mw-mf-page-left,
+#infoframe .alpha #mw-mf-page-left {
+  font-size: 90%;
+}
+#infoframe html,
+#infoframe body {
+  height: 100%;
+}
+#infoframe #mw-mf-page-center {
+  padding: .35em .35em 0;
+}
+#infoframe #content_wrapper {
+  margin: 0 -0.35em;
+}
+#infoframe .header {
+  display: table;
+  width: 100%;
+  white-space: nowrap;
+  border-bottom: 1px solid #ccc;
+}
+#infoframe .header > * {
+  width: 3em;
+  display: table-cell;
+  vertical-align: middle;
+}
+#infoframe .header > *:first-child {
+  border-right: 1px solid #ccc;
+}
+#infoframe .header > *:nth-child(3) {
+  border-left: 1px solid #ccc;
+}
+#infoframe .header > h1,
+#infoframe .header > form,
+#infoframe .header > ul {
+  padding: 0.65em .6em;
+  width: auto;
+}
+#infoframe .header h1 {
+  text-align: center;
+  font-weight: bold;
+}
+#infoframe .header #mw-mf-main-menu-button {
+  -o-background-size: 24px auto;
+  -webkit-background-size: 24px auto;
+  background-size: 24px auto;
+  background-position: 40% 40%;
+  background-image: url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/common/images/menu/hamburger.png?2014-04-17T13:58:20Z);
+  background-image: -webkit-linear-gradient(transparent,transparent), url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/common/images/menu/hamburger.svg?2014-04-17T13:58:20Z);
+  background-image: linear-gradient(transparent,transparent), url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij48cGF0aCBkPSJNNDYgNS40MzJ2Ny4xMzNjMCAuMjQyLS4xNDguNDM1LS4zMjguNDM1aC00My4zNDRjLS4xNzUgMC0uMzI4LS4xOTctLjMyOC0uNDM1di03LjEzM2MwLS4yMzQuMTUzLS40MzIuMzI4LS40MzJoNDMuMzQ0Yy4xOCAwIC4zMjguMTk4LjMyOC40MzJ6bTAgMzB2Ny4xMzNjMCAuMjQyLS4xNDguNDM1LS4zMjguNDM1aC00My4zNDRjLS4xNzUgMC0uMzI4LS4xOTctLjMyOC0uNDM1di03LjEzM2MwLS4yMzQuMTUzLS40MzIuMzI4LS40MzJoNDMuMzQ0Yy4xOCAwIC4zMjguMTk4LjMyOC40MzJ6bTAtMTV2Ny4xMzNjMCAuMjQyLS4xNDguNDM1LS4zMjguNDM1aC00My4zNDRjLS4xNzUgMC0uMzI4LS4xOTctLjMyOC0uNDM1di03LjEzM2MwLS4yMzQuMTUzLS40MzIuMzI4LS40MzJoNDMuMzQ0Yy4xOCAwIC4zMjguMTk4LjMyOC40MzJ6IiBmaWxsPSIjNTY1NjU2Ii8+PC9zdmc+);
+  background-image: linear-gradient(transparent,transparent), url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/common/images/menu/hamburger.svg?2014-04-17T13:58:20Z) !ie;
+}
+#infoframe .header .search {
+  border: none;
+  padding: 0;
+}
+#infoframe .alert {
+  padding: 1em 16px;
+  margin: 0 0 1em;
+}
+#infoframe .alert.warning {
+  color: #850;
+  background: #feb;
+}
+#infoframe .alert h2 {
+  font: bold 100% "Helvetica Neue", "Helvetica", "Nimbus Sans L", "Arial", "Liberation Sans", sans-serif;
+  padding: 0;
+  margin: 0 0 .5em 0;
+}
+#infoframe .client-js .searchSubmit {
+  display: none;
+}
+#infoframe .client-nojs .searchSubmit {
+  padding: 0 !important;
+  width: 20%;
+}
+#infoframe .client-nojs input.search {
+  width: 80%;
+}
+#infoframe input.search {
+  outline: 0;
+  width: 100%;
+  background-color: #fff !important;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+}
+#infoframe input.search::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+#infoframe .search-box {
+  -webkit-tap-highlight-color: rgba(255,255,255,0);
+}
+#infoframe .content .edit-page {
+  display: none;
+  position: absolute;
+  background: url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/common/../common/images/pagemenu/edit.png?2014-04-17T13:58:20Z) 100% .5em no-repeat;
+  -o-background-size: auto 30px;
+  -webkit-background-size: auto 30px;
+  background-size: auto 30px;
+  text-indent: -9999px;
+  border-left: solid 1px #E2E3E4;
+  width: 35px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+#infoframe .content h1.openSection .edit-page,
+#infoframe .content h2.openSection .edit-page {
+  display: block;
+}
+#infoframe .stub .edit-page {
+  margin: 0;
+  display: block;
+}
+#infoframe .watch-this-article {
+  background: url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/common/../common/images/watch.png?2014-04-17T13:58:20Z) 50% 50% no-repeat;
+  text-indent: -9999px;
+}
+#infoframe .watch-this-article.watched {
+  background-image: url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/common/../common/images/watched.png?2014-04-17T13:58:20Z);
+}
+#infoframe .stable .languageSelector {
+  margin-top: 1em;
+}
+#infoframe .stable .header #secondary-button.user-button span {
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+}
+#infoframe .stable .header .overlay-header .user-button,
+#infoframe .stable .header .overlay-header #secondary-button,
+#infoframe .stable .header .header .user-button,
+#infoframe .stable .header .header #secondary-button {
+  -o-background-size: 24px auto;
+  -webkit-background-size: 24px auto;
+  background-size: 24px auto;
+}
+#infoframe .truncated-text {
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+#infoframe .truncated-text.multi-line {
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+#infoframe .truncated-text.two-line {
+  -webkit-line-clamp: 2;
+  max-height: 2.6em;
+}
+#infoframe .overlay .user-button,
+#infoframe .header .user-button {
+  height: 2.65em;
+  background-position: 60% 40%;
+}
+#infoframe .overlay .main-header-button,
+#infoframe .overlay .user-button,
+#infoframe .overlay #mw-mf-main-menu-button,
+#infoframe .overlay #secondary-button,
+#infoframe .header .main-header-button,
+#infoframe .header .user-button,
+#infoframe .header #mw-mf-main-menu-button,
+#infoframe .header #secondary-button {
+  text-indent: -9999px;
+  background-repeat: no-repeat;
+}
+#infoframe .overlay #secondary-button.user-button,
+#infoframe .overlay .user-button,
+#infoframe .header #secondary-button.user-button,
+#infoframe .header .user-button {
+  text-indent: 0;
+  width: 2.65em;
+  padding-left: .35em;
+  padding-bottom: .35em;
+  text-align: center;
+}
+#infoframe .overlay #secondary-button.user-button:hover,
+#infoframe .overlay .user-button:hover,
+#infoframe .header #secondary-button.user-button:hover,
+#infoframe .header .user-button:hover {
+  text-decoration: none;
+}
+#infoframe .overlay #secondary-button.user-button.loading span,
+#infoframe .overlay .user-button.loading span,
+#infoframe .header #secondary-button.user-button.loading span,
+#infoframe .header .user-button.loading span {
+  display: none;
+}
+#infoframe .overlay #secondary-button.user-button span,
+#infoframe .overlay .user-button span,
+#infoframe .header #secondary-button.user-button span,
+#infoframe .header .user-button span {
+  display: inline-block;
+  font-weight: bold;
+  color: #fff;
+  background: #c91f2c;
+  border-radius: 2px;
+}
+#infoframe .overlay #secondary-button.user-button span.zero,
+#infoframe .overlay .user-button span.zero,
+#infoframe .header #secondary-button.user-button span.zero,
+#infoframe .header .user-button span.zero {
+  background: #ccc;
+}
+#infoframe .mw-mobile-mode.stable #ca-talk,
+#infoframe .stable #ca-talk,
+#infoframe .client-nojs #ca-watch.cta,
+#infoframe .client-nojs #ca-edit,
+#infoframe .client-nojs #ca-upload,
+#infoframe #ca-talk.selected {
+  display: none;
+}
+#infoframe .mw-desktop-mode #ca-talk {
+  display: inline-block;
+}
+#infoframe #section_0 {
+  padding: 12px 16px 7px;
+  border-bottom: dotted 1px #CACACA;
+}
+#infoframe .pre-content {
+  border-bottom: solid 1px #CACACA;
+}
+#infoframe .pre-content #page-actions {
+  border-bottom: none;
+}
+#infoframe #page-actions {
+  padding: 8px 16px 8px 8px;
+  border-bottom: solid 1px #aaa;
+}
+#infoframe #page-actions li,
+#infoframe #page-actions .watch-this-article {
+  -o-background-size: auto 30px;
+  -webkit-background-size: auto 30px;
+  background-size: auto 30px;
+}
+#infoframe #page-actions li {
+  position: relative;
+  cursor: pointer;
+  vertical-align: top;
+  height: 30px;
+  width: 40px;
+  text-indent: -9999px;
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+}
+#infoframe #page-actions li input {
+  opacity: 0;
+}
+#infoframe #page-actions li input,
+#infoframe #page-actions li a {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0 0 8px;
+}
+#infoframe #ca-edit {
+  background-image: url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/common/images/pagemenu/edit-locked.png?2014-04-17T13:58:20Z);
+  margin-right: 17px;
+}
+#infoframe #ca-edit.enabled {
+  background-image: url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/common/images/pagemenu/edit.png?2014-04-17T13:58:20Z);
+}
+#infoframe #ca-talk {
+  margin-right: 14px;
+  background-image: url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/common/images/pagemenu/talk.png?2014-04-17T13:58:20Z);
+  text-indent: -999px;
+}
+#infoframe .talk {
+  background: url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/common/images/pagemenu/talk.png?2014-04-17T13:58:20Z) 50% 50% no-repeat;
+  overflow: hidden;
+}
+#infoframe #ca-upload {
+  margin-right: 19px;
+  background-image: url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/common/images/pagemenu/upload-locked.png?2014-04-17T13:58:20Z);
+  overflow: hidden;
+}
+#infoframe #ca-upload input {
+  display: none;
+}
+#infoframe #ca-upload.enabled {
+  background-image: url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/common/images/pagemenu/upload.png?2014-04-17T13:58:20Z);
+}
+#infoframe #ca-upload.enabled input {
+  display: block;
+}
+#infoframe #footer {
+  padding: 2em 16px 1.5em 16px;
+  margin: 2em 0 0;
+  border-top: 1px solid #aaa;
+  font-size: 0.9em;
+}
+#infoframe #footer h2 {
+  display: inline;
+  font-weight: bold;
+  font-size: 1em;
+}
+#infoframe #footer h2 img {
+  height: 1em;
+}
+#infoframe #footer ul {
+  text-align: center;
+}
+#infoframe #footer ul li {
+  line-height: 1.2;
+  padding: 0 0 .7em;
+}
+#infoframe #footer ul ul {
+  display: inline;
+}
+#infoframe #footer ul ul li,
+#infoframe #footer ul.footer-places li {
+  display: inline;
+  padding: 0 8px;
+  border-right: 1px solid #aaa;
+}
+#infoframe #footer ul ul li:last-child,
+#infoframe #footer ul.footer-places li:last-child {
+  border: none;
+}
+#infoframe .beta #footer,
+#infoframe .alpha #footer {
+  margin: 2em auto 0 auto;
+  clear: both;
+}
+#infoframe .stable input,
+#infoframe .stable textarea,
+#infoframe .stable .header,
+#infoframe .stable .overlay-header {
+  font-size: 1.11em;
+}
+#infoframe .stable input.search {
+  font-size: 1em;
+}
+#infoframe .stable .content p,
+#infoframe .stable .content li,
+#infoframe .stable .content dl {
+  line-height: 1.65;
+}
+#infoframe .mw-mf-overlay .error,
+#infoframe #content_wrapper .error {
+  color: #C85353;
+  background: #FAE1E1 !important;
+}
+#infoframe .mw-mf-image-replacement {
+  font-style: italic;
+  color: #706E6E;
+  text-decoration: underline;
+  border: dotted 1px #CCC;
+  padding: 10px;
+  display: inline-block;
+}
+#infoframe .inputs-box {
+  padding: 1px;
+  border: solid 1px #e1e1e1;
+  border-radius: 5px;
+  background: #fff;
+  margin: 0 0 .8em;
+  text-align: center;
+}
+#infoframe .inputs-box input:not([type=submit]),
+#infoframe .inputs-box img {
+  border: none;
+  border-top: solid 1px #e1e1e1;
+}
+#infoframe .inputs-box input:not([type=submit]):first-child,
+#infoframe .inputs-box img:first-child {
+  border-top: none;
+}
+#infoframe .inputs-box input:not([type=submit]) {
+  -webkit-appearance: none;
+  border-radius: 0;
+  padding: .8em .5em;
+  margin: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#infoframe textarea {
+  padding: 5px 0 5px 5px;
+}
+#infoframe input:not([type=submit]),
+#infoframe textarea {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 5px;
+}
+#infoframe .mw-input [type=submit],
+#infoframe .mw-submit {
+  margin-top: 8px;
+  min-width: 80%;
+}
+#infoframe a.external {
+  background-image: url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/common/images/external-link-ltr-icon.png?2014-04-17T13:58:20Z);
+  background-image: -webkit-linear-gradient(transparent,transparent), url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/common/images/external-link-ltr-icon.svg?2014-04-17T13:58:20Z);
+  background-image: linear-gradient(transparent,transparent), url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCI+PGRlZnM+PG1hcmtlciBvcmllbnQ9ImF1dG8iIG92ZXJmbG93PSJ2aXNpYmxlIj48cGF0aCBkPSJNLS45NTgtNC4yNTljLTEuMTM0IDAtMi4wNTYuOTIyLTIuMDU2IDIuMDU2IDAgLjM5NC4xNDMuNzM2LjMzNiAxLjA0OWwtLjA3LjA1NmMtLjM3My0uNTEzLS45NTQtLjg2Ny0xLjYzNi0uODY3LTEuMTM0IDAtMi4wNTYuOTIyLTIuMDU2IDIuMDU2cy45MjIgMi4wNTYgMi4wNTYgMi4wNTZjLjU5NiAwIDEuMTIxLS4yNjUgMS40OTYtLjY3MS0uMDc1LjIxMy0uMTI2LjQzMy0uMTI2LjY3MSAwIDEuMTM0LjkyMiAyLjA1NiAyLjA1NiAyLjA1NnMyLjA1Ni0uOTIyIDIuMDU2LTIuMDU2YzAtLjQ3Ni0uMTg5LS44OTYtLjQ2Mi0xLjI0NS44MTMuMTU4IDEuNjI3LjQ3NyAyLjIyNCAxLjM5OS0uNDQzLS40NDMtLjcyNy0xLjI0OC0uNzI3LTIuMzM2bC0uMzc4LS4wMjguMzUtLjAxNGMwLTEuMDg3LjI3LTEuODkzLjcxMy0yLjMzNi0uNTc1Ljg4OS0xLjM1NCAxLjIxNi0yLjE0IDEuMzg1LjI0My0uMzM3LjQyLS43MjguNDItMS4xNzUgMC0xLjEzNC0uOTIyLTIuMDU2LTIuMDU2LTIuMDU2eiIgZmlsbC1ydWxlPSJldmVub2RkIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iTmFOIi8+PC9tYXJrZXI+PG1hcmtlciBvcmllbnQ9ImF1dG8iIG92ZXJmbG93PSJ2aXNpYmxlIj48cGF0aCBkPSJNMC0yLjgyOGwtMi44MjggMi44MjggMi44MjggMi44MjggMi44MjgtMi44MjgtMi44MjgtMi44Mjh6IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSJOYU4iLz48L21hcmtlcj48bWFya2VyIG9yaWVudD0iYXV0byIgb3ZlcmZsb3c9InZpc2libGUiPjxwYXRoIGQ9Ik0xMCAwbDQtNC0xNCA0IDE0IDQtNC00eiIgZmlsbC1ydWxlPSJldmVub2RkIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iTmFOIi8+PC9tYXJrZXI+PC9kZWZzPjxwYXRoIGZpbGw9IiNmZmYiIHN0cm9rZT0iIzA2YyIgZD0iTS41IDMuNTE4aDUuOTgydjUuOTgyaC01Ljk4MnoiLz48cGF0aCBkPSJNNC43NTUtLjE2aDUuMjM0djUuMzlsLTEuNTcxIDEuNTQ0LTEuMzEtMS4zMS0yLjcyNSAyLjcyNS0yLjY4OC0yLjY4OCAyLjgwOC0yLjgwOC0xLjMxLTEuMzF6IiBmaWxsPSIjMDZmIi8+PHBhdGggZD0iTTguOTg0Ljg0NWwuMDIyIDQuODg0LTEuODE3LTEuODE3LTIuODgxIDIuODgxLTEuMjI3LTEuMjI3IDIuODgxLTIuODgxLTEuODUtMS44NTF6IiBmaWxsPSIjZmZmIi8+PC9zdmc+);
+  background-image: linear-gradient(transparent,transparent), url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/common/images/external-link-ltr-icon.svg?2014-04-17T13:58:20Z) !ie;
+  background-repeat: no-repeat;
+  background-position: center right;
+  padding-right: 13px;
+}
+#infoframe ul.gallery li.gallerybox {
+  display: inline-block;
+}
+#infoframe ul.gallery li.gallerybox div.thumb img {
+  display: block;
+  margin: 0 auto;
+}
+#infoframe ul.gallery li.gallerybox div.gallerytext {
+  overflow: hidden;
+  padding: 2px 4px;
+  word-wrap: break-word;
+}
+#infoframe pre {
+  white-space: pre-wrap;
+}
+#infoframe a {
+  text-decoration: none;
+  color: #002bb8;
+}
+#infoframe a:visited {
+  color: #5a3696;
+}
+#infoframe a:active {
+  color: #faa700;
+}
+#infoframe a:hover {
+  text-decoration: underline;
+}
+#infoframe a.new,
+#infoframe a.new:visited,
+#infoframe a.new:hover {
+  color: #CC0000;
+}
+#infoframe img.thumbborder {
+  border: 1px solid #ccc;
+}
+#infoframe .plainlinks a {
+  background: none !important;
+  padding: 0 !important;
+}
+#infoframe strong,
+#infoframe b {
+  font-weight: bold;
+}
+#infoframe em,
+#infoframe i {
+  font-style: italic;
+}
+#infoframe fieldset {
+  border: 1px solid #3366BB;
+  margin: 1em 0 1em 0;
+  padding: 0 1em 1em;
+  line-height: 1.5em;
+  display: block;
+}
+#infoframe .hlist > ul li,
+#infoframe ul.hlist li {
+  display: inline-block;
+  margin-right: 8px;
+}
+#infoframe code,
+#infoframe pre {
+  padding: 0.2em 0.5em;
+  font-family: monospace;
+  border: solid 1px #CCC;
+}
+#infoframe pre {
+  padding: 1em;
+}
+#infoframe .content {
+  word-wrap: break-word;
+}
+#infoframe .content .thumb .thumbinner {
+  margin: 5px auto;
+  max-width: 100%;
+}
+#infoframe .content .thumb .thumbinner > div {
+  float: none !important;
+  width: auto !important;
+  clear: both !important;
+}
+#infoframe .content .thumb .thumbcaption {
+  margin: 5px 10px 0;
+  text-align: center;
+  width: auto !important;
+}
+#infoframe .content .thumb .noresize {
+  width: 100%;
+  overflow-x: auto;
+}
+#infoframe .content .thumb .noresize img {
+  max-width: none !important;
+}
+#infoframe .content a > img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+#infoframe .content ul {
+  list-style: square inside;
+}
+#infoframe .content ol {
+  list-style: decimal inside;
+}
+#infoframe .content table {
+  margin: 1em 0;
+  overflow: auto;
+  overflow-y: hidden;
+  overflow-x: auto;
+  display: block;
+  width: 100% !important;
+}
+#infoframe .content table td,
+#infoframe .content table th {
+  padding: 3px;
+  border: 1px #ccc solid;
+}
+#infoframe .content table th {
+  font-weight: bold;
+  background-color: #f2f2f2;
+  text-align: center;
+}
+#infoframe .content table caption {
+  display: block;
+  text-align: left;
+}
+#infoframe .content div.magnify {
+  display: none;
+}
+#infoframe .content .return-link,
+#infoframe .content #mw-mf-last-modified {
+  display: block;
+  font-size: .9em;
+  margin-top: 1.5em;
+}
+#infoframe .printfooter,
+#infoframe .jsonly {
+  display: none;
+}
+#infoframe .client-js .jsonly {
+  display: block;
+}
+#infoframe .position-fixed {
+  position: fixed !important;
+}
+#infoframe .animations .position-fixed {
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
+#infoframe .no-position-fixed #notifications {
+  bottom: 0;
+}
+#infoframe .no-position-fixed .position-fixed {
+  position: absolute !important;
+}
+#infoframe .touch-events :focus {
+  outline: 0;
+}
+#infoframe .nomobile {
+  display: none;
+}
+#infoframe html {
+  -webkit-text-size-adjust: none;
+  font-size: 90%;
+}
+#infoframe body {
+  font-family: "Helvetica Neue", "Helvetica", "Nimbus Sans L", "Arial", "Liberation Sans", sans-serif;
+  line-height: 1.4;
+  color: #252525;
+  background: #fff;
+}
+#infoframe #section_0 {
+  line-height: 1.3;
+}
+#infoframe .content {
+  margin: .8em 16px 0;
+}
+#infoframe .content h1,
+#infoframe .content h2,
+#infoframe .content h3,
+#infoframe .content h4,
+#infoframe .content h5,
+#infoframe .content h6 {
+  line-height: 1.3;
+  font-family: Georgia, serif;
+  padding: .5em 0;
+}
+#infoframe .content p {
+  margin-bottom: .7em;
+}
+#infoframe .content .thumb {
+  margin: 15px 0 15px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #f9f9f9;
+  text-align: center;
+}
+#infoframe .content ol ol,
+#infoframe .content ol ul,
+#infoframe .content ul ol,
+#infoframe .content ul ul {
+  margin-left: 1em;
+}
+#infoframe dl {
+  margin-left: 1em;
+}
+#infoframe dl dt {
+  font-weight: bold;
+}
+#infoframe .pre-content h1,
+#infoframe .content h1 {
+  font-family: Georgia, serif;
+  font-size: 1.8em;
+}
+#infoframe h2 {
+  font-size: 1.5em;
+}
+#infoframe h3 {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+#infoframe h4 {
+  font-weight: bold;
+}
+#infoframe sup {
+  vertical-align: super;
+}
+#infoframe sub {
+  vertical-align: sub;
+}
+#infoframe sub,
+#infoframe sup {
+  font-size: 0.75em;
+}
+@media all and (max-width: 280px) {
+  #infoframe body {
+    font-size: .8em;
+  }
+  #infoframe .content {
+    margin: 0 12px;
+  }
+}
+#infoframe blockquote {
+  quotes: "\201C" "\201D";
+  padding: 1em 0 1em 10px;
+  position: relative;
+}
+#infoframe blockquote:before {
+  content: open-quote;
+  font-size: 3em;
+}
+#infoframe blockquote:after {
+  font-size: 3em;
+  content: close-quote;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+#infoframe .content_block {
+  width: 100%;
+}
+#infoframe .client-js .section_heading,
+#infoframe .client-js .content_block {
+  border-bottom: solid 1px #E2E3E4;
+  clear: both;
+}
+#infoframe .client-js .section_heading {
+  position: relative;
+  background: url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/modules/images/show.png?2014-04-17T13:58:20Z) left 1.05em no-repeat;
+  -o-background-size: 15px auto;
+  -webkit-background-size: 15px auto;
+  background-size: 15px auto;
+  padding-left: 24px;
+  cursor: pointer;
+}
+#infoframe .client-js .section_heading.openSection {
+  background-image: url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/modules/images/hide.png?2014-04-17T13:58:20Z);
+  padding-right: 45px;
+  border-bottom: solid 1px #E2E3E4;
+  margin-bottom: .5em;
+}
+#infoframe .client-js .content_block {
+  display: none;
+}
+#infoframe .client-js .content_block.openSection {
+  display: block;
+}
+#infoframe .content .ambox,
+#infoframe .content #coordinates,
+#infoframe .content .navbox,
+#infoframe .content .vertical-navbox,
+#infoframe .content .topicon,
+#infoframe .content .metadata {
+  display: none !important;
+}
+#infoframe ul.gallery {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+#infoframe ul.gallery li.gallerybox {
+  width: auto !important;
+}
+#infoframe ul.gallery li.gallerybox > div {
+  width: auto !important;
+}
+#infoframe ul.gallery li.gallerybox > div > div.thumb {
+  width: auto !important;
+}
+#infoframe #filetoc,
+#infoframe .editsection,
+#infoframe .mw-editsection {
+  display: none;
+}
+#infoframe .skin-minerva .portal-column-left-wide,
+#infoframe .skin-minerva .portal-column-left,
+#infoframe .skin-minerva .portal-column-right,
+#infoframe .skin-minerva .portal-column-right-narrow {
+  float: none;
+  width: 100%;
+}
+#infoframe .collapsible td {
+  width: auto !important;
+}
+#infoframe .content table {
+  border-spacing: 0 !important;
+  float: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+#infoframe .content table.infobox {
+  background: #f9f9f9;
+  text-align: center !important;
+}
+#infoframe .references-column-count {
+  -moz-column-width: 35em;
+  -webkit-column-width: 35em;
+  column-width: 35em;
+}
+#infoframe .references li:target {
+  background-color: #ddeeff;
+}
+#infoframe .beta .dablink,
+#infoframe .beta .rellink,
+#infoframe .alpha .dablink,
+#infoframe .alpha .rellink {
+  padding: 0 0 .6em 0;
+  color: #777;
+  font-size: .8em;
+  font-style: italic;
+}
+#infoframe .drawer {
+  text-align: center;
+  padding: 0 16px 1em;
+}
+#infoframe .drawer.text {
+  line-height: 1;
+  font-size: .9em;
+  text-align: left;
+  padding-top: .5em;
+}
+#infoframe .drawer p {
+  line-height: 1.4;
+  margin-top: .5em;
+}
+#infoframe .drawer a.close {
+  padding: 0 0 1.2em;
+  display: block;
+  overflow: hidden;
+  text-indent: -9999px;
+  width: 100%;
+  height: 16px;
+  background: url(//bits.wikimedia.org/static-1.24wmf1/extensions/MobileFrontend/less/common/../modules/images/show.png?2014-04-17T13:58:20Z) 50% 8px no-repeat;
+}
+#infoframe .drawer a.button {
+  margin: 1em 16px;
+}
+#infoframe .drawer a.signup {
+  display: block;
+}
+#infoframe .drawer .progress-bar {
+  margin: .9em 0 0;
+}
+#infoframe .overlay-enabled .drawer {
+  display: none !important;
+}

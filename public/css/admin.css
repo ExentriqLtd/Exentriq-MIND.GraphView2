@@ -1,0 +1,96 @@
+
+#userlist table tr
+	{
+	height: 48px;
+	}
+#userlist table th
+	{
+	padding: 0 8px;
+	font-size: 1.5em;
+	}
+#userlist table td
+	{
+	padding: 0 8px;
+	vertical-align: middle;
+	}
+.useraction
+	{
+	width: 150px;
+	text-align: center;
+	}
+.useraction i
+	{
+	font-size: 1.5em;
+	margin: 0 5px;
+	cursor: pointer;
+	}
+.edituser	
+	{
+	color: #1da397;
+	}
+.removeuser	
+	{
+	color: #ff6d35;
+	}
+	
+	
+#adduser
+	{
+	position: absolute;
+	top: 35px;
+	right: 15px;
+	padding: 10px;
+	color: white;
+	border-radius: 0;
+	padding: 0 15px;
+	text-align: center;
+	line-height: 2.2em;
+	outline: none;
+	cursor: pointer;
+	font-weight: bold;
+	border: 1px solid #1da397;
+	background-color: #1da397;
+	color: #fff;
+	}
+
+#splunkstat
+	{
+	position: absolute;
+	top: 35px;
+	right: 170px;
+	padding: 10px;
+	color: white;
+	border-radius: 0;
+	padding: 0 15px;
+	text-align: center;
+	line-height: 2.2em;
+	outline: none;
+	cursor: pointer;
+	font-weight: bold;
+	border: 1px solid #90bdd0;
+	background-color: #90bdd0;
+	color: #fff;
+	}
+	
+#adduser i,
+#splunkstat i
+	{
+	margin-right: 10px;
+	}
+
+#passwordbutton
+	{
+	padding: 10px;
+	color: white;
+	border-radius: 0;
+	padding: 0 15px;
+	text-align: center;
+	line-height: 2.2em;
+	outline: none;
+	cursor: pointer;
+	font-weight: bold;
+	border: 1px solid #90bdd0;
+	background-color: #90bdd0;
+	color: #fff;
+	margin-bottom: 15px;
+	}

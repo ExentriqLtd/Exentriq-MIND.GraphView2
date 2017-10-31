@@ -1,0 +1,5 @@
+
+var category2color =
+	{
+	
+	}
