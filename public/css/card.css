@@ -27,7 +27,7 @@ a.custom_edit_button i
 {
 	display: inline-block !important;
 	padding: 0px !important;
-	width:85%;
+	width:70%;
 	text-align: left;
 	font-weight: 500;
 	font-size: 16px;
@@ -61,6 +61,25 @@ input.eq-ui-input[type=checkbox]+label {
 	padding-left: 0px !important;
 	width: 5% !important;
 	margin-bottom: -4px;
+}
+
+.star_visualisation
+{
+    width:15%;
+    display: inline-block !important;
+    padding: 0px !important;
+    height: 21px;
+}
+
+.star_visualisation i
+{
+    position: absolute;
+    font-size: 28px;
+}
+
+.star_visualisation i:hover
+{
+    color:#1bbc9b;
 }
 
 .eq-ui-collapsible li .eq-ui-collapsible-header a.button_dropdown:hover

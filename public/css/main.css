@@ -1,4 +1,23 @@
+.icon_open_sidebar,.icon_close_sidebar
+{
+height: 55px;
+}
+.icon_close_sidebar
+{
+	display: none;
+    padding: 16px 4px;
+}
 
+.open_menu_floating
+{
+    width: 31px!important;
+    min-width: 0px!important;
+    border-top-left-radius: 200px !important;
+    border-bottom-left-radius: 200px !important;
+    border-bottom-right-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    position: absolute !important;
+}
 
 *:not(input)
 	{

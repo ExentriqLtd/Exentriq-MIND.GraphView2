@@ -82,7 +82,7 @@ function dodraw(id, root, child, thumb, title, text, node, after,noinfo)
     var newelement = $('' +
         '<li id="' + id + '" data-title="' + title + '" data-referenceId="' + node.referenceId + '"  data-uri="' + node.articleUri + '" class="">' +
         '<div class="eq-ui-collapsible-header">' + '<div class="card ' + (root ? "root" : "") + ' ' + (child || after ? "child" : "") + '">' +
-        (thumb !== "" ? '<div class="thumb" data-thumb="' + thumb + '" style="background-image:url(' + thumb + ')"></div>' : "") + '<input type="checkbox" class="eq-ui-input filled-in" id="checkbox-all" /> <label for="checkbox-all"></label>' +
+        (thumb !== "" ? '<div class="thumb" data-thumb="' + thumb + '" style="background-image:url(' + thumb + ')"></div>' : "") + '<input type="checkbox" class="eq-ui-input filled-in" id="checkbox-all" /> <label for="checkbox-all"></label>' + '<a class="eq-ui-list-secondary-content-body star_visualisation"><i class="material-icons">&#xE838;</i></a>' +
         '<a class="title_card">' + '<span>' + truncateTitle(title,75,true) + '</span>' + '</a>' + '<a data-target="dropdown-1" class="button_dropdown btn btn-default eq-ui-waves dropdown-trigger" data-hover="false"><i class="material-icons">&#xE5D4;</i></a>' +
         '<ul id="dropdown-1" class="eq-ui-dropdown eq-ui-dropdown actions">' +
         '<li><a class="centermap">Center on Map</a></li>' +
