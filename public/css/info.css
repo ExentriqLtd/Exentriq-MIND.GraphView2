@@ -206,9 +206,11 @@
 	}
 #hyperselector
 	{
+	height:70px;
+	width: 100%;
 	white-space: nowrap;
 	font-size: 0;
-	position: absolute;
+	position: static !important;
 	top: 0;
 	left: 0;
 	border-left: 1px solid #e3e3e3;
@@ -216,7 +218,6 @@
 #hyperselector a
 	{
 	display: inline-block;
-	width: 80px;
 	height:66px;
 	text-align: center;
 	color: #fff !important;
@@ -235,30 +236,30 @@
 
 #hyperselector a:nth-child(1)
 	{
-	background:#10968A;
+
 	}
 #hyperselector a:nth-child(2)
 	{
-	background:#1da397;
+
 	}
 
 #hyperselector a:nth-child(3)
 	{
-	background:#5db5ab;
+
 	}
 
 #hyperselector a:nth-child(4)
 	{
-	background:#8ac8bf;
+
 	}
 
 #hyperselector a:nth-child(5)
 	{
-	background:#b2dad3;
+
 	}
 #hyperselector a:nth-child(6)
 	{
-	background:#d9ece9;
+
 	}
 #hyperselector a:nth-child(6)
 	{
@@ -267,7 +268,6 @@
 
 #hyperselector a.selected
 	{
-	background: #c5b900 !important;
 	color: white !important;
 	}
 

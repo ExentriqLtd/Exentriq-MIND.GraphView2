@@ -70,39 +70,36 @@ function dodraw(id, root, child, thumb, title, text, node, after,noinfo)
     //var topicsString = "<div>TOPICS</div>" + topicTooltips(+id)
     var exploreAction = ""
 	if(!node.expanded)
-		exploreAction = '<a class="explore" data-original-title="EXPLORE"><i class="fa fa-sitemap"></i></a>';
+		exploreAction = '<li><a class="explore">Explore</a></li>';
 	else
 		{
 		if(node.collapsed)
-			exploreAction = '<a class="explore" data-original-title="EXPAND"><i class="fa fa-expand"></i></a>';
+			exploreAction = '<li><a class="explore">Expand</i></a></li>';
 		else
-			exploreAction = '<a class="explore" data-original-title="COLLAPSE"><i class="fa fa-compress"></i></a>';
+			exploreAction = '<li><a class="explore">Collapse</a></li>';
 		}
     
     var newelement = $('' +
-        '<div id="' + id + '" data-title="' + title + '" data-referenceId="' + node.referenceId + '"  data-uri="' + node.articleUri + '" class="piece">' +
-        '<div class="card ' + (root ? "root" : "") + ' ' + (child || after ? "child" : "") + '">' +
-        (thumb !== "" ? '<div class="thumb" data-thumb="' + thumb + '" style="background-image:url(' + thumb + ')"></div>' : "<br/>") +
-        '<h3>' + truncateTitle(title,75,true) + '</h3>' +
-        '<div class="actions">' +
-        '<a class="centermap" data-original-title="CENTER ON MAP"><i class="fa fa-crosshairs"></i></a>' +
+        '<li id="' + id + '" data-title="' + title + '" data-referenceId="' + node.referenceId + '"  data-uri="' + node.articleUri + '" class="">' +
+        '<div class="eq-ui-collapsible-header">' + '<div class="card ' + (root ? "root" : "") + ' ' + (child || after ? "child" : "") + '">' +
+        (thumb !== "" ? '<div class="thumb" data-thumb="' + thumb + '" style="background-image:url(' + thumb + ')"></div>' : "") + '<input type="checkbox" class="eq-ui-input filled-in" id="checkbox-all" /> <label for="checkbox-all"></label>' +
+        '<a class="title_card">' + '<span>' + truncateTitle(title,75,true) + '</span>' + '</a>' + '<a data-target="dropdown-1" class="button_dropdown btn btn-default eq-ui-waves dropdown-trigger" data-hover="false"><i class="material-icons">&#xE5D4;</i></a>' +
+        '<ul id="dropdown-1" class="eq-ui-dropdown eq-ui-dropdown actions">' +
+        '<li><a class="centermap">Center on Map</a></li>' +
         //'<a class="category" data-original-title=\'' + topicsString + '\'><i class="fa fa-certificate"></i></a>' +
-        (bookmarklist[id] ? '<a data-original-title="BOOKMARKED"><i class="fa fa-star" style="color:orange;"></i></a>' : '<a class="bookmark" data-original-title="BOOKMARK"><i class="fa fa-star-o"></i></a>') +
-        
-        (!noinfo ? '<a class="info" data-original-title="DETAILS"><i class="fa fa-info-circle"></i></a>' : "")  +
+        (bookmarklist[id] ? '<li><a>Bookmarked</a></li>' : '<li><a class="bookmark">Bookmark</a></li>') +
+
+        (!noinfo ? '<li><a class="info">Details</a></li>' : "")  +
 
         //'<a class="showlinks" data-original-title="Links"><i class="fa fa-link"></i></a>'+
         exploreAction+
-        '<a class="remove" data-original-title="HIDE"><i class="fa fa-eye-slash"></i></a>'+
-        '<a class="ban" data-original-title="MARK AS IRRELEVANT"><i class="fa fa-ban"></i></a>'+
+        '<li><a class="remove">Hide</a></li>'+
+        '<li><a class="ban">Mark as Irrelevant</a></li>'+
         //'<a class="closetab" data-original-title="Remove"><i class="fa fa-times"></i></a>'+
-        '</div>' +
-        '<div class="links">' +
+        '</ul>' + '</div>' + '</div>' +
+        '<div class="eq-ui-collapsible-body">' + '<div class="eq-ui-collapsible-body-inner">' + '<div class="links">' +
         text +
-        '</div>' +
-
-        '</div>' +
-        '</div>'
+        '</div>' + '</div>' +  '</li>' + '</div>' + '</li>'
     );
     newelement.find(".links").before(topicblock);
     if (after) {
@@ -121,7 +118,11 @@ function dodraw(id, root, child, thumb, title, text, node, after,noinfo)
         superafter = newelement;
     } else {
         $("#cardcontainer")
-            .append(newelement)
+            .append(newelement);
+            $('.eq-ui-collapsible').eq_collapsible();
+            $('.dropdown-trigger').dropdown();
+            $('.eq-ui-dropdown').dropdown()
+
         //.isotope( 'appended', newelement )
 
     }
