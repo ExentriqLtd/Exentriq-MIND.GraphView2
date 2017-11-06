@@ -2,10 +2,9 @@
 {
 height: 55px;
 }
-.icon_close_sidebar
+.icon_open_sidebar
 {
 	display: none;
-    padding: 16px 4px;
 }
 
 .open_menu_floating

@@ -33,13 +33,13 @@ function showTooltip(nodeId,position)
 		dy = $("#tooltip").outerHeight()  + ((1+graphsettings.overEnlarge)*node.nodeUI.width*ngraph.graphics.scale.x/window.devicePixelRatio);
 		}
 	
-	$("#tooltip")
+	/*$("#tooltip")
 		.css(
 			{
 			top: position.y - dy ,
 			left: position.x - dx
 			})
-		.addClass("show");
+		.addClass("show");*/
 	}
 
 function hideTooltip()

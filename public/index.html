@@ -8,19 +8,19 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="external/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="external/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="css/loader.css">
-    <link rel="stylesheet" type="text/css" href="css/graph.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/iconfont.css">
-    <link rel="stylesheet" type="text/css" href="css/logo.css">
-    <link rel="stylesheet" type="text/css" href="css/topbar.css">
-    <link rel="stylesheet" type="text/css" href="css/info.css">
-    <link rel="stylesheet" type="text/css" href="css/tooltip.css">
-    <link rel="stylesheet" type="text/css" href="css/card.css">
-    <link rel="stylesheet" type="text/css" href="css/modal.css">
-    <link rel="stylesheet" type="text/css" href="css/wikipedia.css">
-    <link rel="stylesheet" type="text/css" href="css/admin.css">
-    <link rel="stylesheet" type="text/css" href="css/exentriq-material.css">
+    <link rel="stylesheet" type="text/css" href="css/loader.css?rand=001">
+    <link rel="stylesheet" type="text/css" href="css/graph.css?rand=001">
+    <link rel="stylesheet" type="text/css" href="css/main.css?rand=001">
+    <link rel="stylesheet" type="text/css" href="css/iconfont.css?rand=001">
+    <link rel="stylesheet" type="text/css" href="css/logo.css?rand=001">
+    <link rel="stylesheet" type="text/css" href="css/topbar.css?rand=001">
+    <link rel="stylesheet" type="text/css" href="css/info.css?rand=001">
+    <link rel="stylesheet" type="text/css" href="css/tooltip.css?rand=001">
+    <link rel="stylesheet" type="text/css" href="css/card.css?rand=001">
+    <link rel="stylesheet" type="text/css" href="css/modal.css?rand=001">
+    <link rel="stylesheet" type="text/css" href="css/wikipedia.css?rand=001">
+    <link rel="stylesheet" type="text/css" href="css/admin.css?rand=001">
+    <link rel="stylesheet" type="text/css" href="css/exentriq-material.css?rand=001">
     <script type="text/javascript">
 
 
@@ -29,6 +29,7 @@
             document.getElementById("main").style.width = "calc(100% - 400px)";
             $(".icon_open_sidebar").hide();
             $(".icon_close_sidebar").show();
+            $("#mainblocks").removeClass("fullsize");
         }
 
         function closeNav() {
@@ -37,6 +38,7 @@
             $(".icon_open_sidebar").show();
             $(".icon_close_sidebar").hide();
             $("#historyslider").removeClass("open");
+            $("#mainblocks").addClass("fullsize");
         }
 
 
@@ -70,31 +72,31 @@
     <script src="external/pixi.dev.js"></script>
     <script src="external/typeahead.js"></script>
 
-    <script src="settings.js"></script>
-    <script src="endpoints.js"></script>
+    <script src="settings.js?rand=001"></script>
+    <script src="endpoints.js?rand=001"></script>
     <script src="lib/exentiq-material-js.js"></script>
-    <script src="lib/utils.js"></script>
-    <script src="lib/tooltip.js"></script>
-    <script src="lib/breadcrumbs.js"></script>
-    <script src="lib/datamanager.js"></script>
-    <script src="lib/filtermanager.js"></script>
-    <script src="lib/admin.js"></script>
+    <script src="lib/utils.js?rand=001"></script>
+    <script src="lib/tooltip.js?rand=001"></script>
+    <script src="lib/breadcrumbs.js?rand=001"></script>
+    <script src="lib/datamanager.js?rand=001"></script>
+    <script src="lib/filtermanager.js?rand=001"></script>
+    <script src="lib/admin.js?rand=001"></script>
 
-    <script src="lib/cardmanager.js"></script>
-    <script src="lib/bookmarks.js"></script>
+    <script src="lib/cardmanager.js?rand=001"></script>
+    <script src="lib/bookmarks.js?rand=001"></script>
 
     <script src="lib/fasttemplater.js"></script>
 
-    <script src="bundle.js"></script>
+    <script src="bundle.js?rand=001"></script>
 
-    <script src="lib/graphmanager.js"></script>
-    <script src="main.js"></script>
+    <script src="lib/graphmanager.js?rand=001"></script>
+    <script src="main.js?rand=001"></script>
 
 
 </head>
 
 <body class="eq-ui-layout-header-fixed eq-ui-side-nav-auto eq-ui-side-nav-visible">
-<div id="mainblocks" class="fullsize">
+<div id="mainblocks" class="">
     <div id="graph" >
         <div id="filtercontainer" style="display:none;">
             <div id="filtertitle">
@@ -150,7 +152,10 @@
     </div>
 
     <div id="loader" style="display:none;">
-        <div class="spinner" aria-hidden="true"></div>
+        <div class='eq-ui-loader-ring'>
+            <div class='eq-ui-loader-ring-light'></div>
+            <div class='eq-ui-loader-ring-track'></div>
+        </div>
     </div>
 </div>
 
@@ -251,7 +256,7 @@
 
     <div id="smallloadercontainer" style="display:none;">
         <div id="smallloader">
-            <div class="spinner" aria-hidden="true"></div>
+            <div class="eq-ui-loader-line"></div>
         </div>
     </div>
 </div>

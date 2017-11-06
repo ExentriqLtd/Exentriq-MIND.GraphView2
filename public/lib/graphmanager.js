@@ -13,11 +13,11 @@ var xspace = 13000;
 var yspace = 800;
 
 var textcolor     = "#5e5e5e";
-var edgeOverColor = 0xFFBA94;
+var edgeOverColor = 0x41c7ac;
 
 
 var fadeSteps = 15;
-var smallEdge = 4;
+var smallEdge = 80;
 var bigEdge   = 45;
 
 
@@ -243,8 +243,7 @@ ngraph.updateSize = function(nodeId)
 	{
 	width  = $("#graph").width();
     height = $("#graph").height();
-
-    basex = Math.round(width * window.devicePixelRatio / 2);
+	basex = Math.round(width * window.devicePixelRatio / 2);
     basey = Math.round(height * window.devicePixelRatio / 2);
 
 	maxwidth =  ($("#graph").width()  - 30) / (0.125 * 2);
@@ -253,7 +252,7 @@ ngraph.updateSize = function(nodeId)
 
 	if(ngraph.renderer)
 		{
-		ngraph.renderer.resize(width * window.devicePixelRatio, height * window.devicePixelRatio);
+			ngraph.renderer.resize(width * window.devicePixelRatio, height * window.devicePixelRatio);
 		ngraph.renderer.view.style.width = width + 'px';
 		ngraph.renderer.view.style.height = height + 'px';
 		ngraph.renderer.render(ngraph.stage);
@@ -549,7 +548,7 @@ function renderNode(node, ctx)
 			var text = new PIXI.Text(node.label, {});
 			
 			text.anchor.x = 0.5;
-			text.anchor.y = 0.5;
+			text.anchor.y = -2.1;
 			
 			if (node.isExactMatchTitle || node.isLSA || node.isCentroid || node.isMetaArticle)
 				{
@@ -567,7 +566,7 @@ function renderNode(node, ctx)
 				font: "" + fsize + "px Raleway",
 				fill: textcolor,
 				align: "center",
-				//nobackground : true
+				nobackground : true
 				})
 			node.textnode = text;
 
@@ -680,7 +679,6 @@ function renderLink(link, ctx)
 			
 			strokeWidth = (link.fade/fadeSteps) * bigEdge;
 			
-			//ctx.lineStyle(strokeWidth, 0xbbbbbb);
 			ctx.lineStyle(strokeWidth, edgeOverColor);
 			ctx.moveTo(link.from.x, link.from.y);
 			ctx.lineTo(link.to.x, link.to.y);
@@ -690,7 +688,6 @@ function renderLink(link, ctx)
 			var x = (link.from.x + link.to.x)/2;
 			var y = (link.from.y + link.to.y)/2;
 			
-			//ctx.beginFill(0xbbbbbb);
 			ctx.beginFill(edgeOverColor);
 			ctx.lineStyle(4/ngraph.graphics.scale.x, edgeOverColor);
 			var circleradius = 10 * (link.fade/fadeSteps) * window.devicePixelRatio / ngraph.graphics.scale.x
@@ -743,7 +740,6 @@ function renderLink(link, ctx)
 				link.fade++;
 			
 			strokeWidth = (link.fade/fadeSteps)*bigEdge;
-			//ctx.lineStyle(strokeWidth, 0xbbbbbb);
 			ctx.lineStyle(strokeWidth, edgeOverColor);
 			ctx.moveTo(link.from.x, link.from.y);
 			ctx.lineTo(link.to.x, link.to.y);
@@ -782,7 +778,7 @@ function renderLink(link, ctx)
 		else
 			{
 			strokeWidth =  smallEdge;
-			ctx.lineStyle(strokeWidth, 0xbbbbbb);
+			ctx.lineStyle(strokeWidth, 0xf7f7f7);
 			ctx.moveTo(link.from.x, link.from.y);
 			ctx.lineTo(link.to.x, link.to.y);
 			}
@@ -904,7 +900,7 @@ function renderCanvasLoader(ctx)
 		rotatecanvas.height = radius * 2;
 		
 		basecontext.lineWidth = 150;
-		basecontext.strokeStyle = "#c7dee7";
+		basecontext.strokeStyle = "#8ddecd";
 		basecontext.fillStyle = "#ffffff"
 		basecontext.moveTo(radius,radius);
 		basecontext.beginPath();
@@ -933,8 +929,8 @@ function renderCanvasLoader(ctx)
 		var basesprite = new PIXI.Sprite(PIXI.Texture.fromCanvas(basecanvas));
 		
 		var angle = 2*Math.PI*1/4;
-		rotatecontext.fillStyle = "#c7dee7";
-		rotatecontext.strokeStyle = "#c7dee7";
+		rotatecontext.fillStyle = "#8ddecd";
+		rotatecontext.strokeStyle = "#8ddecd";
 		
 	    rotatecontext.beginPath();
 	    rotatecontext.moveTo(radius,radius);

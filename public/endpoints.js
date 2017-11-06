@@ -1,6 +1,6 @@
 commoncallsettings = "maxDegree1=20&maxDegree2=10"
 
-var server = "http://localhost:8080/EGraphPubmed2";
+var server = "http://ns27692.ip-91-121-88.eu/EGraphPubmed2";
 
 endpoints =
 	{
@@ -31,12 +31,12 @@ endpoints =
 
 docendpoints = 
 	{
-		search         : server + "/rest/searchgraphv2/graph?number=20&threshold=1",
-		explore        : server + "/rest/searchgraphv2/graph?number=20&threshold=1",
-		path           : server + "/rest/searchgraphv2/graph?number=20&threshold=1&closesearch=true",
+		search         : server + "/rest/searchgraphv2/graph?number=30&threshold=1",
+		explore        : server + "/rest/searchgraphv2/graph?number=30&threshold=1",
+		path           : server + "/rest/searchgraphv2/graph?number=30&threshold=1&closesearch=true",
 		disambiguation : "/rest/terms/disambiguation2?query=",
 		article        : "/rest/terms/getArticle2?topic=",
-		add            : server + "/rest/searchgraphv2/graph?number=20&threshold=1"
+		add            : server + "/rest/searchgraphv2/graph?number=30&threshold=1"
 	}
 	
 endpointsdefaults = 

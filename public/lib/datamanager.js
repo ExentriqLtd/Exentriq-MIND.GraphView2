@@ -1950,14 +1950,14 @@ function fixEdgeData(data,hasCommonWords)
 		var sentences = data[x].sentences;
 		for(var y = 0; y<sentences.length;y++)
 			{
-			var cID  = sentences[y].articleId;
-			var text = sentences[y].text.charAt(0).toUpperCase() + sentences[y].text.slice(1)
+			var cID  = sentences[y].contentURL;
+			var text = sentences[y].contentSource.charAt(0).toUpperCase() + sentences[y].contentSource.slice(1)
 			
 			elementList.push(
 				{
 				id      : sentences[y].id,
-				uri     : sentences[y].articleUri,
-				title   : sentences[y].articleTitle,
+				uri     : sentences[y].contentURL,
+				title   : sentences[y].contentId,
 				sentence: [text],
 				});
 			}
@@ -2258,10 +2258,10 @@ function highlightEdgeTopics(from,to,topicsdata,commondata)
 			};
 		
 		$(currentcard).html(text);
+			$(currentcard).parents(".piece").show();
 
-		if($(currentcard).find(".highlight,.highlightsentence").length === 0)
+		/*if($(currentcard).find(".highlight,.highlightsentence").length === 0)
 			{
-			//console.log("REMOVED",text);
 			$(currentcard).parents(".piece").remove();
 			$.getJSON("/rest/terms/invalidSentence",
 				{
@@ -2274,7 +2274,7 @@ function highlightEdgeTopics(from,to,topicsdata,commondata)
 		else
 			{
 			$(currentcard).parents(".piece").show();
-			}
+			}*/
 
 		});
 	if($("#edgedata .piece").length === 0)

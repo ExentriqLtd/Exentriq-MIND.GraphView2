@@ -212,6 +212,7 @@ colors = shuffle(basecolors);
 
 function colorscale(fullcategory)
 	{
+	return "#1BBC9B";
 	var splitted = fullcategory.split("/");
 	var category = splitted[0].toLowerCase().trim();
 	

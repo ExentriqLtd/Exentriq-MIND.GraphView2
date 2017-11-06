@@ -23,6 +23,8 @@ $(document).ready(function()
 	
 	initAdmin();
 	
+	startSearch("epilepsy");
+	$("#searchfield").val("epilepsy");
 	
 	window.addEventListener('popstate', function(event) 
 		{

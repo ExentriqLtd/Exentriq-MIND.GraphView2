@@ -6,6 +6,8 @@ cardlist = [];
 next     = 0;
 topiclist= [];
 edgetopiclist = [];
+firstNode=false;
+
 function node2card(node)
 	{
     idlist.push(node.id);
@@ -33,6 +35,11 @@ function draw(id, root, child, thumb, title, text, node, after,noinfo,remove) {
         if(!card.remove)
         	dodraw(card.id, card.root, card.child, card.thumb, card.title, card.text, card.node, card.after,card.noinfo);
         next++;
+    }
+
+    if(firstNode==false){
+        firstNode=true;
+        selectCard(idlist[0]);
     }
 }
 
@@ -485,7 +492,7 @@ function renderEdgeInfo(data,hasCommonWords)
     if(data.length)
     	{
     	var sentenceids={};
-	    $("#edgedata").append('<h4 class="sentencetitle">with the following recommended sources</h4>');
+	    //$("#edgedata").append('<h4 class="sentencetitle">with the following recommended sources</h4>');
 	    for(var x=0;x<data.length;x++)
 	        {
 	        var sentence = data[x];

@@ -6,13 +6,13 @@
 	width: 100%;
 	height: 100%;
 	background: rgba(255,255,255,0.5);
-	/*z-index: 3000;*/
+	z-index: 3000;
 	line-height: 100%;
 	text-align: center;
 	}
 #smallloadercontainer
 	{
-	padding-top: 141px;
+	padding-top: 65px;
 	position: absolute;
 	top: 0;
 	left: 0;
