@@ -25,17 +25,19 @@
 
 
         function openNav() {
-            document.getElementById("mySidenav").style.width = "500px";
-            document.getElementById("main").style.width = "calc(100% - 500px)";
+            document.getElementById("mySidenav").style.width = "400px";
+            document.getElementById("main").style.width = "calc(100% - 400px)";
+            $(".icon_open_sidebar").hide();
+            $(".icon_close_sidebar").show();
         }
 
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0%";
             document.getElementById("main").style.width= "100%";
+            $(".icon_open_sidebar").show();
+            $(".icon_close_sidebar").hide();
+            $("#historyslider").removeClass("open");
         }
-
-
-
 
 
         // Load them google fonts before starting...!
@@ -84,56 +86,11 @@
     <script src="lib/fasttemplater.js"></script>
 
     <script src="bundle.js"></script>
-    <!--<script src="bundlesvg.js"></script>-->
-
 
     <script src="lib/graphmanager.js"></script>
     <script src="main.js"></script>
 
-    <script type="text/javascript">
 
-
-        $(document).on('click' ,'i.icon_open_sidebar' ,function (event){
-            $(".icon_open_sidebar").hide();
-            $(".icon_close_sidebar").show();
-
-        });
-
-        $(document).on('click' ,'i.icon_close_sidebar' ,function (event){
-            $(".icon_open_sidebar").show();
-            $(".icon_close_sidebar").hide();
-        });
-
-        </script>
-
-    <!--
-    <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/1.1.0/annyang.min.js"></script>
-    <script>
-    if (annyang)
-        {
-        // Let's define our first command. First the text we expect, and then the function it should call
-        var commands =
-            {
-            'search *term': function(term)
-                {
-                $("#searchfield").val(term);
-                startSearch(term,term,"");
-                },
-            'cerca *term': function(term)
-                {
-                $("#searchfield").val(term);
-                startSearch(term,term,"");
-                }
-            };
-        annyang.setLanguage("it-IT")
-        // Add our commands to annyang
-          annyang.addCommands(commands);
-
-          // Start listening. You can call this here, or attach this call to an event, button, etc.
-          annyang.start();
-          }
-    </script>
-    -->
 </head>
 
 <body class="eq-ui-layout-header-fixed eq-ui-side-nav-auto eq-ui-side-nav-visible">
@@ -238,11 +195,12 @@
     </div>
     <div id="hyperselector" class="eq-ui-scrollbar-wrap eq-ui-scrollbar-wrap-x eq-ui-scrollbar-wrap-hide">
         <ul class="eq-ui-tabs">
-            <li class="eq-ui-tab"><a class="" id="mainmethod" data-source="home" href="#main"><span class="eq-deep-blue-text-500">Results</span></a></li>
-            <li class="eq-ui-tab"><a class=""><span class="eq-deep-blue-text-500">Favourites</span></a></li>
-            <li class="eq-ui-tab"><a class=""><span class="eq-deep-blue-text-500">History</span></a></li>
+            <li class="eq-ui-tab"><a class="" id="mainmethod" data-source="home"><span class="eq-deep-blue-text-500">Results</span></a></li>
+            <li class="eq-ui-tab"><a data-source="favourites" class=""><span class="eq-deep-blue-text-500">Favourites</span></a></li>
+            <li class="eq-ui-tab"><a data-source="history" class=""><span class="eq-deep-blue-text-500">History</span></a></li>
         </ul>
 
+        <!--
         <a id="hsbing" data-source="bing-web"	 href="#">
             <i class="fontic-earth"></i>
             <span>Web</span>
@@ -258,11 +216,6 @@
         <a id="hsvideos" data-source="videos"	 href="#">
             <i class="fontic-film"></i>
             <span>Videos</span>
-        </a>
-        <!--
-        <a data-source="documents"  href="#">
-            <i class="fontic-file"></i>
-            <span>Docs</span>
         </a>
         -->
     </div>

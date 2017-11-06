@@ -378,15 +378,16 @@ html,body ,#mainblocks
 	
 #historyslider
 	{
-	margin-top:100px;
+	margin-top:70px;
 	height: 100%;
-	width: 190px;
+	width: 400px;
 	background: transparent;
 	position: absolute;
 	top:0;
-	left: -190px;
+	right: -400px;
 	transition : 0.7s left;
-	border-right : 1px solid #e3e3e3
+	border-right : 1px solid #e3e3e3;
+	z-index: 100;
 	}
 
 #historyslider .toggle
@@ -401,6 +402,7 @@ html,body ,#mainblocks
 	text-align: center;
 	color: white;
 	background-color: #90bdd0;
+	display: none;
 	}
 
 #historyslider .switcher
@@ -415,6 +417,7 @@ html,body ,#mainblocks
 	text-align: center;
 	color: white;
 	background-color: #1da397;
+	display: none;
 	}
 	
 #switcher img,
@@ -448,6 +451,7 @@ html,body ,#mainblocks
 	text-align: center;
 	color: white;
 	background-color: #ff6d35;
+	display: none;
 	}
 #historyslider .summaryzer
 	{
@@ -483,7 +487,7 @@ html,body ,#mainblocks
 	}
 #historyslider.open
 	{
-	left: 0;
+	right: 0;
 	}
 #history
 	{
@@ -496,7 +500,7 @@ html,body ,#mainblocks
 	}
 #history .state
 	{
-	height: 100px;
+	height: 200px;
 	border: 1px solid #ccc;
 	text-align: center;
 	margin: 5px;

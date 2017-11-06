@@ -1,7 +1,7 @@
 ul.eq-ui-dropdown
 {
 	width: 200px !important;
-	top: auto !important;
+	top: 60px !important;
 	left: auto !important;
 	right:0;
 
@@ -27,7 +27,7 @@ a.custom_edit_button i
 {
 	display: inline-block !important;
 	padding: 0px !important;
-	width:70%;
+	width:100%;
 	text-align: left;
 	font-weight: 500;
 	font-size: 16px;
@@ -40,7 +40,7 @@ a.custom_edit_button i
 
 .eq-ui-collapsible li .eq-ui-collapsible-header a.title_card span
 {
-margin-left: 20px;
+	margin-left: 25px;
 	color: #2f4357;
 }
 
@@ -63,7 +63,7 @@ input.eq-ui-input[type=checkbox]+label {
 	margin-bottom: -4px;
 }
 
-.star_visualisation
+/*.star_visualisation
 {
     width:15%;
     display: inline-block !important;
@@ -80,6 +80,10 @@ input.eq-ui-input[type=checkbox]+label {
 .star_visualisation i:hover
 {
     color:#1bbc9b;
+}*/
+
+.star_visualisation{
+	display: none !important;
 }
 
 .eq-ui-collapsible li .eq-ui-collapsible-header a.button_dropdown:hover
@@ -339,12 +343,16 @@ input.eq-ui-input[type=checkbox]+label {
 .card
 	{
 	padding: 9px 0px;
-	height: 65px;
 	background-color: #f5f5f5;
 	transition:0.5s all;
 	border-bottom: 1px solid #ddd;
 	width: 479px;
 	}
+
+#cardcontainer .card{
+	height: 65px;
+}
+
 
 .card.selected
 	{
@@ -620,7 +628,7 @@ vertical-align: bottom;
 
 .tooltip
 	{
-	z-index: 4000;
+	z-index: 4000 !important;
 	}
 .tooltip.in
 	{
@@ -749,6 +757,7 @@ i.bookmarkanimation.enlarge
 .tagcloudcontainer
 	{
 	width: 100%;
+	display: none;
 	/*
 	padding: 5px;
 	border-bottom: 3px solid #ccc;	*/
@@ -761,6 +770,7 @@ i.bookmarkanimation.enlarge
 	text-transform: uppercase;
 	/* text-align: center; */
 	text-decoration: underline;
+	display: none;
 	}
 .addcommonnode
 	{
@@ -801,3 +811,27 @@ i.bookmarkanimation.enlarge
 	
 	cursor: pointer;
 	}
+
+#cardcontainer.eq-ui-collapsible li{
+	position: relative;
+}
+
+#cardcontainer .button_dropdown{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	height: 64px;
+	box-shadow: none;
+}
+
+#cardcontainer .button_dropdown:hover{
+	color: #424242;
+}
+
+#cardcontainer .eq-ui-dropdown li>a:hover{
+	color: #424242;
+}
+
+#cardcontainer .button_dropdown .material-icons{
+	line-height: 65px;
+}

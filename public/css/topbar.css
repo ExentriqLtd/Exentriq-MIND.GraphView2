@@ -84,17 +84,9 @@ li.eq-ui-tab
 }
 li.eq-ui-tab a span
 {
-
-	font-weight: 800;
 	font-size: 18px;
 }
 
-
-
-#historyslider
-{
-	display:none !important;
-}
 
 #hsbing
 {
@@ -128,7 +120,6 @@ li.eq-ui-tab a span
 
 #edgecontainer
 {
-	display: none !important;
 }
 
 
@@ -466,3 +457,7 @@ car
         -webkit-transform: translateX(0);
 		}
 	}
+
+#rightbar .eq-ui-tabs .eq-ui-tab{
+	padding: 0 10px;
+}

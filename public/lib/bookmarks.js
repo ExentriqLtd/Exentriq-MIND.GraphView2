@@ -219,7 +219,7 @@ function newGraphTab(title)
 		graphTab : currentStateindex		
 		});
 		
-	var historystate = '<div id="state{{graphTab}}" data-stateid="{{graphTab}}" data-placement="right" class="state selected"><img id="ldimg{{graphTab}}"></img><i data-original-title="Remove State" class="fa fa-times remove"></i></div>'
+	var historystate = '<div id="state{{graphTab}}" data-stateid="{{graphTab}}" data-placement="left" class="state selected"><img id="ldimg{{graphTab}}"></img><i data-original-title="Remove State" class="fa fa-times remove"></i></div>'
 
 
 	$(".state.selected").removeClass("selected");

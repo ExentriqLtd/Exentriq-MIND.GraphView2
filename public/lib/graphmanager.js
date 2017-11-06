@@ -262,7 +262,7 @@ ngraph.updateSize = function(nodeId)
 ngraph.nodeGlobalPosition = function(nodeId)
 	{
 	var pos   = ngraph.nodeGraphPosition(nodeId);
-	var top  = (75 + $("#graph").height()/2) + (ngraph.graphics.position.y - pos.y)/window.devicePixelRatio;
+	var top  = ( $("#graph").height()/2) + (ngraph.graphics.position.y - pos.y)/window.devicePixelRatio;
     var left = $("#graph").width()/2 + (ngraph.graphics.position.x - pos.x)/window.devicePixelRatio + ($("#mainblocks").hasClass("fullsize") ? 0 : -200);
 	return new PIXI.Point(left,top);
 	}
