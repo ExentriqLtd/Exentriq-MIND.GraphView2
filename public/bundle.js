@@ -1361,8 +1361,8 @@ window.addEventListener('blur', function()
 						var body = nodeBodies[nodeId];
 						if (!body) {
 							var node = graph.getNode(nodeId);
-							//console.log(node);
 							if (!node) {
+								console.log(nodeId);
 								throw new Error('initBody() was called with unknown node id');
 							}
 

@@ -157,7 +157,7 @@ function initSearchBar()
 		appendtoBody : true,
 		source:advancedSearchAutocomplete,
 		autoSelect:true,
-		minLength: 3,
+		minLength: 1,
 		highlight: true,
 		matcher : function ()
 			{return true;},
@@ -464,7 +464,8 @@ function autocomplete(search,process)
 				{
 				for(var id=0;id<data.length;id++)
 					{
-					var item = data[id].label + (data[id].sense != "" ? " ( "+data[id].sense+" )" : "");
+						//remove sense
+					var item = data[id].label; //+ (data[id].sense != "" ? " ( "+data[id].sense+" )" : "");
 					lookupterms[item]=data[id];
 					results.push(item);
 					}

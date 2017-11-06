@@ -1,16 +1,167 @@
+/*----------------sidenav-----------------*/
+
+.sidenav {
+	height: 100%;
+	width: 0;
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	right: 0;
+	background-color:white;
+	transition: 0.5s;
+	box-shadow: 0px 0px 3px 0px #adadad;
+}
+.sidenav a.custom_123 {
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #818181;
+	display: block;
+	transition: 0.3s;
+}
+
+.sidenav a:hover {
+	color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
+}
+
+#main {
+	transition: width .5s;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+
+
+
+
+
+/*----------------------------------------*/
+
+.open_menu_floating
+{
+	display: inline-block;
+	margin-top: -5px;
+    border-radius: 50%;
+    width: 56px;
+    min-width: 56px;
+    height: 56px;
+    padding: 0;
+    margin-left: -30px;
+    top: calc(50% - 56px);
+}
+
+
+
+ul.eq-ui-tabs
+{
+	width:100%;
+	position: absolute !important;
+	height: 70px !important;
+	overflow-y: hidden !important;
+	top:0px;
+	overflow-x: hidden !important;
+	background-color: white;
+}
+
+.eq-ui-indicator
+{
+	height: 3px !important;
+	max-width: 33.33%;
+}
+
+li.eq-ui-tab
+{
+	width:33.333%;
+}
+li.eq-ui-tab a span
+{
+	font-size: 18px;
+}
+
+
+#hsbing
+{
+	display: none !important;
+}
+#hsnews
+{
+	display: none !important;
+}
+
+#hsimages
+{
+	display: none !important;
+}
+
+#hsvideos
+{
+	display: none !important;
+}
+
+
+#carrotcontainer
+{
+	display: none !important;
+}
+
+#infocontainer
+{
+	display: none !important;
+}
+
+#edgecontainer
+{
+}
+
+
+.search-icon-edit
+{
+	position: absolute;
+	margin-left: 10px;
+	color: #1bbc9b;
+	margin-top: 13px;
+}
+
+car
+
+.search-icon-edit
+{
+	position: absolute;
+	margin-top: 13px;
+	margin-left: 10px;
+	color: #1bbc9b;
+}
+.clearfieldsearch
+{
+	position: absolute;
+	margin-left: -35px;
+	margin-top: 13px;
+	cursor: pointer;
+}
+
+
 #topbar
 	{
-	height: 75px;
+	height: 100px;
 	width:100%;
 	position: absolute;
 	left: 0;
 	top: 0;
-	border-bottom: 1px solid #e3e3e3;
-	background: #f3f3f3;;
+	/*border-bottom: 1px solid #e3e3e3;*/
+	background: transparent;
 	text-align: center;
-	-moz-box-shadow: 0 0 5px rgba(0,0,0,0.3);
+	/*-moz-box-shadow: 0 0 5px rgba(0,0,0,0.3);
 	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.3);
-	box-shadow: 0 0 5px rgba(0,0,0,0.3);
+	box-shadow: 0 0 5px rgba(0,0,0,0.3);*/
 	transition:1.1s all;
 	overflow: hidden;
 	opacity: 1;
@@ -29,6 +180,7 @@
 	} 	
 #topbaractions 
 	{
+	display: none;
 	position: absolute;
 	top: 50%;
 	right: 0;
@@ -83,11 +235,13 @@
 	width: 100%;
 	position: absolute;
 	line-height: 0;
-	top: 50%;
+	top: 25%;
 	margin-top: -16px;
 	left: 0;
 	transition:0.5s all;
 	opacity: 1;
+	text-align: left;
+	padding-left: 20px;
 	}
 #adminbox,
 #helpbox
@@ -167,15 +321,18 @@
 	}
 #searchbox input
 	{
-	border:0;
-	margin:0;
-	padding:0 5px;
-	width:500px;
-	line-height:2.2em;
-	outline:none;
-	color:#333;
-	border:1px solid rgba(0,0,0,0.25);
-	border-right: 0;
+	margin: 0;
+	padding-top:6px;
+	padding-bottom:6px;
+	padding-left:40px;
+	padding-right: 40px;
+	width: calc(100% - 20px);;
+	line-height: 2.2em;
+	outline: none;
+	color: #333;
+	border: 1px solid #eee;
+	border-radius: 5px !important;
+	box-shadow: 0px 0px 3px 0px #adadad;
 	
 	}
 #addform input
@@ -205,6 +362,7 @@
 	}
 #startsearch
 	{
+	display: none;
 	border:0;
 	margin:0;
 	padding:0 15px;
@@ -233,6 +391,7 @@
 	}
 #addnode
 	{
+	display: none !important;
 	border:0;
 	margin:0;
 	padding:0 10px;
@@ -298,3 +457,7 @@
         -webkit-transform: translateX(0);
 		}
 	}
+
+#rightbar .eq-ui-tabs .eq-ui-tab{
+	padding: 0 10px;
+}

@@ -40,6 +40,7 @@ function dodraw(id, root, child, thumb, title, text, node, after,noinfo)
     {
     if ($("#" + id).length)
         return;
+
     $("#startgraph").show();
     //text = $("<div>" + text + "</div>").text();
     for (var x = 0; x < topiclist.length; x++)
@@ -70,40 +71,45 @@ function dodraw(id, root, child, thumb, title, text, node, after,noinfo)
     //var topicsString = "<div>TOPICS</div>" + topicTooltips(+id)
     var exploreAction = ""
 	if(!node.expanded)
-		exploreAction = '<a class="explore" data-original-title="EXPLORE"><i class="fa fa-sitemap"></i></a>';
+		exploreAction = '<li><a class="explore">Explore</a></li>';
 	else
 		{
 		if(node.collapsed)
-			exploreAction = '<a class="explore" data-original-title="EXPAND"><i class="fa fa-expand"></i></a>';
+			exploreAction = '<li><a class="explore">Expand</i></a></li>';
 		else
-			exploreAction = '<a class="explore" data-original-title="COLLAPSE"><i class="fa fa-compress"></i></a>';
+			exploreAction = '<li><a class="explore">Collapse</a></li>';
 		}
     
     var newelement = $('' +
-        '<div id="' + id + '" data-title="' + title + '" data-referenceId="' + node.referenceId + '"  data-uri="' + node.articleUri + '" class="piece">' +
-        '<div class="card ' + (root ? "root" : "") + ' ' + (child || after ? "child" : "") + '">' +
-        (thumb !== "" ? '<div class="thumb" data-thumb="' + thumb + '" style="background-image:url(' + thumb + ')"></div>' : "<br/>") +
-        '<h3>' + truncateTitle(title,75,true) + '</h3>' +
-        '<div class="actions">' +
-        '<a class="centermap" data-original-title="CENTER ON MAP"><i class="fa fa-crosshairs"></i></a>' +
-        //'<a class="category" data-original-title=\'' + topicsString + '\'><i class="fa fa-certificate"></i></a>' +
-        (bookmarklist[id] ? '<a data-original-title="BOOKMARKED"><i class="fa fa-star" style="color:orange;"></i></a>' : '<a class="bookmark" data-original-title="BOOKMARK"><i class="fa fa-star-o"></i></a>') +
-        
-        (!noinfo ? '<a class="info" data-original-title="DETAILS"><i class="fa fa-info-circle"></i></a>' : "")  +
+        '<li id="' + id + '" data-title="' + title + '" data-referenceId="' + node.referenceId + '"  data-uri="' + node.articleUri + '" class="">' +
+            '<div class="eq-ui-collapsible-header">' +
+                '<div class="card ' + (root ? "root" : "") + ' ' + (child || after ? "child" : "") + '">' +
+                    (thumb !== "" ? '<div class="thumb" data-thumb="' + thumb + '" style="background-image:url(' + thumb + ')"></div>' : "") +
+                    //'<input type="checkbox" class="eq-ui-input filled-in" id="checkbox-all" /> <label for="checkbox-all"></label>' +
+                    '<a class="eq-ui-list-secondary-content-body star_visualisation"><i class="material-icons">&#xE838;</i></a>' +
+                    '<a class="title_card">' + '<span>' + truncateTitle(title,75,true) + '</span>' + '</a>' +
+                '</div>' +
+            '</div>' +
+            '<div class="eq-ui-collapsible-body">' +
+                '<div class="eq-ui-collapsible-body-inner">' +
+                    '<div class="links">' +
+                        text +
+                    '</div>' +
+                '</div>' +
+             '</div>' +
+            '<a data-target="dropdown-'+id+'" class="button_dropdown btn btn-default eq-ui-waves dropdown-trigger" data-hover="false"><i class="material-icons">&#xE5D4;</i></a>' +
+            '<ul id="dropdown-'+id+'" data-id="'+id+'" class="eq-ui-dropdown eq-ui-dropdown actions">' +
+                '<li><a class="centermap">Center on Map</a></li>' +
+                //(bookmarklist[id] ? '<li><a>Bookmarked</a></li>' : '<li><a class="bookmark">Bookmark</a></li>') +
+                (!noinfo ? '<li><a class="info">Details</a></li>' : "")  +
+                exploreAction+
+                '<li><a class="remove">Hide</a></li>'+
+                '<li><a class="ban">Mark as Irrelevant</a></li>'+
+            '</ul>' +
+        '</li>'
 
-        //'<a class="showlinks" data-original-title="Links"><i class="fa fa-link"></i></a>'+
-        exploreAction+
-        '<a class="remove" data-original-title="HIDE"><i class="fa fa-eye-slash"></i></a>'+
-        '<a class="ban" data-original-title="MARK AS IRRELEVANT"><i class="fa fa-ban"></i></a>'+
-        //'<a class="closetab" data-original-title="Remove"><i class="fa fa-times"></i></a>'+
-        '</div>' +
-        '<div class="links">' +
-        text +
-        '</div>' +
-
-        '</div>' +
-        '</div>'
     );
+
     newelement.find(".links").before(topicblock);
     if (after) {
         if (!superafter) {
@@ -121,7 +127,11 @@ function dodraw(id, root, child, thumb, title, text, node, after,noinfo)
         superafter = newelement;
     } else {
         $("#cardcontainer")
-            .append(newelement)
+            .append(newelement);
+            $('.eq-ui-collapsible').eq_collapsible();
+            $('.dropdown-trigger').dropdown();
+            $('.eq-ui-dropdown').dropdown()
+
         //.isotope( 'appended', newelement )
 
     }
@@ -134,13 +144,13 @@ function updateCard(nodeId)
 	
 	var exploreAction = ""
 	if(!node.data.expanded)
-		exploreAction = '<a class="explore" data-original-title="EXPLORE"><i class="fa fa-sitemap"></i></a>';
+		exploreAction = '<li><a class="explore">Explore</a></li>';
 	else
 		{
 		if(node.data.collapsed)
-			exploreAction = '<a class="explore" data-original-title="EXPAND"><i class="fa fa-expand"></i></a>';
+			exploreAction = '<li><a class="explore">Explore</a></li>';
 		else
-			exploreAction = '<a class="explore" data-original-title="COLLAPSE"><i class="fa fa-compress"></i></a>';
+			exploreAction = '<li><a class="explore">Collapse</a></li>';
 		}
 	console.log("NEW EXPLORE ACTION",exploreAction);
 	$("#"+nodeId+" .explore").replaceWith(exploreAction);;
@@ -219,13 +229,22 @@ function selectCard(nodeId)
     	}
     $("#mainmethod").trigger("click");
     closeInfo();
-    var element = $("#" + nodeId);
+        $("#cardcontainer .eq-ui-collapsible-body").hide();
+        $("#cardcontainer .eq-ui-collapsible-header").removeClass("active");
+
+
+        var element = $("#" + nodeId);
     if (element.length)
     	{
         closeEdgeInfo();
+        openNav();
+
+        $(element).find(".eq-ui-collapsible-body").show();
+        $(element).find(".eq-ui-collapsible-header").addClass("active");
+
         $(".card.selected").removeClass("selected");
         element.find(".card").addClass("selected");
-        var scrollto = $('#cardcontainer').scrollTop() - (141) + element.offset().top - 15;
+        var scrollto = $('#cardcontainer').scrollTop() + element.offset().top - 70;
         $('#cardcontainer')
             .stop()
             .animate(
@@ -457,6 +476,8 @@ function closeCarrot()
     {
     $(".tooltip").remove();
     $("#carrotcontainer").removeClass("open");
+        $("#historyslider").removeClass("open");
+
     }
 
 function renderEdgeInfo(data,hasCommonWords)
@@ -516,38 +537,38 @@ $(document).ready(function() {
         	overCard=null;
         //console.log("MOUSE LEAVE",nodeId);
     	});
-    $("body").on("click", ".card .centermap", function()
+    $("body").on("click", ".actions .centermap", function()
     	{
-        var nodeId = +$(this).parents(".piece").attr("id");
+        var nodeId = +$(this).parents(".actions").attr("data-id");
         currentRenderer.goToNode(nodeId);
         selectCard(nodeId);
     	});
-    $("body").on("click", ".card .explore", function()
+    $("body").on("click", ".actions .explore", function()
         {
         $(".tooltip").remove();
         hideTooltip();
-        var nodeId = +$(this).parents(".piece").attr("id");
+        var nodeId = +$(this).parents(".actions").attr("data-id");
         tooltipnode = {};
         currentRenderer.toggleNode(nodeId);
         });
-    $("body").on("click", ".card .remove", function()
+    $("body").on("click", ".actions .remove", function()
         {
         $(".tooltip").remove();
         hideTooltip();
-        var nodeId = +$(this).parents(".piece").attr("id");
+        var nodeId = +$(this).parents(".actions").attr("data-id");
         console.log(nodeId);
         currentRenderer.removeNodes(nodeId);
         $("#"+nodeId).remove();
         overCard = null;
         });
-	$("body").on("click", ".card .ban", function()
+	$("body").on("click", ".actions .ban", function()
         {
         $(".tooltip").remove();
         hideTooltip();
-        var nodeId = +$(this).parents(".piece").attr("id");
+        var nodeId = +$(this).parents(".actions").attr("data-id");
         hariRemoveModal(nodeId);
         });
-    $("#edgecontainer").on("click", ".card .info", function()
+    $("#edgecontainer").on("click", ".actions .info", function()
         {
         var nodeId = +$(this).parents(".piece").attr("id");
         var title  = $(this).parents(".piece").attr("data-title");
@@ -558,7 +579,7 @@ $(document).ready(function() {
             currentRenderer.goToNode(nodeId);
         openInfo(nodeId,title,uri);
         });
-    $("#cardcontainer").on("click", ".card .info", function()
+    $("#cardcontainer").on("click", ".actions .info", function()
         {
         var nodeId = +$(this).parents(".piece").attr("id");
         var title  = $(this).parents(".piece").attr("data-title");
@@ -724,11 +745,16 @@ $(document).ready(function() {
             $(this).addClass("selected");
 
             var method = $(this).attr("data-source");
-
             if(method == "home" )
                 {
                 closeCarrot();
                 }
+            else if(method == "history" ){
+                $("#historyslider").addClass("open");
+            }
+            else if(method == "favourites" ){
+                $("#historyslider").addClass("open");
+            }
             else
                 {
                 openCarrot(method);

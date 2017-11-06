@@ -604,6 +604,8 @@ function crawl(id, root, child, title, text, node, after)
 		data.referenceId = node.referenceId,
 		data.uri		   = node.articleUri
 		}
+
+	data.id = node.id;
 	$.getJSON(endpoints.getAbstract,data)
 		.done(function(response)
 			{
@@ -611,7 +613,7 @@ function crawl(id, root, child, title, text, node, after)
 			node.title = response.title;
 	
 			var abstract = response.shortAbstract || "";
-		
+
 			if(node.articleUri && node.articleUri.indexOf("wikipedia:") === 0)
 				{
 				
@@ -648,7 +650,8 @@ function crawl(id, root, child, title, text, node, after)
 				}
 			else
 				{
-				draw(id, root, child, "", nodetitle, abstract, node, after);	
+
+				draw(id, root, child, "", nodetitle, abstract, node, after);
 				}
 			});
 	}
@@ -959,6 +962,7 @@ function hariExplore(nodeId,backnode)
 		var hariRequest = getHari("explore",
 			{
 			term	    : node.data.label,
+			query	    : node.data.label,
 			sense	    : currentsearchdata.sense,
 			isDocument  : node.data.isDocument,
 			referenceId : node.data.referenceId,
@@ -1220,6 +1224,7 @@ function hariRemove()
 function hariEdgeInfo(edge)
 	{
 	$("#smallloadercontainer").show();
+	openNav();
 	var edgelabel = edge.fromNode.data.label +" "+edge.toNode.data.label;
 	currentEdge = edgelabel;
 	
@@ -1886,6 +1891,7 @@ function fixAddData(data,nodePos)
 		{
 		centroids[+data.centroids[x]]	  = true;
 		}
+
 	for(var x=0;x<nodes.length;x++)
 		{
 		var node = nodes[x];

@@ -1,3 +1,24 @@
+.icon_open_sidebar,.icon_close_sidebar
+{
+height: 55px;
+}
+.icon_close_sidebar
+{
+	display: none;
+    padding: 16px 4px;
+}
+
+.open_menu_floating
+{
+    width: 31px!important;
+    min-width: 0px!important;
+    border-top-left-radius: 200px !important;
+    border-bottom-left-radius: 200px !important;
+    border-bottom-right-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    position: absolute !important;
+}
+
 *:not(input)
 	{
 	-webkit-user-select: none;
@@ -22,7 +43,7 @@ html,body ,#mainblocks
 #mainblocks
 	{
 	overflow: hidden; margin: 0; padding: 0; background-color: white;
-	padding-top: 75px;
+	/*padding-top: 75px;*/
 	/*padding-right: 400px;*/
 	position: relative;
 	transition: 0.7s padding-right;
@@ -51,12 +72,7 @@ html,body ,#mainblocks
 	}
 #rightbar
 	{
-	width: 400px;
-	height:100%;
-	position: absolute;
-	right: 0;
-	top: 0;
-	padding-top: 66px;
+	background-color: #f5f5f5;
 	transition: 0.7s all;
 	}
 .fullsize #rightbar
@@ -66,6 +82,7 @@ html,body ,#mainblocks
 
 #rightbar .toggle
 	{
+	display: none;
 	cursor: pointer;
 	position: absolute;
 	left: -66px;
@@ -94,19 +111,19 @@ html,body ,#mainblocks
 */
 #containers
 	{
-	height: 100%;
+	height: calc(100vh - 85px);
 	width: 100%;
 	overflow: hidden;
 	}
 #cardcontainer
 	{
+	padding: 0px !important;
 	height: 100%;
 	width: 100%;
 	overflow: auto;
-	background: white;
-	padding: 10px 10px;
 	border-left: 1px solid #e3e3e3;
 	padding-bottom: 30%;
+	background-color: #f5f5f5;
 	}
 #mask
 	{
@@ -361,14 +378,16 @@ html,body ,#mainblocks
 	
 #historyslider
 	{
+	margin-top:70px;
 	height: 100%;
-	width: 190px;
+	width: 400px;
 	background: transparent;
 	position: absolute;
 	top:0;
-	left: -190px;
+	right: -400px;
 	transition : 0.7s left;
-	border-right : 1px solid #e3e3e3
+	border-right : 1px solid #e3e3e3;
+	z-index: 100;
 	}
 
 #historyslider .toggle
@@ -383,6 +402,7 @@ html,body ,#mainblocks
 	text-align: center;
 	color: white;
 	background-color: #90bdd0;
+	display: none;
 	}
 
 #historyslider .switcher
@@ -397,6 +417,7 @@ html,body ,#mainblocks
 	text-align: center;
 	color: white;
 	background-color: #1da397;
+	display: none;
 	}
 	
 #switcher img,
@@ -430,6 +451,7 @@ html,body ,#mainblocks
 	text-align: center;
 	color: white;
 	background-color: #ff6d35;
+	display: none;
 	}
 #historyslider .summaryzer
 	{
@@ -465,7 +487,7 @@ html,body ,#mainblocks
 	}
 #historyslider.open
 	{
-	left: 0;
+	right: 0;
 	}
 #history
 	{
@@ -478,7 +500,7 @@ html,body ,#mainblocks
 	}
 #history .state
 	{
-	height: 100px;
+	height: 200px;
 	border: 1px solid #ccc;
 	text-align: center;
 	margin: 5px;
