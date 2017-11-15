@@ -63,8 +63,7 @@
 	}
 #edgecontainer .controls
 	{
-	padding-left: 40px;
-	padding: 9px 16px 9px 40px;
+	padding: 7px 27px 5px 0px;
 	}
 #infocontainer iframe
 	{
@@ -169,6 +168,7 @@
 	border-right: 0;
 	display: none;
 	cursor: pointer;
+	margin-top: 0px;
 	}
 #infosummary
 	{
@@ -198,7 +198,8 @@
 	font-weight: 100;
 	line-height: 30px;
 	color: #666;
-	top: 18px;	
+	top: 18px;
+	display: none;
 	}
 #hyperselector
 	{
@@ -321,3 +322,15 @@
 	font-weight: bold;
 	text-transform: uppercase;
 	}	
+
+.closemodal{
+	right: 0px;
+	background: none;
+	border: none;
+	font-size: 45px;
+	margin-left: 0px;
+	margin-top: 0px;
+	line-height: 26px;
+	margin-right: 10px;
+	position: absolute;
+}

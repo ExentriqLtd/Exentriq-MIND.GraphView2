@@ -17,9 +17,11 @@ var edgeOverColor = 0x41c7ac;
 
 
 var fadeSteps = 15;
-var smallEdge = 80;
-var bigEdge   = 45;
+var smallEdge = 4;
+var bigEdge   = 40;
 
+var initialFactorForTextAnchor = 12;
+var textAnchorY = -2.1;
 
 $(document).ready(function()
 	{
@@ -261,7 +263,8 @@ ngraph.updateSize = function(nodeId)
 ngraph.nodeGlobalPosition = function(nodeId)
 	{
 	var pos   = ngraph.nodeGraphPosition(nodeId);
-	var top  = ( $("#graph").height()/2) + (ngraph.graphics.position.y - pos.y)/window.devicePixelRatio;
+		console.log(pos);
+		var top  = ( $("#graph").height()/2) + (ngraph.graphics.position.y - pos.y)/window.devicePixelRatio;
     var left = $("#graph").width()/2 + (ngraph.graphics.position.x - pos.x)/window.devicePixelRatio + ($("#mainblocks").hasClass("fullsize") ? 0 : -200);
 	return new PIXI.Point(left,top);
 	}
@@ -314,6 +317,7 @@ ngraph.goToNode = function(nodeId)
 	{
 	hideTooltip(nodeId);
 	var endPos   = ngraph.nodeGraphPosition(nodeId)
+		console.log(endPos);
 	ngraph.goTo(30,endPos,
 		function()
 			{
@@ -527,29 +531,29 @@ function renderNode(node, ctx)
 		
 		if (!node.textnode)
 			{
-			
-			if(node.main.data.articleUri && node.main.data.articleUri.indexOf("hw:")===0)
+
+				if(node.main.data.sponsoredNode)
 				{
-				var sprite = PIXI.Sprite.fromImage("img/stanford/hari-book-icon-"+node.color.toString(16).replace("#","")+".png");
-				
-				sprite.anchor.x = 0.5;
-				sprite.anchor.y = 0.5;
-				
-				sprite.scale.x = 1.5*(radius/256);
-				sprite.scale.y = 1.5*(radius/256);
-				
-				
-				node.spritenode = sprite;
-				ctx.addChildAt(sprite,0);	
+					var sprite = PIXI.Sprite.fromImage("img/"+node.main.data.sponsoredNode+".png");
+
+					sprite.anchor.x = 0.5;
+					sprite.anchor.y = 0.5;
+
+					sprite.scale.x = 1.5*(radius/256);
+					sprite.scale.y = 1.5*(radius/256);
+
+
+					node.spritenode = sprite;
+					ctx.addChildAt(sprite,0);
 				}
 			
+
+			var text = new PIXI.Text(truncateTitle(node.label.replace(/\n/g, ''),18,false), {});
 			
-			
-			var text = new PIXI.Text(node.label, {});
-			
+			//console.log(ctx.scale.y);
 			text.anchor.x = 0.5;
-			text.anchor.y = -2.1;
-			
+				text.anchor.y = textAnchorY * initialFactorForTextAnchor/(1/ctx.scale.y);
+		
 			if (node.isExactMatchTitle || node.isLSA || node.isCentroid || node.isMetaArticle)
 				{
 				fsize = largefont * window.devicePixelRatio; //*ngraph.graphics.scale.x;
@@ -770,7 +774,6 @@ function renderLink(link, ctx)
 			{
 			strokeWidth = (link.fade/fadeSteps)*bigEdge;
 			link.fade--;
-			//ctx.lineStyle(strokeWidth, 0xbbbbbb);
 			ctx.lineStyle(strokeWidth, edgeOverColor);
 			ctx.moveTo(link.from.x, link.from.y);
 			ctx.lineTo(link.to.x, link.to.y);
@@ -778,7 +781,7 @@ function renderLink(link, ctx)
 		else
 			{
 			strokeWidth =  smallEdge;
-			ctx.lineStyle(strokeWidth, 0xf7f7f7);
+			ctx.lineStyle(strokeWidth, 0xbbbbbb);
 			ctx.moveTo(link.from.x, link.from.y);
 			ctx.lineTo(link.to.x, link.to.y);
 			}
@@ -900,7 +903,7 @@ function renderCanvasLoader(ctx)
 		rotatecanvas.height = radius * 2;
 		
 		basecontext.lineWidth = 150;
-		basecontext.strokeStyle = "#8ddecd";
+		basecontext.strokeStyle = "#c7dee7";
 		basecontext.fillStyle = "#ffffff"
 		basecontext.moveTo(radius,radius);
 		basecontext.beginPath();
@@ -929,8 +932,8 @@ function renderCanvasLoader(ctx)
 		var basesprite = new PIXI.Sprite(PIXI.Texture.fromCanvas(basecanvas));
 		
 		var angle = 2*Math.PI*1/4;
-		rotatecontext.fillStyle = "#8ddecd";
-		rotatecontext.strokeStyle = "#8ddecd";
+		rotatecontext.fillStyle = "#c7dee7";
+		rotatecontext.strokeStyle = "#c7dee7";
 		
 	    rotatecontext.beginPath();
 	    rotatecontext.moveTo(radius,radius);

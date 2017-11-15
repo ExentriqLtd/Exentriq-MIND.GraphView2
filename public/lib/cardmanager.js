@@ -86,32 +86,48 @@ function dodraw(id, root, child, thumb, title, text, node, after,noinfo)
 		else
 			exploreAction = '<li><a class="explore">Collapse</a></li>';
 		}
-    
+
+
+        if(text == "NULL") {
+            text = title;
+        }
+
+        var sponsoredNode = "";
+        var sponsoredAttr = "";
+        if(node.sponsoredNode){
+            sponsoredNode = "<div class=\"sponsored_item\"><img src=\"img/" + node.sponsoredNode+".png" + "\"></div>";
+            sponsoredAttr = node.sponsoredNode;
+        }
+
     var newelement = $('' +
-        '<li id="' + id + '" data-title="' + title + '" data-referenceId="' + node.referenceId + '"  data-uri="' + node.articleUri + '" class="">' +
+        '<li id="' + id + '" data-title="' + title + '" data-referenceId="' + node.referenceId + '" data-sponsored="' + sponsoredAttr + '"  data-uri="' + node.articleUri + '" class="">' +
             '<div class="eq-ui-collapsible-header">' +
                 '<div class="card ' + (root ? "root" : "") + ' ' + (child || after ? "child" : "") + '">' +
                     (thumb !== "" ? '<div class="thumb" data-thumb="' + thumb + '" style="background-image:url(' + thumb + ')"></div>' : "") +
                     //'<input type="checkbox" class="eq-ui-input filled-in" id="checkbox-all" /> <label for="checkbox-all"></label>' +
                     '<a class="eq-ui-list-secondary-content-body star_visualisation"><i class="material-icons">&#xE838;</i></a>' +
                     '<a class="title_card">' + '<span>' + truncateTitle(title,75,true) + '</span>' + '</a>' +
-                '</div>' +
+                    sponsoredNode +
+        '</div>' +
             '</div>' +
             '<div class="eq-ui-collapsible-body">' +
                 '<div class="eq-ui-collapsible-body-inner">' +
                     '<div class="links">' +
                         text +
                     '</div>' +
+                    '<div class="linkarticle" style="' + (text=="Processing..." ? "display:none" : "") + '">' +
+                        '<a class="link" href="'+ node.articleUri +'" target="_blank">Read More</a>' +
+                    '</div>' +
                 '</div>' +
              '</div>' +
             '<a data-target="dropdown-'+id+'" class="button_dropdown btn btn-default eq-ui-waves dropdown-trigger" data-hover="false"><i class="material-icons">&#xE5D4;</i></a>' +
             '<ul id="dropdown-'+id+'" data-id="'+id+'" class="eq-ui-dropdown eq-ui-dropdown actions">' +
-                '<li><a class="centermap">Center on Map</a></li>' +
+                '<li><a class="centermap">Center on Screen</a></li>' +
                 //(bookmarklist[id] ? '<li><a>Bookmarked</a></li>' : '<li><a class="bookmark">Bookmark</a></li>') +
-                (!noinfo ? '<li><a class="info">Details</a></li>' : "")  +
+                (!noinfo ? '<li><a class="info">Show Details</a></li>' : "")  +
                 exploreAction+
-                '<li><a class="remove">Hide</a></li>'+
-                '<li><a class="ban">Mark as Irrelevant</a></li>'+
+                '<li><a class="remove">Hide Node</a></li>'+
+                '<li><a class="ban">Report as Irrelevant</a></li>'+
             '</ul>' +
         '</li>'
 
@@ -155,21 +171,28 @@ function updateCard(nodeId)
 	else
 		{
 		if(node.data.collapsed)
-			exploreAction = '<li><a class="explore">Explore</a></li>';
+			exploreAction = '<li><a class="explore">Show Connections</a></li>';
 		else
-			exploreAction = '<li><a class="explore">Collapse</a></li>';
+			exploreAction = '<li><a class="explore">Hide Connections</a></li>';
 		}
 	console.log("NEW EXPLORE ACTION",exploreAction);
 	$("#"+nodeId+" .explore").replaceWith(exploreAction);;
 	}
 
-function drawsentence(title, sentences,uri)
+function drawsentence(title, sentences,uri,sponsoredArticle)
     {
+
+      var sponsored = "";
+        var sponsoredAttr = "";
+      if(sponsoredArticle){
+          sponsored = "<div class=\"sponsored_item\"><img src=\"img/" + sponsoredArticle+".png" + "\"></div>";
+          sponsoredAttr = sponsoredArticle;
+      }
     for(var x=0;x<sentences.length;x++)
         {
         var text = sentences[x];
         var newelement = $('' +
-	        '<div data-title="' + title + '" data-uri="' + uri + '" class="piece" style="display:none">' +
+	        '<div data-title="' + title + '" data-uri="' + uri + '" data-sponsored="' + sponsoredAttr + '"class="piece" style="display:none">' +
 	            '<div class="card edgecard">' +
 	                
 	                '<div class="actions">' +
@@ -180,6 +203,7 @@ function drawsentence(title, sentences,uri)
 	                    text +
 	                '</div>' +
 	                '<div class="edgesource">Source : ' + title + '</div>' +
+                    sponsored+
 	            '</div>' +
 	        '</div>'
 	        );
@@ -251,7 +275,7 @@ function selectCard(nodeId)
 
         $(".card.selected").removeClass("selected");
         element.find(".card").addClass("selected");
-        var scrollto = $('#cardcontainer').scrollTop() + element.offset().top - 70;
+        var scrollto = $('#cardcontainer').scrollTop() + element.offset().top - 50; //scroll card
         $('#cardcontainer')
             .stop()
             .animate(
@@ -324,10 +348,11 @@ function openInfo(nodeId,title,uri)
         $("#infobookmark").hide();
         }
 
-	if(uri && uri.indexOf("hw:")===0)
+
+	/*if(uri && uri.indexOf("hw:")===0)
 		highwireInfo(title,uri)
 	else
-		wikipediaInfo(title,uri,referenceId)
+		wikipediaInfo(title,uri,referenceId)*/
 	
 	}
 
@@ -492,12 +517,13 @@ function renderEdgeInfo(data,hasCommonWords)
     if(data.length)
     	{
     	var sentenceids={};
-	    //$("#edgedata").append('<h4 class="sentencetitle">with the following recommended sources</h4>');
-	    for(var x=0;x<data.length;x++)
+
+            console.log(data);
+        for(var x=0;x<data.length;x++)
 	        {
 	        var sentence = data[x];
 	        if(!sentenceids[sentence.id])
-	       		drawsentence(sentence.title, sentence.sentence, sentence.uri)
+	       		drawsentence(sentence.title, sentence.sentence, sentence.uri, sentence.sponsoredArticle)
 	       	sentenceids[sentence.id] = true;
 	        }
     	}
@@ -586,6 +612,29 @@ $(document).ready(function() {
             currentRenderer.goToNode(nodeId);
         openInfo(nodeId,title,uri);
         });
+
+    $("#edgecontainer").on("click", ".edgesource", function(){
+        var title  = $(this).parents(".piece").attr("data-title");
+        var url  = "http://www.ncbi.nlm.nih.gov/m/pubmed/" + $(this).parents(".piece").attr("data-uri");
+        //var url  = "https://www.ncbi.nlm.nih.gov/pmc/articles/pmid/" + $(this).parents(".piece").attr("data-uri");
+        var sponsored  = $(this).parents(".piece").attr("data-sponsored");
+        console.log(title,url);
+        showModal(title,url,sponsored);
+    })
+
+    $("#cardcontainer").on("click", ".linkarticle .link", function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        var url  = $(this).attr("href");
+        if(url == "NULL"){
+            url = "sample/FYCO-Krauss Study 307.pdf";
+        }
+        var title  = $(this).parents("li").attr("data-title");
+        var sponsored  = $(this).parents("li").attr("data-sponsored");
+        console.log(title,url);
+        showModal(title,url,sponsored);
+    })
+
     $("#cardcontainer").on("click", ".actions .info", function()
         {
         var nodeId = +$(this).parents(".piece").attr("id");
@@ -760,7 +809,8 @@ $(document).ready(function() {
                 $("#historyslider").addClass("open");
             }
             else if(method == "favourites" ){
-                $("#historyslider").addClass("open");
+                alert("TO BE IMPLEMENTED");
+                //$("#historyslider").addClass("open");
             }
             else
                 {

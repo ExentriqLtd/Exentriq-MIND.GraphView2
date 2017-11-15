@@ -8,19 +8,21 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="external/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="external/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="css/loader.css?rand=001">
-    <link rel="stylesheet" type="text/css" href="css/graph.css?rand=001">
-    <link rel="stylesheet" type="text/css" href="css/main.css?rand=001">
-    <link rel="stylesheet" type="text/css" href="css/iconfont.css?rand=001">
-    <link rel="stylesheet" type="text/css" href="css/logo.css?rand=001">
-    <link rel="stylesheet" type="text/css" href="css/topbar.css?rand=001">
-    <link rel="stylesheet" type="text/css" href="css/info.css?rand=001">
-    <link rel="stylesheet" type="text/css" href="css/tooltip.css?rand=001">
-    <link rel="stylesheet" type="text/css" href="css/card.css?rand=001">
-    <link rel="stylesheet" type="text/css" href="css/modal.css?rand=001">
-    <link rel="stylesheet" type="text/css" href="css/wikipedia.css?rand=001">
-    <link rel="stylesheet" type="text/css" href="css/admin.css?rand=001">
-    <link rel="stylesheet" type="text/css" href="css/exentriq-material.css?rand=001">
+    <link rel="stylesheet" type="text/css" href="css/loader.css?rand=003">
+    <link rel="stylesheet" type="text/css" href="css/graph.css?rand=003">
+    <link rel="stylesheet" type="text/css" href="css/main.css?rand=003">
+    <link rel="stylesheet" type="text/css" href="css/iconfont.css?rand=003">
+    <link rel="stylesheet" type="text/css" href="css/logo.css?rand=003">
+    <link rel="stylesheet" type="text/css" href="css/topbar.css?rand=003">
+    <link rel="stylesheet" type="text/css" href="css/info.css?rand=003">
+    <link rel="stylesheet" type="text/css" href="css/tooltip.css?rand=003">
+    <link rel="stylesheet" type="text/css" href="css/card.css?rand=003">
+    <link rel="stylesheet" type="text/css" href="css/modal.css?rand=003">
+    <link rel="stylesheet" type="text/css" href="css/wikipedia.css?rand=003">
+    <link rel="stylesheet" type="text/css" href="css/admin.css?rand=003">
+    <link rel="stylesheet" type="text/css" href="css/exentriq-material.css?rand=003">
+    <link rel="stylesheet" type="text/css" href="css/login.css?rand=001">
+
     <script type="text/javascript">
 
 
@@ -69,33 +71,251 @@
     <script src="external/jsrender.js"></script>
     <script src="external/jquery.easing.js"></script>
     <script src="external/jquery.path.js"></script>
+    <script src="external/jquery.cookie.js"></script>
     <script src="external/pixi.dev.js"></script>
     <script src="external/typeahead.js"></script>
 
-    <script src="settings.js?rand=001"></script>
-    <script src="endpoints.js?rand=001"></script>
+    <script src="settings.js?rand=003"></script>
+    <script src="endpoints.js?rand=003"></script>
     <script src="lib/exentiq-material-js.js"></script>
-    <script src="lib/utils.js?rand=001"></script>
-    <script src="lib/tooltip.js?rand=001"></script>
-    <script src="lib/breadcrumbs.js?rand=001"></script>
-    <script src="lib/datamanager.js?rand=001"></script>
-    <script src="lib/filtermanager.js?rand=001"></script>
-    <script src="lib/admin.js?rand=001"></script>
+    <script src="lib/utils.js?rand=003"></script>
+    <script src="lib/tooltip.js?rand=003"></script>
+    <script src="lib/breadcrumbs.js?rand=003"></script>
+    <script src="lib/datamanager.js?rand=003"></script>
+    <script src="lib/filtermanager.js?rand=003"></script>
+    <script src="lib/admin.js?rand=003"></script>
+    <script src="lib/login.js?rand=001"></script>
 
-    <script src="lib/cardmanager.js?rand=001"></script>
-    <script src="lib/bookmarks.js?rand=001"></script>
+    <script src="lib/cardmanager.js?rand=003"></script>
+    <script src="lib/bookmarks.js?rand=003"></script>
 
     <script src="lib/fasttemplater.js"></script>
 
-    <script src="bundle.js?rand=001"></script>
+    <script src="bundle.js?rand=003"></script>
 
-    <script src="lib/graphmanager.js?rand=001"></script>
-    <script src="main.js?rand=001"></script>
+    <script src="lib/graphmanager.js?rand=010"></script>
+    <script src="main.js?rand=003"></script>
 
 
 </head>
 
 <body class="eq-ui-layout-header-fixed eq-ui-side-nav-auto eq-ui-side-nav-visible">
+
+<header class="eq-ui-layout-header" style="top: 0px; padding-left: 0px;">
+
+    <div id="main-eq-ui-app-bar" class="eq-ui-app-bar">
+        <div class="container-fluid">
+
+            <!-- Toggle -->
+            <div class="eq-ui-side-nav-toggle"><i class="mdi mdi-menu icon icon-left icon-24"></i></div>
+
+            <!-- Breadcrumb -->
+            <div class="eq-ui-breadcrumb" data-only-one="true" style="max-width: 1141px;">
+                <a href="./" class="eq-ui-breadcrumb-item eq-ui-breadcrumb-item-truncate"><span>Med eGraph</span></a>
+            </div>
+
+            <!-- Nav Menu -->
+            <ul class="right eq-ui-nav-menu">
+                <li class="eq-ui-nav-menu-item-icon eq-ui-hidden-xs">
+                    <a class="btn btn-default eq-ui-btn-flat eq-ui-btn-fab eq-ui-btn-menu-fab eq-ui-waves eq-ui-top-search-show waves-effect waves-effect">
+                        <i class="mdi mdi-magnify icon"></i>
+                    </a>
+                </li>
+                <li class="eq-ui-nav-menu-item-icon">
+                    <a data-target="eq-ui-modal-header-doc-1" class="btn btn-default eq-ui-btn-flat eq-ui-btn-fab eq-ui-btn-menu-fab eq-ui-waves eq-ui-modal-trigger waves-effect waves-effect">
+                        <i class="mdi mdi-bell icon"></i>
+                    </a>
+                    <span class="eq-ui-badge eq-ui-badge-overlap" data-badge="12"></span>
+                </li>
+                <li class="eq-ui-nav-menu-item-icon">
+                    <a data-target="eq-ui-modal-header-doc-1" class="btn btn-default eq-ui-btn-flat eq-ui-btn-fab eq-ui-btn-menu-fab eq-ui-waves eq-ui-modal-trigger waves-effect waves-effect">
+                        <i class="mdi mdi-comment icon"></i>
+                    </a>
+                </li>
+                <li class="eq-ui-nav-menu-item-icon">
+                    <a data-target="doc-dropdown-app-bar-user" data-gutter="-48" data-hover="false" class="btn btn-default eq-ui-btn-flat eq-ui-btn-fab eq-ui-btn-menu-fab eq-ui-waves dropdown-trigger waves-effect waves-effect">
+                        <i class="mdi mdi-account icon"></i>
+                    </a>
+                    <!-- Dropdown Structure -->
+                    <ul id="doc-dropdown-app-bar-user" class="eq-ui-dropdown eq-ui-dropdown-right-top" style="top: 2px; display: none;">
+                        <li><a href="#!">Profile</a></li>
+                        <li><a href="javascript:logout();">Logout</a></li>
+                    </ul>
+                </li>
+                <li class="eq-ui-nav-menu-item-icon hide eq-ui-visible-xs-block">
+                    <a data-target="doc-dropdown-app-bar" data-gutter="-48" data-hover="false" class="btn btn-default eq-ui-btn-flat eq-ui-btn-fab eq-ui-btn-menu-fab eq-ui-waves dropdown-trigger waves-effect waves-effect">
+                        <i class="mdi mdi-dots-vertical icon"></i>
+                    </a>
+                    <!-- Dropdown Structure -->
+                    <ul id="doc-dropdown-app-bar" class="eq-ui-dropdown eq-ui-dropdown-right-top" style="top: 2px;">
+                        <li><a class="eq-ui-top-search-show"><i class="mdi mdi-magnify icon"></i> Search</a></li>
+                        <li><a href="./"><i class="mdi mdi-apps icon"></i> Apps</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- Top Search -->
+            <div class="eq-ui-top-search" style="visibility: hidden; top: -64px;">
+                <i class="eq-ui-top-search-close mdi mdi-arrow-left eq-ui-icon eq-ui-icon-left"></i>
+                <!-- Search -->
+                <div id="doc-eq-ui-top-search-autocomplete" class="eq-ui-search">
+                    <input id="searchfield" type="text" placeholder="Search" autocomplete="off">
+                    <i class="eq-ui-search-icon-left mdi mdi-magnify eq-ui-icon eq-ui-icon-left"></i>
+                    <i class="eq-ui-search-clear mdi mdi-close eq-ui-icon eq-ui-icon-right"></i>
+                    <div class="autocomplete-suggestions" style="position: absolute; display: none; max-height: 300px; z-index: 9999;"></div></div>
+            </div>
+
+        </div>
+        <iframe src="javascript:window.emitcontent" style="position:absolute; top:-50000px; left:0px; width:100%;"></iframe>
+        <iframe src="javascript:window.emitcontent" style="position:absolute; top:0; left:-50000px; height:100%;"></iframe>
+    </div>
+
+</header>
+
+<!-- Modal Right (Notifications) -->
+<div id="eq-ui-modal-header-doc-1" class="eq-ui-modal eq-ui-modal-fixed eq-ui-modal-right-sheet">
+
+    <!-- Header -->
+    <div class="eq-ui-modal-header">
+        <div class="header-title">
+            <!--i class="mdi mdi-close icon icon-left icon-24 eq-ui-modal-close"></i-->
+            <span class="section-title">Notifications</span>
+        </div>
+        <ul class="right eq-ui-nav-menu">
+            <li class="eq-ui-nav-menu-item-icon">
+                <a class="btn btn-default eq-ui-btn-flat eq-ui-btn-fab eq-ui-btn-menu-fab eq-ui-waves eq-ui-modal-close">
+                    <i class="mdi mdi-close eq-ui-icon"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="eq-ui-modal-content">
+
+        <ul class="eq-ui-list eq-ui-hoverable">
+
+            <li class="eq-ui-list-item eq-ui-list-avatar eq-ui-list-secondary-content">
+                <img class="circle" src="img/avatars/avatar_1.jpg">
+                <div class="eq-ui-list-body">
+                    <h6 class="eq-ui-list-title">Title</h6>
+                    Duis bibendum nisl quis tellus rutrum, ut aliquet massa interdum.
+                </div>
+                <a class="eq-ui-list-secondary-content-body shades-text-black-hover"><i class="mdi mdi-close-circle icon icon-18"></i></a>
+            </li>
+
+            <li class="eq-ui-list-item eq-ui-list-avatar eq-ui-list-secondary-content">
+                <img class="circle" src="img/avatars/avatar_2.jpg">
+                <div class="eq-ui-list-body">
+                    <h6 class="eq-ui-list-title">Title</h6>
+                    Duis bibendum nisl quis tellus rutrum, ut aliquet massa interdum.
+                </div>
+                <a class="eq-ui-list-secondary-content-body shades-text-black-hover"><i class="mdi mdi-close-circle icon icon-18"></i></a>
+            </li>
+
+            <li class="eq-ui-list-item eq-ui-list-avatar eq-ui-list-secondary-content">
+                <img class="circle" src="img/avatars/avatar_3.jpg">
+                <div class="eq-ui-list-body">
+                    <h6 class="eq-ui-list-title">Title</h6>
+                    Duis bibendum nisl quis tellus rutrum, ut aliquet massa interdum.
+                </div>
+                <a class="eq-ui-list-secondary-content-body shades-text-black-hover"><i class="mdi mdi-close-circle icon icon-18"></i></a>
+            </li>
+
+            <li class="eq-ui-list-item eq-ui-list-avatar eq-ui-list-secondary-content">
+                <img class="circle" src="img/avatars/avatar_1.jpg">
+                <div class="eq-ui-list-body">
+                    <h6 class="eq-ui-list-title">Title</h6>
+                    Duis bibendum nisl quis tellus rutrum, ut aliquet massa interdum.
+                </div>
+                <a class="eq-ui-list-secondary-content-body shades-text-black-hover"><i class="mdi mdi-close-circle icon icon-18"></i></a>
+            </li>
+
+            <li class="eq-ui-list-item eq-ui-list-avatar eq-ui-list-secondary-content">
+                <img class="circle" src="img/avatars/avatar_2.jpg">
+                <div class="eq-ui-list-body">
+                    <h6 class="eq-ui-list-title">Title</h6>
+                    Duis bibendum nisl quis tellus rutrum, ut aliquet massa interdum.
+                </div>
+                <a class="eq-ui-list-secondary-content-body shades-text-black-hover"><i class="mdi mdi-close-circle icon icon-18"></i></a>
+            </li>
+
+            <li class="eq-ui-list-item eq-ui-list-avatar eq-ui-list-secondary-content">
+                <img class="circle" src="img/avatars/avatar_3.jpg">
+                <div class="eq-ui-list-body">
+                    <h6 class="eq-ui-list-title">Title</h6>
+                    Duis bibendum nisl quis tellus rutrum, ut aliquet massa interdum.
+                </div>
+                <a class="eq-ui-list-secondary-content-body shades-text-black-hover"><i class="mdi mdi-close-circle icon icon-18"></i></a>
+            </li>
+
+            <li class="eq-ui-list-item eq-ui-list-avatar eq-ui-list-secondary-content">
+                <img class="circle" src="img/avatars/avatar_1.jpg">
+                <div class="eq-ui-list-body">
+                    <h6 class="eq-ui-list-title">Title</h6>
+                    Duis bibendum nisl quis tellus rutrum, ut aliquet massa interdum.
+                </div>
+                <a class="eq-ui-list-secondary-content-body shades-text-black-hover"><i class="mdi mdi-close-circle icon icon-18"></i></a>
+            </li>
+
+            <li class="eq-ui-list-item eq-ui-list-avatar eq-ui-list-secondary-content">
+                <img class="circle" src="img/avatars/avatar_2.jpg">
+                <div class="eq-ui-list-body">
+                    <h6 class="eq-ui-list-title">Title</h6>
+                    Duis bibendum nisl quis tellus rutrum, ut aliquet massa interdum.
+                </div>
+                <a class="eq-ui-list-secondary-content-body shades-text-black-hover"><i class="mdi mdi-close-circle icon icon-18"></i></a>
+            </li>
+
+            <li class="eq-ui-list-item eq-ui-list-avatar eq-ui-list-secondary-content">
+                <img class="circle" src="img/avatars/avatar_3.jpg">
+                <div class="eq-ui-list-body">
+                    <h6 class="eq-ui-list-title">Title</h6>
+                    Duis bibendum nisl quis tellus rutrum, ut aliquet massa interdum.
+                </div>
+                <a class="eq-ui-list-secondary-content-body shades-text-black-hover"><i class="mdi mdi-close-circle icon icon-18"></i></a>
+            </li>
+
+            <li class="eq-ui-list-item eq-ui-list-avatar eq-ui-list-secondary-content">
+                <img class="circle" src="img/avatars/avatar_1.jpg">
+                <div class="eq-ui-list-body">
+                    <h6 class="eq-ui-list-title">Title</h6>
+                    Duis bibendum nisl quis tellus rutrum, ut aliquet massa interdum.
+                </div>
+                <a class="eq-ui-list-secondary-content-body shades-text-black-hover"><i class="mdi mdi-close-circle icon icon-18"></i></a>
+            </li>
+
+            <li class="eq-ui-list-item eq-ui-list-avatar eq-ui-list-secondary-content">
+                <img class="circle" src="img/avatars/avatar_2.jpg">
+                <div class="eq-ui-list-body">
+                    <h6 class="eq-ui-list-title">Title</h6>
+                    Duis bibendum nisl quis tellus rutrum, ut aliquet massa interdum.
+                </div>
+                <a class="eq-ui-list-secondary-content-body shades-text-black-hover"><i class="mdi mdi-close-circle icon icon-18"></i></a>
+            </li>
+
+            <li class="eq-ui-list-item eq-ui-list-avatar eq-ui-list-secondary-content">
+                <img class="circle" src="img/avatars/avatar_3.jpg">
+                <div class="eq-ui-list-body">
+                    <h6 class="eq-ui-list-title">Title</h6>
+                    Duis bibendum nisl quis tellus rutrum, ut aliquet massa interdum.
+                </div>
+                <a class="eq-ui-list-secondary-content-body shades-text-black-hover"><i class="mdi mdi-close-circle icon icon-18"></i></a>
+            </li>
+
+
+
+        </ul>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="eq-ui-modal-footer">
+        <a href="#" class="btn btn-default eq-ui-btn-flat eq-ui-waves eq-ui-modal-close" style="float:none;">View All</a>
+    </div>
+
+</div>
+
 <div id="mainblocks" class="">
     <div id="graph" >
         <div id="filtercontainer" style="display:none;">
@@ -105,7 +325,9 @@
             <div id="filterlist">
             </div>
         </div>
-        <div id="infoloader" style="display:none;" ></div>
+        <div id="infoloader" style="display:none;" >
+            <div class="eq-ui-loader-line"></div>
+        </div>
 
 
 
@@ -169,6 +391,7 @@
         </div>
     </div>
 
+    <!--
     <div id="searchbox">
         <button data-original-title="ADD NODE" data-placement="left" id="addnode" style="display:none;">
             <i class="fa fa-lg fa-plus-circle"></i>
@@ -176,9 +399,8 @@
         <i class="material-icons search-icon-edit">search</i><input id="searchfield" placeholder="Search" type="search" class="clearable"> <i class="material-icons clearfieldsearch" onclick="document.getElementById('searchfield').value = ''">close</i>
         <button id="startsearch" >DISCOVER</button>
         <button id="toggleendpoint" data-endpoint="docs" style="display:none;">NEW</button>
-        <!--<div id="overinput" style="display:none;"></div>-->
-
     </div>
+    -->
 
     <div id="topbaractions">
         <a id="exportInference" href="#" style="display:none;">
@@ -198,11 +420,11 @@
     <div class="toggle" data-placement="left" data-original-title="DETAILS">
         <i class="fa fa-2x fa-arrow-circle-o-right"></i>
     </div>
-    <div id="hyperselector" class="eq-ui-scrollbar-wrap eq-ui-scrollbar-wrap-x eq-ui-scrollbar-wrap-hide">
+    <div id="hyperselector" class="eq-ui-scrollbar-wrap eq-ui-scrollbar-wrap-x eq-ui-scrollbar-wrap-hide" style="display:none;">
         <ul class="eq-ui-tabs">
             <li class="eq-ui-tab"><a class="" id="mainmethod" data-source="home"><span class="eq-deep-blue-text-500">Results</span></a></li>
             <li class="eq-ui-tab"><a data-source="favourites" class=""><span class="eq-deep-blue-text-500">Favourites</span></a></li>
-            <li class="eq-ui-tab"><a data-source="history" class=""><span class="eq-deep-blue-text-500">History</span></a></li>
+            <li class="eq-ui-tab" style="display: none"><a data-source="history" class=""><span class="eq-deep-blue-text-500">History</span></a></li>
         </ul>
 
         <!--
@@ -231,7 +453,7 @@
             <div class="controls">
                 <div id="edgestart" class="edgetitle"></div>
                 <div id="edgeend" class="edgetitle"></div>
-                <i data-original-title="CLOSE EDGE INFO" id="edgeclose" class="fa fa-times-circle"></i>
+                <i id="edgeclose" class="material-icons clearfieldsearch">close</i>
                 <i id="edgeicon" class="fa fa-arrows-v"></i>
             </div>
             <div id="edgedata" class="scrollable"></div>
@@ -267,11 +489,15 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button type="button" class="material-icons closemodal" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 id="siteModalTitle" class="modal-title">Modal title</h4>
             </div>
             <div class="modal-body">
                 <iframe src=""></iframe>
+            </div>
+            <div class="modal-footer sponsored">
+                <div class="col-md-6 sponsored-company">Brought to you by <img src="img/eisai.png" /></div>
+                <div class="col-md-6 sponsored-download">Download Article <i class="fa fa-download" aria-hidden="true"></i></div>
             </div>
         </div>
     </div>
@@ -342,6 +568,109 @@
 
 <canvas id="svg-canvas" width="980" height="400px;" style="display:none;">
 </canvas></div>
+
+
+<!-- Login Page -->
+<main class="main login-container">
+    <div id="signupBox" class="container eq-login-cont" style="display:none">
+        <!-- Card -->
+        <div  class="eq-ui-card eq-login">
+            <div class="eq-ui-card-supporting-text">
+
+                <h6 class="login-title">Med eGraph</h6>
+
+                <form id="form-signin" class="form-vertical" onsubmit="submitSignup(); return false;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="eq-ui-form-group eq-ui-input-field">
+                                <input id="inputEmail" name="inputEmail" type="email" class="form-control eq-ui-input" required>
+                                <label for="email" data-error="Email not valid">Your Email</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="eq-ui-form-group eq-ui-input-field">
+                                <input id="inputUsername" name="inputUsername" type="text" data-parsley-minlength="3" class="form-control eq-ui-input" required>
+                                <label for="username" data-error="Min length 6">Your Username</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="eq-ui-form-group eq-ui-input-field">
+                                <input id="inputPass" name="inputPass" type="password" data-parsley-minlength="3" class="form-control eq-ui-input" required>
+                                <label for="password" data-error="Min length 6">Create Password</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="eq-ui-form-group eq-ui-input-field">
+                                <input id="inputCPass" name="inputCPass" type="password" data-parsley-minlength="3" data-parsley-equalto="#inputPass" class="form-control eq-ui-input" required>
+                                <label for="password-confirm" data-error="Min length 6 or Password not equal">Confirm Password</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="submit" class="btn btn-primary" style="width: 100%;" value="Sign in">
+                            <p class="warning-box alert alert-error" style="display:none"></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Bootom Links -->
+        <div class="eq-bottom-links">
+            <span class="get-started"><span>Already have an account?</span> <a href="javascript:openSignin();">Log In</a></span>
+        </div>
+    </div>
+
+    <div id="signinBox" class="container eq-login-cont">
+        <!-- Card -->
+        <div class="eq-ui-card eq-login">
+            <div class="eq-ui-card-supporting-text">
+
+                <h6 class="login-title">Med eGraph </br> Digital Companion</h6>
+                <p class="login-sub-title">Log in with your Medical Number</p>
+
+                <form id="form-signin" class="form-vertical" onsubmit="submitSignin(); return false;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="eq-ui-form-group eq-ui-input-field">
+                                <input id="inputEmail" name="inputEmail" type="text" class="form-control eq-ui-input" required>
+                                <label for="inputEmail">Your Medical Number</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="eq-ui-form-group eq-ui-input-field">
+                                <input id="inputPassword" name="inputPassword" type="password" class="form-control eq-ui-input" required>
+                                <label for="inputPassword">Your Password</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="submit" class="btn btn-primary" style="width: 100%;" value="Sign in">
+                            <p class="warning-box alert alert-error" style="display:none"></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Bootom Links -->
+        <div class="eq-bottom-links">
+            <a href="terms">Privacy Policy</a>
+            <span class="get-started"><span>Don't have an account?</span> <a href="javascript:openSignup();">Get Started</a></span>
+        </div>
+    </div>
+
+
+</main>
+
 
 <ul id="breadcrumbs" class="breadcrumb" style="position: absolute; bottom: -21px; left: 0px;display:none;"></ul>
 

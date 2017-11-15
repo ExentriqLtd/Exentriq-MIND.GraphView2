@@ -25,12 +25,14 @@ a.custom_edit_button i
 
 .eq-ui-collapsible li .eq-ui-collapsible-header a.title_card
 {
-	display: inline-block !important;
 	padding: 0px !important;
-	width:100%;
+	width: calc(100% - 100px);
 	text-align: left;
 	font-weight: 500;
 	font-size: 16px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .eq-ui-collapsible-body-inner
@@ -756,6 +758,8 @@ i.bookmarkanimation.enlarge
 	font-weight: bold;
 	margin-top: 10px;
 	cursor: pointer;
+	text-decoration: underline;
+	color: #148d74;
 	}
 .tagcloudcontainer
 	{
@@ -825,6 +829,8 @@ i.bookmarkanimation.enlarge
 	right: 0px;
 	height: 64px;
 	box-shadow: none;
+	min-width:25px;
+	padding: 0 3px;
 }
 
 #cardcontainer .button_dropdown:hover{
@@ -837,4 +843,32 @@ i.bookmarkanimation.enlarge
 
 #cardcontainer .button_dropdown .material-icons{
 	line-height: 65px;
+}
+
+#cardcontainer .linkarticle, #cardcontainer .linkarticle a, #cardcontainer .linkarticle a:hover{
+	padding-top: 10px;
+	text-decoration: underline;
+	color: #148d74;
+	font-weight: bold;
+}
+
+.eq-ui-collapsible li .eq-ui-collapsible-header .sponsored_item{
+	position: absolute;
+	top: 9px;
+	right: 28px;
+	width: 70px;
+	text-align: center;
+}
+
+.eq-ui-collapsible li .eq-ui-collapsible-header .sponsored_item img {
+	height: 40px;
+}
+
+.edgecard .sponsored_item {
+	width: 100%;
+	padding-top: 16px;
+}
+
+.edgecard .sponsored_item img {
+	width: 100px;
 }

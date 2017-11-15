@@ -611,6 +611,7 @@ function crawl(id, root, child, title, text, node, after)
 			{
 			var nodetitle = response.title; 
 			node.title = response.title;
+			node.articleUri = response.contentURL;
 	
 			var abstract = response.shortAbstract || "";
 
@@ -925,28 +926,13 @@ function hariExplore(nodeId,backnode)
 			currentRenderer.layout.setNodePosition(nodeId, pos.x + sign(pos.x)*Math.cos(angle)*4000, pos.y + sign(pos.y)*Math.sin(angle)*4000);
 			node.data.isCentroid=true;
 			node.nodeUI.isCentroid=true;
-			node.nodeUI.width=nodeRadius(node)
-			console.log(node);
-			/*
-			var width = $("#graph").width();
-			var height = $("#graph").height();
-			graphsettings.screenFactor = (height/640);
-			var scale = graphsettings.screenFactor * graphsettings.initialScale * window.devicePixelRatio;
-			if(currentRenderer.graphics.scale.x > scale)
-				{
-				currentRenderer.graphics.scale.x = scale;
-				currentRenderer.graphics.scale.y = scale;	
-				// Technically code below is not required, but helps to zoom on mouse
-						// cursor, instead center of graphGraphics coordinates
-				var beforeTransform = getGraphCoordinates(width/2* window.devicePixelRatio, height/2* window.devicePixelRatio);
-				currentRenderer.graphics.updateTransform();
-				var afterTransform = getGraphCoordinates(width/2* window.devicePixelRatio, height/2* window.devicePixelRatio);
-
-				currentRenderer.graphics.position.x = currentRenderer.graphics.position.x + (afterTransform.x - beforeTransform.x) * currentRenderer.graphics.scale.x;
-				currentRenderer.graphics.position.y = currentRenderer.graphics.position.y + (afterTransform.y - beforeTransform.y) * currentRenderer.graphics.scale.y;
-				currentRenderer.graphics.updateTransform();
-				}
-			*/
+			node.nodeUI.width=nodeRadius(node);
+			node.nodeUI.textnode.setStyle({
+					font: "" + largefont * window.devicePixelRatio + "px Raleway",
+					fill: textcolor,
+					align: "center",
+					nobackground : true
+			});
 			}
 		
 		node.data.expanded = true;
@@ -1022,7 +1008,7 @@ function hariAddPopover(nodePos,popoverPos)
 		{
 		source	: advancedAddAutocomplete,
 		autoSelect:true,
-		minLength: 3,
+		minLength: 1,
 		highlight: true,
 		matcher : function ()
 			{return true;},
@@ -1723,7 +1709,14 @@ function fixData(data,callback,path)
 		{
 		var node = nodes[x];
 		node.centroid	 = centroids[+node.id] || 1000000;
-		
+
+		if(x%5==0 && x>0){
+			node.sponsoredNode = "eisai";
+		}
+		if(x%7==0 && x>0){
+			node.sponsoredNode = "jandj";
+		}
+
 		if(centroids[+node.id])
 			{
 			addBreadcrumb(node.id,node.label);
@@ -1838,7 +1831,14 @@ function fixExploreData(mainId,data,backnode)
 			}
 		//node.fromExpansion = true;
 		var nodetopics=node.topics;
-		
+
+			if(x%5==0 && x>0){
+				node.sponsoredNode = "eisai";
+			}
+			if(x%7==0 && x>0){
+				node.sponsoredNode = "jandj";
+			}
+
 		if(nodetopics)
 			{
 			var sorted = [];
@@ -1903,6 +1903,14 @@ function fixAddData(data,nodePos)
 			}
 		//node.fromExpansion = true;
 		var nodetopics=node.topics;
+
+		if(x%5==0 && x>0){
+			node.sponsoredNode = "eisai";
+		}
+		if(x%7==0 && x>0){
+			node.sponsoredNode = "jandj";
+		}
+
 		if(nodetopics)
 			{
 			var sorted = [];
@@ -1952,13 +1960,23 @@ function fixEdgeData(data,hasCommonWords)
 			{
 			var cID  = sentences[y].contentURL;
 			var text = sentences[y].contentSource.charAt(0).toUpperCase() + sentences[y].contentSource.slice(1)
-			
+
+			var sponsoredArticle = null;
+
+			if(elementList.length%5==0 && elementList.length>0){
+				sponsoredArticle = "eisai";
+			}
+			if(elementList.length%7==0 && elementList.length>0){
+				sponsoredArticle = "jandj";
+			}
+
 			elementList.push(
 				{
 				id      : sentences[y].id,
 				uri     : sentences[y].contentURL,
 				title   : sentences[y].contentId,
 				sentence: [text],
+				sponsoredArticle: sponsoredArticle
 				});
 			}
 		}
@@ -2315,7 +2333,7 @@ function setNodeStep(nodeid,step,action)
 
 function clearHistory()
 	{
-	$.get(endpoints.clearhistory);
+	//$.get(endpoints.clearhistory);
 	}
 function getHari(endpoint,data,callback)
 	{
@@ -2347,10 +2365,12 @@ function showInfoLoader(message)
 	$("#infoloader").show();
 	if(!message)
 		message = "LOADING...";
-	$("#infoloader").html(message);
-	$("#infoloader").addClass("show");
+	//$("#infoloader").html(message);
+	//$("#infoloader").addClass("show");
+
 	}
 function hideInfoLoader()
 	{
-	$("#infoloader").removeClass("show");
+		$("#infoloader").hide();
+	//$("#infoloader").removeClass("show");
 	}

@@ -112,6 +112,7 @@ window.addEventListener('blur', function()
 								node.nodeUI.textnode.visible = nodeVisibility(node)
 								node.nodeUI.textnode.scale.x = 1 / graphGraphics.scale.x;
 								node.nodeUI.textnode.scale.y = 1 / graphGraphics.scale.y;
+								node.nodeUI.textnode.anchor.y = textAnchorY * initialFactorForTextAnchor/(1/graphGraphics.scale.y);
 								}
 							});
 
@@ -3168,7 +3169,6 @@ window.addEventListener('blur', function()
 					var stage = new PIXI.Stage(0xffffff, true);
 					var renderer = new PIXI.CanvasRenderer(width * window.devicePixelRatio, height * window.devicePixelRatio, null, false, false);
 					//var renderer = PIXI.autoDetectRenderer(width * window.devicePixelRatio, height * window.devicePixelRatio, null, true, false);
-					console.log(renderer);
 					renderer.view.style.display = "none";
 					renderer.view.style.width = width + 'px';
 					renderer.view.style.height = height + 'px';

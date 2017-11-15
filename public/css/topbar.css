@@ -1,11 +1,11 @@
 /*----------------sidenav-----------------*/
 
 .sidenav {
-	height: 100%;
+	height: calc(100% - 50);
 	width: 400px;
 	position: absolute;
 	z-index: 1;
-	top: 0;
+	top: 50px;
 	right: 0;
 	background-color:white;
 	transition: 0.5s;
@@ -75,12 +75,12 @@ ul.eq-ui-tabs
 .eq-ui-indicator
 {
 	height: 3px !important;
-	max-width: 33.33%;
+	max-width: 50%;
 }
 
 li.eq-ui-tab
 {
-	width:33.333%;
+	width:50%;
 }
 li.eq-ui-tab a span
 {
@@ -155,16 +155,15 @@ car
 	width:100%;
 	position: absolute;
 	left: 0;
-	top: 0;
-	/*border-bottom: 1px solid #e3e3e3;*/
+	top: 55px;
 	background: transparent;
 	text-align: center;
-	/*-moz-box-shadow: 0 0 5px rgba(0,0,0,0.3);
-	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.3);
-	box-shadow: 0 0 5px rgba(0,0,0,0.3);*/
 	transition:1.1s all;
 	overflow: hidden;
 	opacity: 1;
+	height: 70px;
+	padding-top: 10px;
+	display: none;
 	}
 
 #topbar.init 
@@ -235,8 +234,6 @@ car
 	width: 100%;
 	position: absolute;
 	line-height: 0;
-	top: 25%;
-	margin-top: -16px;
 	left: 0;
 	transition:0.5s all;
 	opacity: 1;
@@ -460,4 +457,12 @@ car
 
 #rightbar .eq-ui-tabs .eq-ui-tab{
 	padding: 0 10px;
+}
+
+.eq-ui-modal.eq-ui-modal-right-sheet{
+	width:430px !important;
+}
+
+#main-eq-ui-app-bar .container-fluid{
+	padding-right: 0px;
 }

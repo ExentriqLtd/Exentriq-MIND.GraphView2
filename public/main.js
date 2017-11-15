@@ -5,6 +5,29 @@ autocompleteRequest = null;
 
 $(document).ready(function()
 	{
+
+	//login
+	if($.cookie("egraph") != null){
+		$("#signupBox").hide();
+		$("#signinBox").hide();
+		$(".login-container").hide();
+		$("#main").show();
+		$("#mainblocks").show();
+		$("#mySidenav").show();
+		$(".eq-ui-layout-header").show();
+	}else{
+		$("#signinBox").show();
+	}
+
+		$('.eq-ui-modal-trigger').leanModal({
+			dismissible: true, // Modal can be dismissed by clicking outside of the modal
+			opacity: .5, // Opacity of modal background
+			in_duration: 300, // Transition in duration
+			out_duration: 200, // Transition out duration
+			ready: function() { console.log('Modal Open'); }, // Callback for Modal open
+			complete: function() { console.log('Modal Close'); } // Callback for Modal close
+		});
+
 	clearHistory();
 	
 	initVideo();
@@ -25,7 +48,7 @@ $(document).ready(function()
 	
 	startSearch("epilepsy");
 	$("#searchfield").val("epilepsy");
-	
+
 	window.addEventListener('popstate', function(event) 
 		{
 		console.log('popstate fired!',event);
@@ -103,6 +126,12 @@ function initActions()
 		{
 		$("#filtercontainer").toggleClass("open");
 		});
+
+	$("#siteModal .sponsored-download").on("click",function()
+		{
+			window.open("sample/article.zip","_blank");
+		});
+
 	}
 
 function initLoginBar()
@@ -500,11 +529,16 @@ function autocomplete(search,process)
 			console.log("Suggestion failed");
 			});
 	}
-function showModal(title,url)
+function showModal(title, url, sponsored)
 	{
 	$("#siteModal iframe").attr('src',"");
 	$("#siteModal iframe").attr('src',url);
 	$("#siteModalTitle").html(title);
+	$("#siteModal .modal-footer").hide();
+	if(sponsored){
+		$("#siteModal .modal-footer").show();
+		$("#siteModal .modal-footer img").attr("src","img/" + sponsored + ".png");
+	}
 	$('#siteModal').modal('show');
 	}
 	
