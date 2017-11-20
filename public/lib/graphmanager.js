@@ -17,8 +17,8 @@ var edgeOverColor = 0x41c7ac;
 
 
 var fadeSteps = 15;
-var smallEdge = 4;
-var bigEdge   = 40;
+var smallEdge = 100;
+var bigEdge   = 80;
 
 var initialFactorForTextAnchor = 12;
 var textAnchorY = -2.1;
@@ -263,7 +263,6 @@ ngraph.updateSize = function(nodeId)
 ngraph.nodeGlobalPosition = function(nodeId)
 	{
 	var pos   = ngraph.nodeGraphPosition(nodeId);
-		console.log(pos);
 		var top  = ( $("#graph").height()/2) + (ngraph.graphics.position.y - pos.y)/window.devicePixelRatio;
     var left = $("#graph").width()/2 + (ngraph.graphics.position.x - pos.x)/window.devicePixelRatio + ($("#mainblocks").hasClass("fullsize") ? 0 : -200);
 	return new PIXI.Point(left,top);
@@ -542,7 +541,6 @@ function renderNode(node, ctx)
 					sprite.scale.x = 1.5*(radius/256);
 					sprite.scale.y = 1.5*(radius/256);
 
-
 					node.spritenode = sprite;
 					ctx.addChildAt(sprite,0);
 				}
@@ -674,6 +672,7 @@ function renderLink(link, ctx)
 	else
 		{
 		var strokeWidth =  smallEdge;
+
 		if(!prevmouseover && link.over)
 			{
 			if(!link.fade)
@@ -781,7 +780,12 @@ function renderLink(link, ctx)
 		else
 			{
 			strokeWidth =  smallEdge;
-			ctx.lineStyle(strokeWidth, 0xbbbbbb);
+			strokeColor = 0xf1f1f1;
+			if(mouseroveredge == true){
+				strokeWidth = 4;
+				strokeColor = 0xbbbbbb;
+			}
+			ctx.lineStyle(strokeWidth, strokeColor);
 			ctx.moveTo(link.from.x, link.from.y);
 			ctx.lineTo(link.to.x, link.to.y);
 			}

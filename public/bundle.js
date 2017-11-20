@@ -3373,6 +3373,8 @@ window.addEventListener('blur', function()
 					
 						var half = NODE_WIDTH / 2;
 						var found = null;
+						mouseroveredge=false;
+
 						for (var linkID in linkUI)
 							{
 							var link = linkUI[linkID];
@@ -3386,6 +3388,7 @@ window.addEventListener('blur', function()
 									{
 									link.over = true;
 									found=link;
+									mouseroveredge=true;
 									}
 								}
 							}

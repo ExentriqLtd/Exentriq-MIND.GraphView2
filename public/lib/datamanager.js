@@ -28,6 +28,9 @@ step2id = [];
 
 addloader = null;
 currentview = "graph";
+
+mouseroveredge=false;
+
 function saveState(index)
 	{
 	
