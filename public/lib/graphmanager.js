@@ -467,6 +467,7 @@ function exportLink(link, ctx)
 	}
 function renderNode(node, ctx)
 	{
+
 	if(node.main.data.hidden || node.main.data.hidden_collapse || (currentview == "tree" && node.main.data.treehidden))
 		{
 
@@ -488,7 +489,6 @@ function renderNode(node, ctx)
 			radius *= 1.3;
 			ctx.lineStyle(60, 0x1da397);
 			}
-			//ctx.lineStyle(30, 0x333333);
 		else if(layout.isNodePinned(node.main))
 			ctx.lineStyle(20, node.stroke);
 		else
@@ -522,16 +522,10 @@ function renderNode(node, ctx)
 			overprogress = graphsettings.overEnlarge * (node.step - timings.nodePop)/timings.nodeEnlarge;
 			}	
 			
-		
-		//if(!node.main.data.isDocument)
-		//	
-		//else
-		//	ctx.drawRect(x-radius * progress, y-radius * progress, 2*radius * progress,2*radius * progress);
-		
 		if (!node.textnode)
 			{
 
-				if(node.main.data.sponsoredNode)
+				if(node.main.data.sponsoredNode && false)
 				{
 					var sprite = PIXI.Sprite.fromImage("img/"+node.main.data.sponsoredNode+".png");
 
@@ -611,11 +605,7 @@ function renderNode(node, ctx)
 
 			ctx.addChild(text);
 			}
-		//node.circle.visible = true;
 		node.textnode.visible = nodeVisibility(node.main);
-		
-		//node.circle.position.x = x;
-		//node.circle.position.y = y;
 		
 		node.textnode.position.y = y;
 		if(currentview == "graph")
@@ -643,7 +633,7 @@ function renderNode(node, ctx)
 			}
 		else
 			{
-			ctx.drawCircle(x, y, radius * (progress+overprogress));	
+			ctx.drawCircle(x, y, radius * (progress+overprogress));
 			}
 		ctx.endFill();
 		}
@@ -985,11 +975,13 @@ function renderCanvasLoader(ctx)
 		{
 		if(addloader)
 			{
-			ngraph.canvasLoader.base.position = addloader;
+			showInfoLoader();
+			/*ngraph.canvasLoader.base.position = addloader;
 			ngraph.canvasLoader.rotate.position = addloader;
 			ngraph.canvasLoader.base.visible = true;
 			ngraph.canvasLoader.rotate.visible = true;
-			ngraph.canvasLoader.rotate.rotation = 2 * Math.PI * (Date.now() % 720)/720;
+			ngraph.canvasLoader.rotate.rotation = 2 * Math.PI * (Date.now() % 720)/720;*/
+
 			}
 		else
 			{
