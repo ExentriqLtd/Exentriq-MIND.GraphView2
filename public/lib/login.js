@@ -27,3 +27,8 @@ function logout(){
     document.location.reload(true);
     return false;
 }
+function openSignupStep2(){
+    $("#signupBox").hide();
+    $("#signupBoxStep2-1").show();
+    return false;
+}
