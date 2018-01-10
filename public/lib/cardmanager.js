@@ -95,12 +95,12 @@ function dodraw(id, root, child, thumb, title, text, node, after,noinfo)
         var sponsoredNode = "";
         var sponsoredAttr = "";
         if(node.sponsoredNode){
-            sponsoredNode = "<div class=\"sponsored_item\"><img src=\"img/" + node.sponsoredNode+".png" + "\"></div>";
-            sponsoredAttr = node.sponsoredNode;
+            //sponsoredNode = "<div class=\"sponsored_item\"><img src=\"img/" + node.sponsoredNode+".png" + "\"></div>";
+            sponsoredAttr = JSON.stringify(node.sponsoredNode);
         }
 
     var newelement = $('' +
-        '<li id="' + id + '" data-title="' + title + '" data-referenceId="' + node.referenceId + '" data-sponsored="' + sponsoredAttr + '"  data-uri="' + node.articleUri + '" class="">' +
+        '<li id="' + id + '" data-title="' + title + '" data-referenceId="' + node.referenceId + '" data-sponsored=\'' + sponsoredAttr + '\'  data-uri="' + node.articleUri + '" class="">' +
             '<div class="eq-ui-collapsible-header">' +
                 '<div class="card ' + (root ? "root" : "") + ' ' + (child || after ? "child" : "") + '">' +
                     (thumb !== "" ? '<div class="thumb" data-thumb="' + thumb + '" style="background-image:url(' + thumb + ')"></div>' : "") +
@@ -185,14 +185,14 @@ function drawsentence(title, sentences,uri,sponsoredArticle)
       var sponsored = "";
         var sponsoredAttr = "";
       if(sponsoredArticle){
-          sponsored = "<div class=\"sponsored_item\"><img src=\"img/" + sponsoredArticle+".png" + "\"></div>";
-          sponsoredAttr = sponsoredArticle;
+          //sponsored = "<div class=\"sponsored_item\"><img src=\"img/" + sponsoredArticle+".png" + "\"></div>";
+          sponsoredAttr = JSON.stringify(sponsoredArticle);
       }
     for(var x=0;x<sentences.length;x++)
         {
         var text = sentences[x];
         var newelement = $('' +
-	        '<div data-title="' + title + '" data-uri="' + uri + '" data-sponsored="' + sponsoredAttr + '"class="piece" style="display:none">' +
+	        '<div data-title="' + title + '" data-uri="' + uri + '" data-sponsored=\'' + sponsoredAttr + '\' class="piece" style="display:none">' +
 	            '<div class="card edgecard">' +
 	                
 	                '<div class="actions">' +
@@ -617,7 +617,12 @@ $(document).ready(function() {
         var title  = $(this).parents(".piece").attr("data-title");
         var url  = "http://www.ncbi.nlm.nih.gov/m/pubmed/" + $(this).parents(".piece").attr("data-uri");
         //var url  = "https://www.ncbi.nlm.nih.gov/pmc/articles/pmid/" + $(this).parents(".piece").attr("data-uri");
-        var sponsored  = $(this).parents(".piece").attr("data-sponsored");
+        var sponsoredList =$(this).parents(".piece").attr("data-sponsored");
+        console.log(sponsoredList);
+        var sponsored = null;
+        if(sponsoredList){
+            sponsored  = JSON.parse(sponsoredList);
+        }
         console.log(title,url);
         showModal(title,url,sponsored);
     })
@@ -630,7 +635,12 @@ $(document).ready(function() {
             url = "sample/FYCO-Krauss Study 307.pdf";
         }
         var title  = $(this).parents("li").attr("data-title");
-        var sponsored  = $(this).parents("li").attr("data-sponsored");
+
+        var sponsoredList = $(this).parents("li").attr("data-sponsored");
+        var sponsored = null;
+        if(sponsoredList){
+            sponsored  = JSON.parse(sponsoredList);
+        }
         console.log(title,url);
         showModal(title,url,sponsored);
     })

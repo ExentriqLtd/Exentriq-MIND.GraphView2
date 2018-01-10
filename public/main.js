@@ -536,8 +536,12 @@ function showModal(title, url, sponsored)
 	$("#siteModalTitle").html(title);
 	$("#siteModal .modal-footer").hide();
 	if(sponsored){
+		$("#siteModal .modal-footer .company-logo").html("");
 		$("#siteModal .modal-footer").show();
-		$("#siteModal .modal-footer img").attr("src","img/" + sponsored + ".png");
+		$(sponsored).each(function(idx,el){
+			console.log(el);
+			$("#siteModal .modal-footer .company-logo").append("<img src=\"img/" + el + ".png\"/>");
+		})
 	}
 	$('#siteModal').modal('show');
 	}

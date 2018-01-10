@@ -1713,11 +1713,9 @@ function fixData(data,callback,path)
 		var node = nodes[x];
 		node.centroid	 = centroids[+node.id] || 1000000;
 
-		if(x%5==0 && x>0){
-			node.sponsoredNode = "eisai";
-		}
-		if(x%7==0 && x>0){
-			node.sponsoredNode = "jandj";
+		if(x%2==0){
+			node.sponsoredNode = ["eisai","jandj"];
+			console.log(x,node);
 		}
 
 		if(centroids[+node.id])
@@ -1835,12 +1833,10 @@ function fixExploreData(mainId,data,backnode)
 		//node.fromExpansion = true;
 		var nodetopics=node.topics;
 
-			if(x%5==0 && x>0){
-				node.sponsoredNode = "eisai";
-			}
-			if(x%7==0 && x>0){
-				node.sponsoredNode = "jandj";
-			}
+		if(x%2==0){
+			node.sponsoredNode = ["eisai","jandj"];
+		}
+
 
 		if(nodetopics)
 			{
@@ -1907,11 +1903,8 @@ function fixAddData(data,nodePos)
 		//node.fromExpansion = true;
 		var nodetopics=node.topics;
 
-		if(x%5==0 && x>0){
-			node.sponsoredNode = "eisai";
-		}
-		if(x%7==0 && x>0){
-			node.sponsoredNode = "jandj";
+		if(x%2==0){
+			node.sponsoredNode = ["eisai","jandj"];
 		}
 
 		if(nodetopics)
@@ -1966,11 +1959,8 @@ function fixEdgeData(data,hasCommonWords)
 
 			var sponsoredArticle = null;
 
-			if(elementList.length%5==0 && elementList.length>0){
-				sponsoredArticle = "eisai";
-			}
-			if(elementList.length%7==0 && elementList.length>0){
-				sponsoredArticle = "jandj";
+			if(elementList.length%2==0){
+				sponsoredArticle = ["eisai","jandj"];
 			}
 
 			elementList.push(
