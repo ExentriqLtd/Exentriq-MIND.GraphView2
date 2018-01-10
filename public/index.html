@@ -583,11 +583,25 @@
                 <ul class="eq-ui-collapsible" data-collapsible="accordion">
                     <li>
                         <div class="eq-ui-collapsible-header active">
-                            <a><i class="mdi mdi-account icon icon-left icon-24"></i>1. Personal Info</a>
+                            <a><i class="mdi mdi-account icon icon-left icon-24"></i>1. Personal Information</a>
                         </div>
                         <div class="eq-ui-collapsible-body">
                             <div class="eq-ui-collapsible-body-inner">
                                <form>
+                                   <div class="row">
+                                       <div class="col-md-6">
+                                           <div class="eq-ui-form-group eq-ui-input-field">
+                                               <input id="inputFName" name="inputEmail" type="text" class="form-control eq-ui-input" required>
+                                               <label for="inputFName">First Name</label>
+                                           </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                           <div class="eq-ui-form-group eq-ui-input-field">
+                                               <input id="inputLastName" name="inputEmail" type="text" class="form-control eq-ui-input" required>
+                                               <label for="inputLastName">Last Name</label>
+                                           </div>
+                                       </div>
+                                   </div>
                                    <div class="row">
                                        <div class="col-md-6">
                                            <div class="eq-ui-form-group eq-ui-input-field">
@@ -620,17 +634,128 @@
                                        <div class="col-md-12">
                                            <div class="eq-ui-form-group eq-ui-input-field">
                                                <input id="inputQuestion" name="inputEmail" type="text" class="form-control eq-ui-input" required>
-                                               <label for="inputQuestion">Security Question</label>
+                                               <label for="inputQuestion">Security Question 1</label>
                                            </div>
                                        </div>
                                        <div class="col-md-12">
                                            <div class="eq-ui-form-group eq-ui-input-field">
                                                <input id="inputAnswere" name="inputEmail" type="text" class="form-control eq-ui-input" required>
-                                               <label for="inputAnswere">Answere</label>
+                                               <label for="inputAnswere">Answere 1</label>
+                                           </div>
+                                       </div>
+                                       <div class="col-md-12">
+                                           <div class="eq-ui-form-group eq-ui-input-field">
+                                               <input id="inputQuestion2" name="inputEmail" type="text" class="form-control eq-ui-input" required>
+                                               <label for="inputQuestion2">Security Question 2</label>
+                                           </div>
+                                       </div>
+                                       <div class="col-md-12">
+                                           <div class="eq-ui-form-group eq-ui-input-field">
+                                               <input id="inputAnswere2" name="inputEmail" type="text" class="form-control eq-ui-input" required>
+                                               <label for="inputAnswere2">Answere 2</label>
+                                           </div>
+                                       </div>
+                                       <div class="col-md-12">
+                                           <div class="eq-ui-form-group eq-ui-input-field">
+                                               <input id="inputQuestion3" name="inputEmail" type="text" class="form-control eq-ui-input" required>
+                                               <label for="inputQuestion3">Security Question 3</label>
+                                           </div>
+                                       </div>
+                                       <div class="col-md-12">
+                                           <div class="eq-ui-form-group eq-ui-input-field">
+                                               <input id="inputAnswere3" name="inputEmail" type="text" class="form-control eq-ui-input" required>
+                                               <label for="inputAnswere3">Answere 3</label>
                                            </div>
                                        </div>
                                    </div>
+                                   <a class="btn btn-primary eq-deep-blue-500 next_button_step-1" style="max-width: 200px;margin-top: 20px; margin-left: auto;">NEXT</a>
+
                                </form>
+
+
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="eq-ui-collapsible-header">
+                            <a><i class="mdi mdi-briefcase icon icon-left icon-24"></i>2. Proffessional Info</a>
+                        </div>
+                        <div class="eq-ui-collapsible-body">
+                            <div class="eq-ui-collapsible-body-inner">
+                                <form>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="eq-ui-form-group eq-ui-input-field">
+                                            <input id="inputDEA" name="inputEmail" type="text" class="form-control eq-ui-input" required>
+                                            <label for="inputDEA">DEA Number</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="eq-ui-form-group eq-ui-input-field">
+                                            <input id="inputNpi" name="inputEmail" type="text" class="form-control eq-ui-input" required>
+                                            <label for="inputNpi">NPI Number</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="eq-ui-form-group eq-ui-input-field">
+                                            <input id="inputBusiness" name="inputEmail" type="text" class="form-control eq-ui-input" required>
+                                            <label for="inputBusiness">Business Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="eq-ui-form-group eq-ui-input-field">
+                                            <input id="inputTnum" name="inputEmail" type="text" class="form-control eq-ui-input" required>
+                                            <label for="inputTnum">Telephone Number</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="eq-ui-form-group eq-ui-input-field">
+                                            <input id="inputAdd1w" name="inputEmail" type="text" class="form-control eq-ui-input" required>
+                                            <label for="inputAdd1w">Adress 1</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="eq-ui-form-group eq-ui-input-field">
+                                            <input id="inputAdd2w" name="inputEmail" type="text" class="form-control eq-ui-input" required>
+                                            <label for="inputAdd2w">Adress 2</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="eq-ui-form-group eq-ui-input-field">
+                                            <input id="inputCity1" name="inputEmail" type="text" class="form-control eq-ui-input" required>
+                                            <label for="inputCity1">City</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="eq-ui-form-group eq-ui-input-field">
+                                            <input id="inputState1" name="inputEmail" type="text" class="form-control eq-ui-input" required>
+                                            <label for="inputState1">State</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="eq-ui-form-group eq-ui-input-field">
+                                            <input id="inputZip1" name="inputEmail" type="text" class="form-control eq-ui-input" required>
+                                            <label for="inputZip1">Zip Code</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="btn btn-primary eq-deep-blue-500 next_button_step-1" style="max-width: 200px;margin-top: 20px; margin-left: auto;">NEXT</a>
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="eq-ui-collapsible-header">
+                            <a><i class="mdi mdi-cash icon icon-left icon-24"></i>3. Billing Info</a>
+                        </div>
+                        <div class="eq-ui-collapsible-body">
+                            <div class="eq-ui-collapsible-body-inner">
                                 <form>
                                     <div class="row">
                                         <div class="col-md-2">
@@ -665,59 +790,72 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="eq-ui-form-group eq-ui-input-field">
-                                                <input id="inputAdress1" name="inputEmail" type="text" class="form-control eq-ui-input" required>
-                                                <label for="inputAdress1">Address 1</label>
+                                                <input id="inputAdd1w2" name="inputEmail" type="text" class="form-control eq-ui-input" required>
+                                                <label for="inputAdd1w2">Adress 1</label>
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
+                                        <div class="col-md-9">
                                             <div class="eq-ui-form-group eq-ui-input-field">
-                                                <input id="inputAdress2" name="inputEmail" type="text" class="form-control eq-ui-input" required>
-                                                <label for="inputAdress2">Address 2</label>
+                                                <input id="inputAdd1w3" name="inputEmail" type="text" class="form-control eq-ui-input" required>
+                                                <label for="inputAdd1w3">Adress 2</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="eq-ui-form-group eq-ui-input-field">
+                                                <input id="inputphoneBill4" name="inputEmail" type="text" class="form-control eq-ui-input" required>
+                                                <label for="inputphoneBill4">Telephone</label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="eq-ui-form-group eq-ui-input-field">
-                                                <input id="inputCity" name="inputEmail" type="text" class="form-control eq-ui-input" required>
-                                                <label for="inputCity">City</label>
+                                                <input id="inputCity3" name="inputEmail" type="text" class="form-control eq-ui-input" required>
+                                                <label for="inputCity3">City</label>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="eq-ui-form-group eq-ui-input-field">
-                                                <input id="inputState" name="inputEmail" type="text" class="form-control eq-ui-input" required>
-                                                <label for="inputState">State</label>
+                                                <input id="inputState3" name="inputEmail" type="text" class="form-control eq-ui-input" required>
+                                                <label for="inputState3">State</label>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="eq-ui-form-group eq-ui-input-field">
-                                                <input id="inputZip" name="inputEmail" type="text" class="form-control eq-ui-input" required>
-                                                <label for="inputZip">Zip Code</label>
+                                                <input id="inputZip3" name="inputEmail" type="text" class="form-control eq-ui-input" required>
+                                                <label for="inputZip3">Zip Code</label>
                                             </div>
                                         </div>
                                     </div>
-                                    <a class="btn btn-primary eq-deep-blue-500" style="max-width: 200px;margin-top: 20px;">NEXT</a>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="eq-ui-form-group eq-ui-input-field">
+                                                <input id="inputCCN" name="inputEmail" type="text" class="form-control eq-ui-input" required>
+                                                <label for="inputCCN">Credit Card Number</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="eq-ui-form-group eq-ui-input-field">
+                                                <input id="inputExpM" name="inputEmail" type="text" class="form-control eq-ui-input" required>
+                                                <label for="inputExpM">EXP MM</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="eq-ui-form-group eq-ui-input-field">
+                                                <input id="inputExpy" name="inputEmail" type="text" class="form-control eq-ui-input" required>
+                                                <label for="inputExpy">EXP YY</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="eq-ui-form-group eq-ui-input-field">
+                                                <input id="inputCcv" name="inputEmail" type="text" class="form-control eq-ui-input" required>
+                                                <label for="inputCcv">CCV</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a class="btn btn-primary eq-deep-blue-500 next_button_step-1" style="max-width: 200px;margin-top: 20px; margin-left: auto;">FINISH</a>
+
                                 </form>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="eq-ui-collapsible-header">
-                            <a><i class="mdi mdi-briefcase icon icon-left icon-24"></i>2. Proffessional Info</a>
-                        </div>
-                        <div class="eq-ui-collapsible-body">
-                            <div class="eq-ui-collapsible-body-inner">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee.
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="eq-ui-collapsible-header">
-                            <a><i class="mdi mdi-cash icon icon-left icon-24"></i>3. Billing Info</a>
-                        </div>
-                        <div class="eq-ui-collapsible-body">
-                            <div class="eq-ui-collapsible-body-inner">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee.
                             </div>
                         </div>
 
@@ -736,7 +874,7 @@
                 <h6 class="login-title"><img width="200px" src="https://exentriq.com/exentriq-delivery/925a126a-8d28-4a6a-8658-6e9c558e6314.png" alt=""></h6>
                 <p class="subtitles_reg eq-deep-blue-text-500">Choose your account type :</p>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="column_info">
                             <h6 class="eq-deep-blue-text-500">Physician<span>56$/month</span></h6>
                             <p>What's included :</p>
@@ -749,20 +887,8 @@
                             <a class="btn btn-primary eq-deep-blue-500" href="javascript:openSignupStep2();">I'm a Physician</a>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="column_info">
-                            <h6 class="eq-deep-blue-text-500">Group Practice<span>90$/month</span></h6>
-                            <p>What's included :</p>
-                            <ul>
-                                <li>Feature 1</li>
-                                <li>Feature 2</li>
-                                <li>Feature 3</li>
-                                <li>Feature 4</li>
-                            </ul>
-                            <a class="btn btn-primary eq-deep-blue-500" href="javascript:openSignupStep2();">We are a Practice</a>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
+
+                    <div class="col-md-6">
                         <div class="column_info">
                             <h6 class="eq-deep-blue-text-500">Pharmacy<span>70$/month</span></h6>
                             <p>What's included :</p>

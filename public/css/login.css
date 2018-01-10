@@ -231,6 +231,13 @@ p.subtitles_reg
 
 }
 
+.eq-ui-collapsible-header.active
+{
+    background-color: #2f4357 !important;
+    font-weight: 800;
+    color: white;
+}
+
 @media (max-width: 1412px) {
 
     body.eq-ui-side-nav-visible .container {

@@ -32,3 +32,14 @@ function openSignupStep2(){
     $("#signupBoxStep2-1").show();
     return false;
 }
+
+$( document ).ready(function() {
+
+    $(document).on('click','.myClickEl', function() {
+
+    });
+
+
+});
+
+
