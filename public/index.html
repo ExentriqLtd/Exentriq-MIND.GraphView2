@@ -574,6 +574,18 @@
 
 <!-- Login Page -->
 <main class="main login-container scrollable">
+    <div id="lastBox" class="container eq-last-box" style="display: none">
+        <div  class="eq-ui-card eq-login">
+            <div class="eq-ui-card-supporting-text">
+                <h6 class="login-title"><img width="200px" src="https://exentriq.com/exentriq-delivery/925a126a-8d28-4a6a-8658-6e9c558e6314.png" alt=""></h6>
+                <p class="subtitles_reg eq-deep-blue-text-500 center-align">Thank you for your registration.</p>
+            </div>
+            <div class="back-to-login-container">
+                <i class="mdi mdi-arrow-left"></i> <a href="javascript:backToLogin();">Back to login</a>
+            </div>
+        </div>
+    </div>
+
     <div id="signupBoxStep2-1" class="container eq-login-cont2" style="display:none">
         <!-- Card -->
         <div  class="eq-ui-card eq-login">
@@ -853,7 +865,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a class="btn btn-primary eq-deep-blue-500" style="max-width: 200px;margin-top: 20px; margin-left: auto;">FINISH</a>
+                                    <a class="btn btn-primary eq-deep-blue-500" style="max-width: 200px;margin-top: 20px; margin-left: auto;" href="javascript:finishRegistration();">FINISH</a>
 
                                 </form>
                             </div>
@@ -861,6 +873,9 @@
                     </li>
                 </ul>
 
+            </div>
+            <div class="back-to-login-container">
+                <i class="mdi mdi-arrow-left"></i> <a href="javascript:backToLogin();">Back to login</a>
             </div>
         </div>
         <!-- Bootom Links -->
@@ -901,6 +916,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="back-to-login-container">
+                <i class="mdi mdi-arrow-left"></i> <a href="javascript:backToLogin();">Back to login</a>
             </div>
         </div>
         <!-- Bootom Links -->

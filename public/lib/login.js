@@ -33,6 +33,22 @@ function openSignupStep2(){
     return false;
 }
 
+function finishRegistration()
+{
+    $("#signupBoxStep2-1").hide();
+    $("#lastBox").show();
+    return false;
+}
+
+function backToLogin()
+{
+    $("#signupBox").hide();
+    $("#signupBoxStep2-1").hide();
+    $("#lastBox").hide();
+    $("#signinBox").show();
+    return false;
+}
+
 
 
 $( document ).ready(function() {
