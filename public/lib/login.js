@@ -34,17 +34,12 @@ function openSignupStep2(){
 }
 
 
+
 $( document ).ready(function() {
 
     $( "a.next_button_step-1" ).on( "click", function() {
-        console.log($(this).parent().parent().parent().siblings(".eq-ui-collapsible-header a"));
-        /*console.log($(this).parent().parent().parent().parent().siblings("li .eq-ui-collapsible-header a"));*/
-
-
-
-        $(this).parent().parent().parent().siblings(".eq-ui-collapsible-header a").trigger("click");
-        /*$(this).parent().parent().parent().parent().siblings("li .eq-ui-collapsible-header a").trigger("click");*/
-
+        $(this).parent().parent().parent().siblings().children("a").trigger("click");
+        $(this).parent().parent().parent().parent().next().children().children("a").trigger("click");
     });
 
 });
