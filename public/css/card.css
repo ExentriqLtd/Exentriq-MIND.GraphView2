@@ -96,10 +96,11 @@ input.eq-ui-input[type=checkbox]+label {
 }
 
 
-.eq-ui-collapsible-header
+#cardcontainer .eq-ui-collapsible-header
 {
-
-	border-bottom: none !important;
+	height: 66px !important;
+    border-bottom: none !important;
+    background: transparent !important;
 }
 
 .popover
@@ -352,7 +353,7 @@ input.eq-ui-input[type=checkbox]+label {
 	}
 
 #cardcontainer .card{
-	height: 65px;
+	height: 66px;
 }
 
 
