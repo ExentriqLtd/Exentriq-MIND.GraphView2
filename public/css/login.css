@@ -22,6 +22,10 @@ eq-login-cont2
     margin-bottom: 20px;
 }
 
+#signupBox .eq-login {
+    margin-top: 10px;
+}
+
 .eq-login .eq-ui-card-supporting-text {
     padding: 25px 50px;
 }
@@ -212,7 +216,7 @@ p.subtitles_reg
 }
 
 #signupBoxStep2-1 .eq-login {
-    margin-top: 5%;
+    margin-top: 10px;
 }
 
 #signupBoxStep2-1 .eq-ui-input-field
