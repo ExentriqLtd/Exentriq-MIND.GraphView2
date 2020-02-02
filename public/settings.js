@@ -9,7 +9,7 @@ forcesettings =
 
 	smallmass    : 20,
 	midmass      : 150,
-	bigmass      : 150,
+	bigmass      : 250,
 	//theta      : 1
 	
 	attractors   : 0.002,

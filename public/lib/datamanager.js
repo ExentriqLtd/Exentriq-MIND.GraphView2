@@ -609,7 +609,16 @@ function crawl(id, root, child, title, text, node, after)
 		}
 
 	data.id = node.id;
-	$.getJSON(endpoints.getAbstract,data)
+
+	var url = endpoints.getAbstract;
+	if(data.id){
+		console.log(data);
+		url = endpoints.getAbstract + data.id + ".json";
+		draw(id, root, child, "", data.term, "", node, after);
+		return;
+	}
+
+	$.getJSON(url,data)
 		.done(function(response)
 			{
 			var nodetitle = response.title; 
@@ -2338,9 +2347,13 @@ function getHari(endpoint,data,callback)
 		{
 		data.graphId = currentsearchdata.graphId
 		}
-	var requestdata = $.extend({},endpointsdefaults,data)
-	return $.getJSON(url,data,callback);
+	var requestdata = $.extend({},endpointsdefaults,data);
+	if(data.referenceId){
+		url = docendpoints[endpoint] + data.referenceId + ".json";
 	}
+	console.log(url);
+	return $.getJSON(url,data,callback);
+}
 
 
 function showBlockingLoader()
