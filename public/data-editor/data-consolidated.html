@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Consolidated Data Editor</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+	<script type="text/javascript" src="js/spreadsheet/spreadsheet.js?v=3.1.2"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+	<script src="js/chosen/chosen.jquery.js" type="text/javascript"></script>
+	<script src="js/jquery.csv.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="js/main.js?rand=123"></script>
+  <script type="text/javascript" src="js/data-consolidated.js?rand=123"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<link rel="stylesheet" href="css/spreadsheet/spreadsheet.css?v=3.1.2">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" />
+	<link rel="stylesheet" href="js/chosen/chosen.css">
+  <link rel="stylesheet" href="css/main.css?rand=123" />
+</head>
+
+<body class="container-table">
+   <div class="container-header-modal" style="display:block;">
+      <div class="container-buttons">
+	      <div class="element-counter">
+		    <div class="number-of-elements">
+			  <span class="nmbr"></span>
+			  <span>Elements</span>
+			</div>
+	      </div>
+	      <div class="buttons-list">
+		    <!-- <div class="button-filters-page button-error-page"></div> -->
+		    <a class="button-filters-page download-open"></a> 
+			<div class="button-filters-page filter-open"></div>
+	      </div>
+      </div>
+      <div class="filter-sidemenu">
+	      <div class="header-filter">
+		     <span>Filters</span>
+		     <div class="close-filter"><i class="material-icons">close</i></div>
+	      </div>
+	      <section class="filters"></section>
+      </div>
+   </div>
+   <div class="bar-selection" style="display: none;">
+		<div class="container-buttons-bar">
+		   <div class="number-of-elements">
+			  <div class="close-element"></div>
+			  <span class="nmbr">325</span>
+			  <span> Selected</span>
+			</div>
+			<div class="buttons-list">
+				<!--<a class="select-all-btn">SELECT ALL</a>-->
+				<a class="multipleAction" style="display: none;"><span>ACTION</span></a>
+				<!-- <a class="multipleAction discard-all-btn" style="display: none;">DISCARD</a>
+				<a class="multipleAction reject-all-btn" style="display: none;">REJECT</a>
+				<a class="multipleAction accept-all-btn" style="display: none;">ACCEPT</a>		 -->
+			</div>
+	   </div>
+   </div>
+   <section class="dhx_sample-container" >
+      <div class="dhx_sample-container__widget" id="cont"></div>
+   </section>
+   <div class="pagination-button">
+		<a class="pag-button" href="#">load more data...</a>
+	</div>
+	</body>
+<script>
+$( document ).ready(function() {
+	
+    $( ".filter-open" ).on( "click", function() {	    
+	  $( ".filter-open" ).addClass("active"); 
+	  $( ".filter-sidemenu" ).addClass("view-filters"); 	  
+    });
+    
+    $( ".close-filter" ).on( "click", function() {
+	   $( ".filter-open" ).removeClass("active");
+	   $( ".errors-open" ).removeClass("active");
+	   $( ".filter-sidemenu" ).removeClass("view-filters"); 
+	   $( ".errors-sidemenu" ).removeClass("view-errors"); 
+    });
+    
+    $( ".close-element" ).on( "click", function() {
+	    $(".bar-selection").fadeOut();
+	     setTimeout(function(){
+		 	$(".container-header-modal").fadeIn();
+	    }, 400);
+    });
+    
+    $( ".selection-open" ).on( "click", function() {
+	  $( ".selection-open" ).toggleClass("active");  
+    });
+});
+</script>
+
+</html>

@@ -126,7 +126,7 @@ input.eq-ui-input[type=checkbox]+label {
 	}
 #filtercontainer.open
 	{
-	height: 250px;	
+	height: 250px;
 	}
 #filtertitle
 	{
@@ -173,7 +173,7 @@ input.eq-ui-input[type=checkbox]+label {
 	{
 	border:0;
 	width: 100%;
-	
+
 	/*margin:0 6px 0 0;*/
 	margin: 1px 0;
 	padding:0 10px;
@@ -281,7 +281,7 @@ input.eq-ui-input[type=checkbox]+label {
 #carrotcontainer .card .links.media_video img
 	{
 	cursor: pointer;
-	
+
 	}
 
 #carrotcontainer .card .links.media_video:after
@@ -332,11 +332,11 @@ input.eq-ui-input[type=checkbox]+label {
 	color:#666;
 	margin:0px 5px;
 	}
-	
+
 .touch .actions a
 	{
 	font-size: 1.5em;
-	margin:0px 10px;	
+	margin:0px 10px;
 	}
 .actions .closetab
 	{
@@ -679,7 +679,7 @@ vertical-align: bottom;
 	transition:0.5s all;
 	transform: scale(1);
 	-moz-transform: scale(1);
-	-webkit-transform: scale(1);	
+	-webkit-transform: scale(1);
 	}
 .bookmarkanimation.enlarge i
 	{
@@ -687,13 +687,13 @@ vertical-align: bottom;
 	-moz-transform: scale(1.5);
 	-webkit-transform: scale(1.5);
 	}
-	
+
 i.bookmarkanimation
 	{
 	transition:0.5s all;
 	transform: scale(1);
 	-moz-transform: scale(1);
-	-webkit-transform: scale(1);	
+	-webkit-transform: scale(1);
 	}
 i.bookmarkanimation.enlarge
 	{
@@ -768,7 +768,7 @@ i.bookmarkanimation.enlarge
 	/*
 	padding: 5px;
 	border-bottom: 3px solid #ccc;	*/
-	}	
+	}
 .tagcloudtitle
 	{
 	/* margin: -5px -5px 0 -5px; */
@@ -792,7 +792,7 @@ i.bookmarkanimation.enlarge
 	/* text-align: center; */
 	text-decoration: underline;
 	}
-.tagcloudcontainer span 
+.tagcloudcontainer span
 	{
 	margin-left: 10px;
 	padding: 3px 8px;
@@ -815,7 +815,7 @@ i.bookmarkanimation.enlarge
 	}
 .tagcloudcontainer span.existingnode
 	{
-	
+
 	cursor: pointer;
 	}
 
@@ -871,4 +871,36 @@ i.bookmarkanimation.enlarge
 
 .edgecard .sponsored_item img {
 	width: 100px;
+}
+
+.info-place-container {
+	padding: 16px;
+	background-color: #1bbc9b !important;
+	margin-top: 16px;
+}
+
+.caption-heading a {
+	display: flex;
+	align-items: center;
+	color: #fff;
+	margin-top: 8px;
+}
+
+.info-place-container a span {
+	margin-left: 16px;
+}
+
+table.info-detail {
+	border-collapse: collapse;
+	margin-top: 16px;
+}
+
+table.info-detail tbody tr td {
+	border: 1px solid #dddddd;
+	padding: 8px 16px;
+}
+
+table .primary-color {
+	background-color: #1bbc9b !important;
+	color: #ffffff !important;
 }

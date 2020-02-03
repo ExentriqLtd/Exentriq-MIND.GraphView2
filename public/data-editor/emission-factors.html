@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Emission Factors Editor</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+	<script type="text/javascript" src="js/spreadsheet/spreadsheet.js?v=3.1.2"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+	<script src="js/chosen/chosen.jquery.js" type="text/javascript"></script>
+	<script type="text/javascript" src="js/main.js?rand=123"></script>
+  <script type="text/javascript" src="js/emission-factors.js?rand=123"></script>
+	<link rel="stylesheet" href="css/spreadsheet/spreadsheet.css?v=3.1.2">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" />
+	<link rel="stylesheet" href="js/chosen/chosen.css">
+  <link rel="stylesheet" href="css/main.css" />
+
+  <style>
+  .dhx_grid_cell[title="ERROR"] .dhx_spreadsheet_cell
+  {
+	background: #E04747;
+    margin: 5px;
+    height: 22px;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 4px;
+    line-height: 22px;
+  }
+  .dhx_grid_cell[title="WARNING"] .dhx_spreadsheet_cell
+  {
+	background: #EBB511;
+    margin: 5px;
+    height: 22px;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 4px;
+    line-height: 22px;
+  }
+  .dhx_grid_cell[title="READY_TO_IMPORT"] .dhx_spreadsheet_cell
+  {
+	background: #8ED3BF;
+    margin: 5px;
+    height: 22px;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 4px;
+    line-height: 22px;
+  }
+  .dhx_grid_cell[title="IMPORTED"] .dhx_spreadsheet_cell
+  {
+	background: #3DB491;
+    margin: 5px;
+    height: 22px;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 4px;
+    line-height: 22px;
+  }
+
+  .dhx_lock_icon
+  {
+	  display: none;
+  }
+  </style>
+</head>
+
+<body>
+  <section class="filters">
+	</section>
+	<section class="dhx_sample-container" >
+		<div class="dhx_sample-container__widget" style="height: 500px" id="cont"></div>
+	</section>
+
+</body>
+
+</html>

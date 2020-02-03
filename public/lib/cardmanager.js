@@ -74,7 +74,7 @@ function dodraw(id, root, child, thumb, title, text, node, after,noinfo)
         newblock.attr("data-original-title",topic.key.toUpperCase())
         topicblock.append(newblock);
         }
-    
+
     //var topicsString = "<div>TOPICS</div>" + topicTooltips(+id)
     var exploreAction = ""
 	if(!node.expanded)
@@ -112,8 +112,21 @@ function dodraw(id, root, child, thumb, title, text, node, after,noinfo)
             '</div>' +
             '<div class="eq-ui-collapsible-body">' +
                 '<div class="eq-ui-collapsible-body-inner">' +
-                    '<div class="links">' +
-                        text +
+                    '<div class="links caption-heading">' +
+                        '<div class="info-place-container">' +
+                            '<a href="" target="_blank" class="align-mid-details adress-of-card">' +
+                            '<i class="material-icons">location_city</i>' +
+                            '<span>Batu 13 1/2, 32400 Ayer Tawar<br> Perak, Malaysia</span>' +
+                            '</a>' +
+                            '<a class="phone-of-card align-mid-details" target="_blank" href="">' +
+                            '<i class="material-icons">phone</i>' +
+                            '<span>267351276</span>' +
+                            '</a>' +
+                            '<a class="detail-envelope align-mid-details" href="">' +
+                            '<i class="material-icons">email</i>' +
+                            '<span>kepong.perak@kp.com</span>' +
+                            '</a>' +
+                        '</div>' +
                     '</div>' +
                     '<div class="linkarticle" style="' + (text=="Processing..." ? "display:none" : "") + '">' +
                         '<a class="link" href="'+ node.articleUri +'" target="_blank">Read More</a>' +
@@ -164,7 +177,7 @@ function dodraw(id, root, child, thumb, title, text, node, after,noinfo)
 function updateCard(nodeId)
 	{
 	var node = currentRenderer.getNode(nodeId);
-	
+
 	var exploreAction = ""
 	if(!node.data.expanded)
 		exploreAction = '<li><a class="explore">Explore</a></li>';
@@ -194,7 +207,7 @@ function drawsentence(title, sentences,uri,sponsoredArticle)
         var newelement = $('' +
 	        '<div data-title="' + title + '" data-uri="' + uri + '" data-sponsored=\'' + sponsoredAttr + '\' class="piece" style="display:none">' +
 	            '<div class="card edgecard">' +
-	                
+
 	                '<div class="actions">' +
 	                    '<a class="bookmark bookclass" data-original-title="BOOKMARK"><i class="fa fa-star-o"></i></a>' +
 	                    '<a class="info" data-original-title="VIEW SOURCE"><i class="fa fa-info-circle"></i></a>' +
@@ -212,7 +225,7 @@ function drawsentence(title, sentences,uri,sponsoredArticle)
         }
 
 
-    
+
 
     }
 function drawcarrot(title, text, url,type)
@@ -256,7 +269,7 @@ function selectCard(nodeId)
 	{
 	if($("#mainblocks").hasClass("fullsize"))
     	{
-	    $("#rightbar .toggle").trigger("click");	
+	    $("#rightbar .toggle").trigger("click");
     	}
     $("#mainmethod").trigger("click");
     closeInfo();
@@ -299,7 +312,7 @@ function openInfo(nodeId,title,uri)
 	{
 	if($("#mainblocks").hasClass("fullsize"))
     	{
-	    $("#rightbar .toggle").trigger("click");	
+	    $("#rightbar .toggle").trigger("click");
     	}
     currentInfo = title;
     currentInfoID = nodeId;
@@ -331,10 +344,10 @@ function openInfo(nodeId,title,uri)
         	{
 	        $("#mainmethod")
 	        	.addClass("disabled")
-	        	
+
 	        $("#hsbing")
 	        	.trigger("click");
-	        
+
 	        return;
         	}
         referenceId = node.data.referenceId;
@@ -353,7 +366,7 @@ function openInfo(nodeId,title,uri)
 		highwireInfo(title,uri)
 	else
 		wikipediaInfo(title,uri,referenceId)*/
-	
+
 	}
 
 
@@ -370,27 +383,27 @@ function setBookmarked(element,status,dontadd)
         	var count = +$(".counter").attr("data-count");
         	count++;
         	$(".counter").attr("data-count",count).text(count);
-        	
+
 	        var initialposition = element.offset();
-        
+
 	        var endingposition = $(".fa-cloud-download").offset();
 	        $("#bookmarkanimation").css(initialposition).show();
 	        var distance = (endingposition.left-initialposition.left);
 	        var bezier_params = {
-			    start: { 
-			      x: initialposition.left, 
-			      y: initialposition.top, 
+			    start: {
+			      x: initialposition.left,
+			      y: initialposition.top,
 			      angle: -45,
 			      length : 0.3,
-			    },  
-			    end: { 
+			    },
+			    end: {
 			      x:endingposition.left+8,
-			      y:endingposition.top+6, 
+			      y:endingposition.top+6,
 			      angle: 135,
 			      length : 0.3,
 			    }
 			  }
-			  
+
 			$("#bookmarkanimation").animate({path : new $.path.bezier(bezier_params)},
 				{
 				duration:2000,
@@ -404,15 +417,15 @@ function setBookmarked(element,status,dontadd)
 					{
 					$(".fa-cloud-download").removeClass("ping");
 					}, 500)
-				
+
 				}, 1200);
         	}
-        
-		
+
+
         element.attr("data-original-title","BOOKMARKED");
-        
+
         var star = element.is("i") ? element : element.find("i");
-        
+
         star
             .removeClass("fa-star-o")
             .addClass("fa-star")
@@ -441,21 +454,21 @@ function openEdgeInfo(edge)
     {
     if($("#mainblocks").hasClass("fullsize"))
     	{
-	    $("#rightbar .toggle").trigger("click");	
+	    $("#rightbar .toggle").trigger("click");
     	}
     $("#mainmethod").trigger("click");
     closeInfo();
     currentEdgeElement = edge;
-    
+
     $("#edgestart").text(edge.fromNode.data.label);
     $("#edgeend").text(edge.toNode.data.label);
-	
+
 	var size = 20;
 	var textlength = Math.max(edge.fromNode.data.label.length,edge.toNode.data.label.length)
 	if(textlength > 30)
 		size= 15;
 	if(textlength > 50)
-		size= 11;	
+		size= 11;
 
 	$("#edgestart,#edgeend").css("font-size",size)
 
@@ -484,7 +497,7 @@ function openCarrot(method)
         {
         currentMode = "edge";
         search = currentEdge;
-        
+
         $("#carrotcontrols").hide()
         }
     else if($("#infocontainer").hasClass("open"))
@@ -531,7 +544,7 @@ function renderEdgeInfo(data,hasCommonWords)
     	{
 	    $("#mainmethod")
         	.addClass("disabled")
-        	
+
         $("#hsbing")
         	.trigger("click");
     	}
@@ -556,7 +569,7 @@ function renderCarrot(data)
     }
 
 $(document).ready(function() {
-    
+
     $("body").on("mouseenter", ".piece", function()
     	{
         var nodeId = +$(this).attr("id");
@@ -616,7 +629,6 @@ $(document).ready(function() {
     $("#edgecontainer").on("click", ".edgesource", function(){
         var title  = $(this).parents(".piece").attr("data-title");
         var url  = "http://www.ncbi.nlm.nih.gov/m/pubmed/" + $(this).parents(".piece").attr("data-uri");
-        //var url  = "https://www.ncbi.nlm.nih.gov/pmc/articles/pmid/" + $(this).parents(".piece").attr("data-uri");
         var sponsoredList =$(this).parents(".piece").attr("data-sponsored");
         console.log(sponsoredList);
         var sponsored = null;
@@ -624,7 +636,7 @@ $(document).ready(function() {
             sponsored  = JSON.parse(sponsoredList);
         }
         console.log(title,url);
-        showModal(title,url,sponsored);
+        showModal(title,"/data-editor/data-ingestion.html?env=PROD&sid=ozPePcRWlwazWEZHqgmdhUNayIOvptitrfKOOqXcuZLywYckStjQEuHEGBrGSMWi&agentId=91106&dataId=44&?rand=123&filters=",sponsored);
     })
 
     $("#cardcontainer").on("click", ".linkarticle .link", function(e){
@@ -663,9 +675,9 @@ $(document).ready(function() {
         var url  = $(this).parents(".piece").attr("data-url");
         showModal(title,url);
         })
-	
-	
-	
+
+
+
     $("#cardcontainer").on("click", ".card .bookmark", function()
         {
         console.log("INFO");
@@ -674,14 +686,14 @@ $(document).ready(function() {
         var uri     = $(this).parents(".piece").attr("data-uri");
         var wikititle = title.replace(/ /,"_");
         var url       = "http://en.m.wikipedia.org/wiki/"+wikititle;
-        
-        
-        
+
+
+
         if(uri && uri.indexOf("hw:")===0)
 			{
 			url = location.origin + endpoints.documentreader + encodeURIComponent(endpoints.documentextractor + uri);
 			}
-        
+
         var text      = $(this).parents(".piece").find(".links").html()
 		var image     = $(this).parents(".piece").find(".thumb")
 		var thumb      = null;
@@ -689,9 +701,9 @@ $(document).ready(function() {
 			{
 			thumb = image.attr("data-thumb");
 			}
-			
-		
-		
+
+
+
         $(this)
         	.addClass("bookmarked")
         	.removeClass("bookmark");
@@ -699,8 +711,8 @@ $(document).ready(function() {
         setBookmarked($(this),true);
 
         addNodeBookmark(nodeId,title,url,text,thumb);
-        
-        
+
+
         currentRenderer.goToNode(nodeId);
         });
     $("#infoframe").on("click", ".bookmarksentence", function()
@@ -720,16 +732,16 @@ $(document).ready(function() {
 	        title    = $("#infobookmark").attr("data-title");
 	        uri    = $("#infobookmark").attr("data-uri");
         	}
-        
-        
+
+
         var wikititle = title.replace(/ /,"_");
         var url       = "http://en.m.wikipedia.org/wiki/"+wikititle;
-        
+
         if(uri && uri.indexOf("hw:")===0)
 			{
 			url = location.origin + endpoints.documentreader + encodeURIComponent(endpoints.documentextractor + uri);
 			}
-        
+
         var text      = $(this).parent().text();
 
         setBookmarked($(this),true);
@@ -748,7 +760,7 @@ $(document).ready(function() {
 			{
 			url = location.origin + endpoints.documentreader + encodeURIComponent(endpoints.documentextractor + uri);
 			}
-		
+
         $(this).removeClass("bookmark");
 
         setBookmarked($(this),true);
@@ -836,7 +848,7 @@ $(document).ready(function() {
 			var $this = $(this).parent();
 			var weight = $this.attr("data-weight");
 			var term = $this.attr("data-term");
-			
+
 			var right=-Infinity;
 			for(var nodeid in supernodeUI)
 				{
@@ -845,17 +857,17 @@ $(document).ready(function() {
 					right = node.pos.x;
 				}
 			right += 4000;
-			
+
 			var newnodePos = {x:right,y:0};
-			var popoverPos = 
+			var popoverPos =
 				{
 				x : ($("#graph").width()/2),
-				y: $("#graph").height()/2 
+				y: $("#graph").height()/2
 				}
-			
+
 			//var firstnode  = ngraph.getNode(currentEdgeElement.fromNode.id);
-			//var secondnode = ngraph.getNode(currentEdgeElement.toNode.id);	
-				
+			//var secondnode = ngraph.getNode(currentEdgeElement.toNode.id);
+
 			ngraph.goTo(
 				15,
 				ngraph.fixPosition(newnodePos),
@@ -864,13 +876,13 @@ $(document).ready(function() {
 					hariAdd(term,null,null,newnodePos,function(mainnode)
 						{
 						$this.replaceWith('<span data-nodeid="'+mainnode.id+'" class="existingnode" data-weight="'+weight+'" style="font-size:'+weight/1.5+'px;">'+term+'</span>');
-						
+
 						ngraph.graph.addLink(+mainnode.id, currentEdgeElement.fromNode.id , {});
 						ngraph.graph.addLink(+mainnode.id, currentEdgeElement.toNode.id, {});
 						});
-					//hariAddPopover(newnodePos,popoverPos);	
+					//hariAddPopover(newnodePos,popoverPos);
 					});
-			});	
+			});
 	$("body").on("click", ".existingnode", function()
         {
         var nodeId = +$(this).attr("data-nodeid");
@@ -879,7 +891,7 @@ $(document).ready(function() {
 	$("#infosummary").on("click",function()
 		{
 		$(".tooltip").remove();
-		
+
 		if($("#infoframe").hasClass("summarized"))
 			{
 			$("#infosummary")
@@ -891,7 +903,7 @@ $(document).ready(function() {
 				.attr("data-original-title","SUMMARIZE");
 			$("#infoframe").removeClass("summarized");
 			$("#infoframe .contents > *").show();
-			
+
 			$("#infoframe .contents .bookmarkclass").hide();
 			}
 		else
@@ -918,6 +930,6 @@ $(document).ready(function() {
 
     $("#infoclose").on("click",closeInfo);
     $("#edgeclose").on("click",closeEdgeInfo);
-    
-       
+
+
     });

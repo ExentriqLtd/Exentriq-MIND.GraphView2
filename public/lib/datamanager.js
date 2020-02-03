@@ -33,7 +33,7 @@ mouseroveredge=false;
 
 function saveState(index)
 	{
-	
+
 	var currentState =
 		{
 		id2step : id2step,
@@ -41,9 +41,9 @@ function saveState(index)
 		stepindex : stepindex,
 		oldstatus : oldstatus,
 		currentview : currentview,
-		
+
 		renderer : currentRenderer.name,
-		
+
 		breadcrumbs:breadcrumbs,
 		colorindex : colorindex,
 		idlist:idlist,
@@ -56,30 +56,30 @@ function saveState(index)
 		currentInfo:currentInfo,
 		currentInfoID:currentInfoID,
 		currentref : currentref,
-		
+
 		currentsearchdata : currentsearchdata,
-		
+
 		bookmarklist:bookmarklist,
 		lookupterms:lookupterms,
-		
+
 		cards : $("#cardcontainer").html(),
 		cardsScroll : $('#cardcontainer').scrollTop(),
-		
+
 		positionx :currentRenderer.graphics.position.x,
 		positiony :currentRenderer.graphics.position.y,
-		
+
 		scalex : currentRenderer.graphics.scale.x,
 		scaley : currentRenderer.graphics.scale.y,
-		
+
 		attractors :attractors,
-		
-		
+
+
 		}
 	currentRenderer.saveGraph(currentState)
-	
+
 	var saveState = jQuery.extend( true, {}, currentState);
-	
-		
+
+
 	var tojson= JSON.stringify(saveState);
 	sessionStorage.setItem("state_"+index, tojson);
 	console.log("SAVED STATE" + index,tojson.length/1024);
@@ -92,14 +92,14 @@ function loadState(index)
 		currentStateindex = index;
 		hariReset();
 		var saveState = JSON.parse(sessionStorage.getItem("state_"+index))
-		
+
 		id2step = saveState.id2step;
 		step2id = saveState.step2id;
 		stepindex = saveState.stepindex;
 		oldstatus = saveState.oldstatus;
 		currentview = saveState.currentview;
-		
-		
+
+
 		colorindex	= saveState.colorindex;
 		idlist		= saveState.idlist;
 		cardlist		= saveState.cardlist;
@@ -114,25 +114,25 @@ function loadState(index)
 		currentInfoID = saveState.currentInfoID;
 		currentref	= saveState.currentref;
 		bookmarklist	= saveState.bookmarklist;
-		
+
 		lookupterms	= saveState.lookupterms;
-		
+
 		attractors	= saveState.attractors;
-		
+
 		$("#cardcontainer").html(saveState.cards);
 		$('#cardcontainer')
 			.css(
 				{
 				scrollTop: saveState.cardsScroll
 				});
-		
+
 		$("#searchfield").val(currentSearch);
-		
-		for(var x=0; x<saveState.breadcrumbs.length; x++) 
+
+		for(var x=0; x<saveState.breadcrumbs.length; x++)
 			{
 			addBreadcrumb(saveState.breadcrumbs[x].id,saveState.breadcrumbs[x].label);
 			}
-		
+
 		if(currentview == "tree")
 			{
 			$("#switcher").attr("data-original-title","GRAPH VIEW");
@@ -162,8 +162,8 @@ function loadState(index)
 		*/
 		currentRenderer.restoreGraph(saveState);
 		}
-	
-	
+
+
 	}
 
 function addBreadcrumb(id,label)
@@ -174,21 +174,21 @@ function addBreadcrumb(id,label)
 		id:id,
 		label:label,
 		});
-	
+
 	var tooltip = "<b>Topics : </b><ul>";
-	
+
 	for (var x = 0; x<breadcrumbs.length;x++)
 		{
 		tooltip+="<li>"+breadcrumbs[x].label+"</li>";
 		}
-	
+
 	tooltip += "</ul>";
-	
+
 	$("#state"+currentStateindex).attr("data-original-title",tooltip)
-	}	
-	
+	}
+
 function hariReset()
-	{	
+	{
 	$("#edgeclose").trigger("click");
 	$("#infoclose").trigger("click");
 	$("#mainmethod").trigger("click");
@@ -209,22 +209,22 @@ function hariReset()
 	currentInfo   = "";
 	currentref	   = 1;
 	bookmarklist  = {};
-	
+
 	lookupterms   = {};
 	requests = {};
 	overCard = null;
 	selectionMode = false;
 	selectedNode=[];
-	
+
 	stepindex = 0;
 	id2step = {};
 	step2id = [];
 	oldstatus = {};
-	
-	
+
+
 	hariBreadcrumbs.resetAll();
 	$("#cardcontainer").html("");
-	
+
 	$("#switcher").attr("data-original-title","TREE VIEW");
 	$("#switcher img").attr("src","img/tree-icon.png");
 	}
@@ -239,7 +239,7 @@ function startSearch(query,terms,sense,dontsave)
 	$("#historyslider").show();
 	$("#filtercontainer").show();
 	$('#searchfield').typeahead("hide");
-	
+
 	if(!initialSearch && !dontsave)
 		{
 		saveState(currentStateindex);
@@ -247,15 +247,15 @@ function startSearch(query,terms,sense,dontsave)
 
 	initialSearch = false;
 	hariReset();
-	currentRenderer.doSearch(query,terms,sense);	
-	}	
+	currentRenderer.doSearch(query,terms,sense);
+	}
 function manualSearch(search,noHistory)
 	{
 	if(!$("#mainblocks").hasClass("fullsize"))
 		{
-		 $("#rightbar .toggle").trigger("click");	
+		 $("#rightbar .toggle").trigger("click");
 		}
-	
+
 	if(autocompleteRequest)
 		{
 		autocompleteRequest.abort();
@@ -269,7 +269,7 @@ function manualSearch(search,noHistory)
 	prevmouseover=null;
 	$(".tooltip").remove()
 	//$("#disambiguation").html("");
-	
+
 	disambiguationHari(search,"search",null,noHistory)
 	}
 function disambiguationHari(search,action,nodePos,noHistory)
@@ -283,14 +283,14 @@ function disambiguationHari(search,action,nodePos,noHistory)
 			if(data.length)
 				{
 			 	var contents = "";
-			 	
+
 			 	var categories = {};
-			 	
+
 			 	for(var x=0;x<data.length;x++)
 			 		{
 			 		var element = data[x];
 			 		var category = element.text;
-			 		
+
 			 		var sublist=[];
 			 		var subelements = ""
 			 		for(var y=0;y<element.nodes.length;y++)
@@ -300,7 +300,7 @@ function disambiguationHari(search,action,nodePos,noHistory)
 				  			{
 					   		sublist.push(nodecat);
 				  			}
-				  		
+
 					   	subelements += '<a class="disambiguationsubitem"'+
 					   		' data-action="'+ action+'"'+
 					   		' data-sense="' + nodecat+'"'+
@@ -308,7 +308,7 @@ function disambiguationHari(search,action,nodePos,noHistory)
 					   		' data-terms="'+element.nodes[y].label+'">'+
 					   			element.nodes[y].label+
 					   		'</a>'
-				  			
+
 			 			}
 			 		var more = "";
 			 		var disambiguationstyle =""
@@ -316,12 +316,12 @@ function disambiguationHari(search,action,nodePos,noHistory)
 			 			{
 			 			var startstep = 0;
 				  		var maxstep   = Math.ceil((element.nodes.length-3)/7);
-				  		
+
 				  		if(maxstep > 2)
 				  			{
 				  			startstep = 1
 					  		var height = 122 + 266;
-					  		disambiguationstyle = 'style="height:'+height+'px"';	
+					  		disambiguationstyle = 'style="height:'+height+'px"';
 				  			}
 				  		more = '<div class="extenddisambiguation" data-step="'+startstep+'" data-maxstep="'+maxstep+'">MORE</div>';
 			 			}
@@ -337,9 +337,9 @@ function disambiguationHari(search,action,nodePos,noHistory)
 						sublist : sublist.join(",") || "&nbsp;",
 						more : more,
 						disambiguationstyle:disambiguationstyle
-						});	
+						});
 			 		}
-			 	
+
 			 	if(data.length == 1)
 			 		{
 			 		$("#disambiguation").removeClass("open");
@@ -355,7 +355,7 @@ function disambiguationHari(search,action,nodePos,noHistory)
 			 		}
 			 	else
 			 		{
-			 		
+
 			 		var chooser = $('<div id="chooser" class="chooser"></div>');
 			 		var options = $('<div id="optionlist"></div>')
 			 		if(action == "search")
@@ -378,7 +378,7 @@ function disambiguationHari(search,action,nodePos,noHistory)
 				 	$("#disambiguation").append("<h2 class='disambiguationheader'>Choose one of the following categories : </h2>");
 				 	$("#disambiguation").append(chooser);
 					$("#disambiguation").addClass("open");
-					
+
 					options.masonry(
 						{
 						itemSelector: '.col-sm-4'
@@ -387,7 +387,7 @@ function disambiguationHari(search,action,nodePos,noHistory)
 						{
 						hideBlockingLoader();
 						},500);
-					
+
 			 		}
 				}
 			else
@@ -395,14 +395,14 @@ function disambiguationHari(search,action,nodePos,noHistory)
 				$("#disambiguation").removeClass("open");
 				if(action=="search"){
 			 		startSearch(search,search,"");
-			 	}	
+			 	}
 			 	if(action=="add"){
 			 		hideBlockingLoader();
 				  	hariAdd(search,search,"",nodePos);
 			 		}
-				}	
+				}
 			})
-		.always(function() 
+		.always(function()
 		 	{
 			});
 	}
@@ -422,29 +422,29 @@ function disambiguationHariOld(search,terms,sense)
 			if(data.length > 1)
 				{
 				var chooser = $('<div id="chooser" class="chooser"></div>')
-			 	
+
 			 	//chooser.html("<h2 class='disambiguationheader'>Choose one of the following categories " associated to the concept <span class='disambiguationheadersearch'>"+search+"</span></h2>");
 			 	//chooser.append("<p><a data-terms=\""+search+"\" data-sense=\"\">All Categories</a></p>");
-			 	
+
 			 	var contents = "";
-			 	
+
 			 	var categories = {};
-			 	
+
 			 	for(var x=0;x<data.length;x++)
 			 		{
 			 		var splitted = data[x].text.split("/");
 			 		var category = splitted[0];
 			 		if(!categories[category])
-			 			categories[category] = 
+			 			categories[category] =
 			 				{
 			 				text:category,
 			 				sublist:[],
 			 				score:0
 			 				};
-			 		categories[category].score += data[x].score;	
-			 		categories[category].sublist.push(splitted[1]) ; 	
+			 		categories[category].score += data[x].score;
+			 		categories[category].sublist.push(splitted[1]) ;
 			 		}
-			 	var categorylist = $.map(categories, function(value, index) 
+			 	var categorylist = $.map(categories, function(value, index)
 			 		{
 					return [value];
 					});
@@ -466,7 +466,7 @@ function disambiguationHariOld(search,terms,sense)
 						color : colorscale(categorylist[x].text),
 						sublist : categorylist[x].sublist.join(",") || "&nbsp;"
 						});
-				  	
+
 			 		}
 			 	contents += fasttemplater.compile(
 					"disambiguation_all",
@@ -477,8 +477,8 @@ function disambiguationHariOld(search,terms,sense)
 			 	$("#disambiguation").append("<h2 class='disambiguationheader'>Choose one of the following categories : </h2>");
 			 	$("#disambiguation").append(chooser);
 				$("#disambiguation").fadeIn();
-				
-				
+
+
 				setTimeout(function()
 					{
 					hideBlockingLoader();
@@ -487,24 +487,24 @@ function disambiguationHariOld(search,terms,sense)
 						itemSelector: '.col-sm-4'
 						});
 					}, 1000);
-				
+
 				}
 			else if(data.length == 1)
 				{
 				var splitted = data[0].text.split("/");
 			 	var category = splitted[1];
-			 	startSearch(search,search,category);	
+			 	startSearch(search,search,category);
 				}
 			else
 				{
 			 	startSearch(search,search,"");
-				}	
+				}
 			})
-		.always(function() 
+		.always(function()
 		 	{
 			});
 	}
-	
+
 function disambiguationWikipedia(search,terms,sense)
 	{
 	var fixtitle = search.replaceAll(' ', '_') + "_(disambiguation)";
@@ -518,7 +518,7 @@ function disambiguationWikipedia(search,terms,sense)
 			redirects : true
 			},
 		dataType: 'jsonp',
-		success: function(linkdata) 
+		success: function(linkdata)
 			{
 			if (linkdata &&
 				linkdata.parse &&
@@ -537,13 +537,13 @@ function disambiguationWikipedia(search,terms,sense)
 				 		$(element).parents("li").remove();
 				 		}
 				 	})
-				$("#disambiguation").fadeIn();	 
+				$("#disambiguation").fadeIn();
 				}
 			else
 				{
 				 startSearch(search,terms,sense);
 				}
-			
+
 			}
 		});
 	}
@@ -551,7 +551,7 @@ function disambiguationWikipediaCrawl(fixtitle,plcontinue)
 	{
 	$.ajax({
 		url: 'http://en.wikipedia.org/w/api.php',
-		data: 
+		data:
 			{
 			action: 'query',
 			prop: 'links',
@@ -566,7 +566,7 @@ function disambiguationWikipediaCrawl(fixtitle,plcontinue)
 				linkdata.query &&
 				linkdata.query.pages)
 				{
-				
+
 			 	for(var pageid in linkdata.query.pages)
 			 		{
 				  	var links = linkdata.query.pages[pageid].links;
@@ -596,12 +596,12 @@ function disambiguationWikipediaCrawl(fixtitle,plcontinue)
 
 function crawl(id, root, child, title, text, node, after)
 	{
-	var data = 
+	var data =
 		{
 		term		   : node.label,
 		sense	   : currentsearchdata.sense
 		}
-	
+
 	if(!node.isMetaArticle)
 		{
 		data.referenceId = node.referenceId,
@@ -621,16 +621,16 @@ function crawl(id, root, child, title, text, node, after)
 	$.getJSON(url,data)
 		.done(function(response)
 			{
-			var nodetitle = response.title; 
+			var nodetitle = response.title;
 			node.title = response.title;
 			node.articleUri = response.contentURL;
-	
+
 			var abstract = response.shortAbstract || "";
 
 			if(node.articleUri && node.articleUri.indexOf("wikipedia:") === 0)
 				{
-				
-				
+
+
 				var pageid = node.articleUri.split(":").pop();
 				$.ajax({
 					   url: 'http://en.wikipedia.org/w/api.php',
@@ -644,17 +644,17 @@ function crawl(id, root, child, title, text, node, after)
 						},
 					dataType: 'jsonp'
 					})
-					   .done(function(data, textStatus, jqXHR) 
+					   .done(function(data, textStatus, jqXHR)
 					   	{
 						   var thumbnail = "";
-						   for (var key in data.query.pages) 
+						   for (var key in data.query.pages)
 						   	{
 							   var page = data.query.pages[key];
 							   if (page.thumbnail)
 								   thumbnail = page.thumbnail.source;
 							   break;
 							}
-						draw(id, root, child, thumbnail, nodetitle, abstract, node, after);	
+						draw(id, root, child, thumbnail, nodetitle, abstract, node, after);
 						})
 					.fail(function()
 						{
@@ -669,15 +669,15 @@ function crawl(id, root, child, title, text, node, after)
 			});
 	}
 
-function abstractWikipedia(id, root, child, thumb, title,wikititle, text, node, after) 
+function abstractWikipedia(id, root, child, thumb, title,wikititle, text, node, after)
 	{
 	var fixtitle = wikititle.replaceAll(' ', '_');
-	
-	
+
+
 	$.ajax(
 		{
 		url: 'http://en.wikipedia.org/w/api.php',
-		data: 
+		data:
 			{
 			action: 'parse',
 			prop: 'text',
@@ -687,40 +687,40 @@ function abstractWikipedia(id, root, child, thumb, title,wikititle, text, node, 
 			},
 		dataType: 'jsonp'
 		})
-		.done(function(abstractdata) 
+		.done(function(abstractdata)
 			{
 			var text = "";
 			if (abstractdata &&
 				abstractdata.parse &&
 				abstractdata.parse.text &&
-				abstractdata.parse.text['*']) 
+				abstractdata.parse.text['*'])
 				{
-			   
+
 				var test = $("<div>" + abstractdata.parse.text['*'] + "</div>")
 				var wikiparagraphs = test.children('p');
-				
+
 				for(var x = 0; x<wikiparagraphs.length;x++)
 					{
 					var wikipar = $(wikiparagraphs[x]);
-					if (wikipar.find("#coordinates").length) 
+					if (wikipar.find("#coordinates").length)
 						{
 						continue;
 						}
 					wikipar.find('sup').remove();
-					wikipar.find('a').each(function() 
+					wikipar.find('a').each(function()
 						{
-					   
+
 						$(this)
 							.attr('href', 'http://en.wikipedia.org' + $(this).attr('href'))
 							.attr('target', 'wikipedia');
-							
+
 						 $(this).replaceWith($(this).text());
 						});
 					text = wikipar.html();
 					if(text!=="")
 						{
 						 break;
-						}	
+						}
 					}
 				}
 			if(text!=="" && ( text.indexOf("may refer to:")==-1 && text.indexOf("can refer to:")==-1))
@@ -735,10 +735,10 @@ function abstractWikipedia(id, root, child, thumb, title,wikititle, text, node, 
 		.fail(function()
 			{
 			abstractHari(id, root, child, thumb, title, text, node, after);
-			});		
-   
+			});
+
 	}
-function abstractHari(id, root, child, thumb, title, text, node, after) 
+function abstractHari(id, root, child, thumb, title, text, node, after)
 	{
 	//console.log(id, root, child, thumb, title, text, node, after);
 	//var url = "/rest/terms/conceptDescription?sense="+currentsearchdata.sense+"&term="+node.label;
@@ -749,7 +749,7 @@ function abstractHari(id, root, child, thumb, title, text, node, after)
 		.done(function(response)
 			{
 			var noinfo = false;
-			
+
 			var text ="";
 			var count = 0;
 			for(var key in response)
@@ -757,15 +757,15 @@ function abstractHari(id, root, child, thumb, title, text, node, after)
 			 	text+="<p>"+key.charAt(0).toUpperCase() + key.slice(1)+"</p>";
 			 	count++;
 			 	if(count == 3)
-			 		break;	
+			 		break;
 				}
-			
+
 			text = text.replace(new RegExp('"' , "gmi"),"");
 			text = text.replace(new RegExp('\\n' , "gmi"),"");
-			
-			
+
+
 			//console.log("HARI ABSTRACT",title,text);
-			
+
 			if(generalsettings.removeEmptyNodes)
 				{
 				if(text.length >10 || node.isCentroid)
@@ -782,15 +782,15 @@ function abstractHari(id, root, child, thumb, title, text, node, after)
 				{
 				draw(id, root, child, thumb, title, text, node, after,noinfo);
 				}
-			
+
 			})
 		.fail(function()
 			{
 			draw(id, root, child, thumb, title, "", node, after,true);
 			});
-	
+
 	}
-function abstractHariOld(id, root, child, thumb, title, text, node, after) 
+function abstractHariOld(id, root, child, thumb, title, text, node, after)
 	{
 	//console.log(id, root, child, thumb, title, text, node, after);
 	var url = "/rest/terms/conceptDescription?sense="+currentsearchdata.sense+"&term="+node.label;
@@ -801,15 +801,15 @@ function abstractHariOld(id, root, child, thumb, title, text, node, after)
 		.done(function(response)
 			{
 			var noinfo = !(node.articleUri && node.articleUri.indexOf("hw:")===0);
-			
+
 			response = response.replace(new RegExp('"' , "gmi"),"");
 			response = response.replace(new RegExp('\\n' , "gmi"),"");
-			
+
 			if(generalsettings.removeEmptyNodes)
 				{
 				if(response.length >10 || node.isCentroid)
 				 	 	{
-				 	 	
+
 				 	 	draw(id, root, child, thumb, title, response, node, after,noinfo);
 				 	 	}
 				 	else
@@ -822,9 +822,9 @@ function abstractHariOld(id, root, child, thumb, title, text, node, after)
 				{
 				draw(id, root, child, thumb, title, response, node, after,noinfo);
 				}
-			
+
 			});
-	
+
 	}
 function hariSearch(query,terms,sense, callback)
 	{
@@ -835,7 +835,7 @@ function hariSearch(query,terms,sense, callback)
 
 	var hariRequest;
 	var readableQuery = query;
-	
+
 	if($.isArray(query))
 		{
 		currentsearchdata=
@@ -855,7 +855,7 @@ function hariSearch(query,terms,sense, callback)
 			referenceIds.push(node.data.referenceId);
 			querylist.push(node.data.label);
 			}
-		
+
 		readableQuery=labels.join(",");
 		hariRequest = getHari("path",
 			{
@@ -863,8 +863,8 @@ function hariSearch(query,terms,sense, callback)
 			referenceIds : referenceIds.join(";"),
 			newSearch	: true
 			});
-		
-		
+
+
 		}
 	else
 		{
@@ -874,17 +874,17 @@ function hariSearch(query,terms,sense, callback)
 			terms:terms,
 			sense:sense
 			}
-		
-		
+
+
 		hariRequest = getHari("search",currentsearchdata);
 		}
-	
-	currentSearch=readableQuery;	
+
+	currentSearch=readableQuery;
 	newGraphTab(readableQuery);
 	highlightTopics(readableQuery);
-	
+
 	history.pushState({action:"goToHistory",index:currentStateindex},"HARI");
-	
+
 	hariRequest
 		.done(function(data, textStatus, jqXHR)
 			{
@@ -895,12 +895,12 @@ function hariSearch(query,terms,sense, callback)
 				data.edges)
 				{
 				currentsearchdata.graphId = data.id;
-				
-				
+
+
 				fixData(data,callback,$.isArray(query));
 				}
 			})
-		.always(function() 
+		.always(function()
 		 	{
 		 	addloader = null;
 			hideBlockingLoader();
@@ -910,11 +910,11 @@ function hariSearch(query,terms,sense, callback)
 function hariExplore(nodeId,backnode)
 	{
 	$(".tooltip").remove();
-	
+
 	hideTooltip()
 	var node = currentRenderer.getNode(nodeId);
 	//showBlockingLoader()
-	
+
 	if(!node.data.expanded)
 		{
 		showInfoLoader("EXPLORING NODE...");
@@ -929,12 +929,12 @@ function hariExplore(nodeId,backnode)
 			{
 			var pos	 = currentRenderer.layout.getNodePosition(nodeId);
 			addloader = pos;
-			
+
 			currentRenderer.layout.pinNodeId(nodeId, true);
 			node.waspinned = true;
 			console.log("expanding",pos);
 			var angle = Math.atan(Math.abs(pos.y)/Math.abs(pos.x));
-			
+
 			currentRenderer.layout.setNodePosition(nodeId, pos.x + sign(pos.x)*Math.cos(angle)*4000, pos.y + sign(pos.y)*Math.sin(angle)*4000);
 			node.data.isCentroid=true;
 			node.nodeUI.isCentroid=true;
@@ -946,17 +946,17 @@ function hariExplore(nodeId,backnode)
 					nobackground : true
 			});
 			}
-		
+
 		node.data.expanded = true;
 		node.data.collapsed = false;
 		node.data.hidden_collapse = false;
-		
+
 		currentRenderer.goToNode(nodeId);
 		$("#"+nodeId).find(".card")
 			.addClass("root");
-			
 
-		
+
+
 		var hariRequest = getHari("explore",
 			{
 			term	    : node.data.label,
@@ -972,7 +972,7 @@ function hariExplore(nodeId,backnode)
 				console.log("DATA RECEIVED", data);
 				fixExploreData(nodeId,data,backnode);
 				})
-			.always(function() 
+			.always(function()
 			 	{
 			 	addloader = null;
 			 	hideInfoLoader();
@@ -980,7 +980,7 @@ function hariExplore(nodeId,backnode)
 		}
 	else
 		{
-		
+
 		}
 	}
 
@@ -995,12 +995,12 @@ function hariAddPopover(nodePos,popoverPos)
 				'<input id="addstring" type="text">'+
 				//'<button id="addsearch" value="search">DISCOVER</button>'+
 		'</form>';
-		
+
 	var pop_left = 	popoverPos.x;
 	var pop_top  =	 popoverPos.y + 30;
-	
+
 	var placement = "right";
-	
+
 	if(pop_left > ( $(window).width() - 450))
 		{
 		placement = "left";
@@ -1087,7 +1087,7 @@ function hariAddPopover(nodePos,popoverPos)
 	$("#addstring").focus();
 
 
-	
+
 	};
 
 function hariAdd(query,terms,sense,nodePos,callback)
@@ -1115,7 +1115,7 @@ function hariAdd(query,terms,sense,nodePos,callback)
 		sense		  : sense,
 		centroids	  : addcentroids.join(";")
 		});
-		
+
 	hariRequest
 		.done(function(data, textStatus, jqXHR)
 			{
@@ -1126,7 +1126,7 @@ function hariAdd(query,terms,sense,nodePos,callback)
 			if(callback)
 				callback(mainnode);
 			})
-		.fail(function() 
+		.fail(function()
 		 	{
 		 	addloader = null;
 			hideInfoLoader();
@@ -1135,17 +1135,17 @@ function hariAdd(query,terms,sense,nodePos,callback)
 function hariAddRecursive(index,mainnode,centroids,success)
 	{
 	showInfoLoader("CALCULATING SHORTEST PATH ( "+(index+1)+"/"+centroids.length+" )");
-	
+
 	var query = mainnode.label+ ";" + centroids[index].label;
-		
+
 	var hariRequest = getHari("path",
 		{
 		terms		   : query,
 		sense		   : currentsearchdata.sense,
 		referenceIds : mainnode.referenceId + ";" + centroids[index].referenceId
 		});
-	
-	
+
+
 	hariRequest
 		.done(function(data, textStatus, jqXHR)
 			{
@@ -1155,12 +1155,12 @@ function hariAddRecursive(index,mainnode,centroids,success)
 				success =  true;
 				}
 			})
-		.always(function() 
+		.always(function()
 		 	{
 		 	index++;
 		 	if(index < centroids.length)
 		 		{
-			 	hariAddRecursive(index,mainnode,centroids,success)	
+			 	hariAddRecursive(index,mainnode,centroids,success)
 		 		}
 		 	else
 		 		{
@@ -1170,15 +1170,15 @@ function hariAddRecursive(index,mainnode,centroids,success)
 				 	showInfoLoader("<span style='color:red;'>NO PATH FOUND</span>");
 				 	setTimeout(function()
 				 		{
-				 		hideInfoLoader();	
-				 		},5000)	
+				 		hideInfoLoader();
+				 		},5000)
 			 		}
 			 	else
 			 		{
 				 	hideInfoLoader()
 			 		}
-			 	
-			 	
+
+
 		 		}
 			});
 	}
@@ -1192,9 +1192,9 @@ function hariRemoveModal(nodeId)
 function hariRemove()
 	{
 	var nodeId = $("#deleteconfirm").attr("data-nodeid");
-	var note = $("#deletenote").val();	
+	var note = $("#deletenote").val();
 	var node = currentRenderer.getNode(nodeId);
-	
+
 	var addcentroids=[];
 	for(var x in supernodeUI)
 		{
@@ -1202,7 +1202,7 @@ function hariRemove()
 		if(tmpnode.isCentroid)
 			addcentroids.push(tmpnode.main.data.referenceId)
 		}
-	
+
 	var hariRequest = getHari("remove",
 		{
 		query		  : currentsearchdata.query,
@@ -1215,18 +1215,28 @@ function hariRemove()
 
 	$("#"+nodeId).remove();
 
-	overCard = null;	
+	overCard = null;
 	currentRenderer.removeNodes(nodeId);
 	}
-	
+
 function hariEdgeInfo(edge)
 	{
+
+	drawsentence("Annual report 1819_Cocoanect_GHA_COCOA MERCHANTS", ["<table class=\"info-detail\">" +
+	"<tr><td class=\"title-sect primary-color\">Data:</td><td>10/21/2018</td></tr>" +
+	"<tr><td class=\"title-sect primary-color\">SOCIETY:</td><td>Saabo</td></tr>" +
+	"<tr><td class=\"title-sect primary-color\">FARMER CODE:</td><td>ML/AS6/15/17/F01</td></tr>" +
+	"<tr><td class=\"title-sect primary-color\">FARMER'S NAMES:</td><td> MAKANJUOLA EMILIA ABOSEDE</td></tr>" +
+	"<tr><td class=\"title-sect primary-color\">#BAGS:</td><td>0,6</td></tr>" +
+	"<tr><td class=\"title-sect primary-color\">WEIGHT ACCEPTED:</td><td>40</td></tr></table>"],"uri","sponsoredArticle");
+	$("#edgedata .piece").show();
+
 	$("#smallloadercontainer").show();
 	openNav();
 	var edgelabel = edge.fromNode.data.label +" "+edge.toNode.data.label;
 	currentEdge = edgelabel;
-	
-	var hariRequestData = 
+
+	var hariRequestData =
 		{
 		from		    : edge.fromNode.data.label,
 		fromReferenceId	: edge.fromNode.data.referenceId,
@@ -1234,14 +1244,14 @@ function hariEdgeInfo(edge)
 		toReferenceId	: edge.toNode.data.referenceId,
 		sense		    : currentsearchdata.sense
 		};
-	
+
 	//requests.hariedgeinfo = hariRequest;
 	var coocSentences      = $.extend({coocSentences:true},hariRequestData);
 	var coocOnDoc          = $.extend({coocOnDoc:true},hariRequestData);
 	var occOnDescr         = $.extend({occOnDescr:true},hariRequestData);
 	var sentenceOnArticle  = $.extend({sentenceOnArticle:true},hariRequestData);
 	var commonConcept      = $.extend({commonConcept:true},hariRequestData);
-	
+
 	var highlightedgeurl = endpoints.highlights+
 			encodeURIComponent(edge.fromNode.data.label) +";"+
 			encodeURIComponent(edge.toNode.data.label)+
@@ -1265,8 +1275,8 @@ function hariEdgeInfo(edge)
 		$.getJSON(highlightedgeurl)
 		)
 
-		.then(function(allData,highlightData) 
-		//.then(function(coocSentencesData,coocOnDocData,occOnDescrData,sentenceOnArticleData,commonConceptData,highlightData) 
+		.then(function(allData,highlightData)
+		//.then(function(coocSentencesData,coocOnDocData,occOnDescrData,sentenceOnArticleData,commonConceptData,highlightData)
 			{
 
 			commonConceptData = allData;
@@ -1295,7 +1305,7 @@ function hariEdgeInfo(edge)
 			*/
 			var commonConcepts = [];
 			var commonWords    = [];
-			
+
 			var commonMerged   = [];
 			if(commonConceptData[1]=="success" && commonConceptData[0][0] && commonConceptData[0][0].commonConcepts)
 				{
@@ -1323,9 +1333,9 @@ function hariEdgeInfo(edge)
 				{
 				highlightEdgeTopics(hariRequestData.from , hariRequestData.to , highlightData[0] , commonMerged);
 				}
-			
 
-			
+
+
 			$("#smallloadercontainer").hide();
 			requests.hariedgeinfo = null;
   			})
@@ -1347,7 +1357,7 @@ function hariEdgeInfo(edge)
 			highlightEdgeTopics(edge.fromNode.data , edge.toNode.data, commonConcepts);
 			requests.hariedgeinfo = null;
 			})
-		.fail(function() 
+		.fail(function()
 		 	{
 			$("#smallloadercontainer").hide();
 			requests.hariedgeinfo = null;
@@ -1416,7 +1426,7 @@ function hariCarrot(search,method)
 					}
 				fixCarrotData(fixeddata);
 				})
-			.always(function() 
+			.always(function()
 			 	{
 				$("#smallloadercontainer").hide();
 				});
@@ -1518,7 +1528,7 @@ function highwireInfo(title,uri)
 		});
 	//var reader = "http://docs.google.com/viewer?embedded=true&url=";
 	//var reader =	 "/hariterms/Viewer.js/#../article.jsp?uri=";
-	
+
 	var ispdfurl = endpoints.ispdf+uri;
 	$.getJSON(ispdfurl)
 		.done(function(ispdf)
@@ -1529,7 +1539,7 @@ function highwireInfo(title,uri)
 				var url = endpoints.documentreader + encodeURIComponent(endpoints.documentextractor + uri);
 				$("#pdfviewer").html('<iframe allowfullscreen=true src="'+url+'"></iframe>');
 				$("#pdfviewer").addClass("open");
-				$("#smallloadercontainer").show();	
+				$("#smallloadercontainer").show();
 				}
 			else
 				{
@@ -1550,16 +1560,16 @@ function highwireInfo(title,uri)
 
 				}
 			});
-	
-	
-	
-	
+
+
+
+
 	var metadataurl = endpoints.metadata+uri;
 	$.getJSON(metadataurl)
 		.done(function(metadata)
 			{
 			console.log("METADATA",metadata);
-	
+
 			if(metadata.published)
 				{
 				var d = new Date(metadata.published);
@@ -1576,7 +1586,7 @@ function highwireInfo(title,uri)
 				"info_metadata",
 				metadata
 				);
-				
+
 			$("#infoframe").html(contents);
 
 			})
@@ -1604,7 +1614,7 @@ function wikipediaInfo(title,uri,referenceId)
 			},
 		dataType: 'jsonp'
 		})
-		.done(function(pagedata) 
+		.done(function(pagedata)
 			{
 			if (pagedata &&
 				pagedata.parse &&
@@ -1614,7 +1624,7 @@ function wikipediaInfo(title,uri,referenceId)
 				$("#infoframe").hide();
 				 $("#infoframe").html('<div class="contents">'+pagedata.parse.text['*']+'</div>');
 				 $("#infoframe").removeClass("summarized");
-				 
+
 				 $("#infoframe .metadata,#infoframe .magnify").remove();
 				 $("#infoframe .mw-editsection").remove();
 				 $("#infoframe .navbox").remove();
@@ -1622,7 +1632,7 @@ function wikipediaInfo(title,uri,referenceId)
 				 $("#infoframe .reference, #infoframe .reflist").remove();
 				 $("#infoframe .vertical-navbox").remove();
 				 $("#infoframe .haudio").remove();
-				 $("#infoframe a").each(function() 
+				 $("#infoframe a").each(function()
 					{
 					$(this).replaceWith($(this).html());
 					});
@@ -1638,7 +1648,7 @@ function wikipediaInfo(title,uri,referenceId)
 			{
 			$("#smallloadercontainer").hide();
 			});
-	
+
 	}
 function hariInfo(title,uri)
 	{
@@ -1656,7 +1666,7 @@ function hariInfo(title,uri)
 			$("#infoframe").hide();
 			$("#infoframe").html('<div class="contents">'+text+'</div>');
 			$("#infoframe").removeClass("summarized");
-			
+
 			$("#infosummary i").hide();
 			highlightNodeTopics(title,false);
 			})
@@ -1670,21 +1680,21 @@ function fixData(data,callback,path)
 	{
 	var edges = data.edges;
 	var nodes = data.nodes;
-	
+
 	data.topics = null;
-	
+
 
 	var centroids={};
 	var topics = {};
-	
-	
+
+
 	attractors= {};
 	if(data.topics && data.topics.length > 1)
 		{
 		var startangle = 0;
-		
+
 		var attnumber = Math.min(8,data.topics.length)
-		
+
 		var angle = 2*Math.PI/attnumber;
 		var range = 4000 + 1000*data.centroids.length;
 		var circlerange = range*0.85;
@@ -1695,20 +1705,20 @@ function fixData(data,callback,path)
 				{
 				x	  :	 Math.cos( startangle + angle * x ) * range,
 				y	  : -Math.sin( startangle + angle * x ) * range,
-				
+
 				circlex		:  Math.cos( startangle + angle * x ) * circlerange,
 				circley		: -Math.sin( startangle + angle * x ) * circlerange,
-	
+
 				label : topic
 				};
 			}
-		
+
 		var totalradius = circlerange+circleradius;
 		var scale = Math.min($("#graph").width()/(2*totalradius) ,$("#graph").height()/(2*totalradius));
-		
+
 		currentRenderer.graphics.scale.x = scale*window.devicePixelRatio;
 		currentRenderer.graphics.scale.y = scale*window.devicePixelRatio;
-		
+
 		console.log(scale);
 		//   window.devicePixelRatio;
 		}
@@ -1732,14 +1742,14 @@ function fixData(data,callback,path)
 			addBreadcrumb(node.id,node.label);
 			if(data.centroids.length == 1)
 				node.expanded = true;
-				
+
 			setNodeStep(+node.id,stepindex,"discover");
 			}
 		else
 			{
 			//setNodeStep(+node.id,stepindex+1,"results");
 			}
-		
+
 		node.nodeindex = x;
 		var nodetopics=node.topics;
 		if(nodetopics)
@@ -1762,7 +1772,7 @@ function fixData(data,callback,path)
 				*/
 				}
 			sorted.sort(function(a,b){return b.value-a.value;});
-			
+
 			if(data.topics)
 				{
 				for(var y = 0;y<sorted.length;y++)
@@ -1777,7 +1787,7 @@ function fixData(data,callback,path)
 				}
 			node.sortedTopics = sorted;
 			node.totalTopics = total;
-			
+
 			var bestTopic = sorted[0];
 			if(maintopics[bestTopic.key])
 				maintopics[bestTopic.key]+=1;
@@ -1818,18 +1828,18 @@ function fixExploreData(mainId,data,backnode)
 	data.nodes		= data.nodes || [];
 	data.edges		= data.edges || [];
 	data.centroids = data.centroids || [];
-	
-	
+
+
 	var centroids = {}
 	for(var x=0;x<data.centroids.length;x++)
 		{
 		centroids[+data.centroids[x]]	  = true;
 		}
-	
+
 	for(var x=0;x<data.nodes.length;x++)
 		{
 		var node = data.nodes[x];
-		
+
 		if(centroids[+node.id])
 			{
 			addBreadcrumb(node.id,node.label);
@@ -1837,7 +1847,7 @@ function fixExploreData(mainId,data,backnode)
 			}
 		else
 			{
-			setNodeStep(+node.id,stepindex+1,"results")	
+			setNodeStep(+node.id,stepindex+1,"results")
 			}
 		//node.fromExpansion = true;
 		var nodetopics=node.topics;
@@ -1869,7 +1879,7 @@ function fixExploreData(mainId,data,backnode)
 			sorted.sort(function(a,b){return b.value-a.value;});
 			node.sortedTopics = sorted;
 			node.totalTopics = total;
-			
+
 			var bestTopic = sorted[0];
 			if(maintopics[bestTopic.key])
 				maintopics[bestTopic.key]+=1;
@@ -1889,11 +1899,11 @@ function fixExploreData(mainId,data,backnode)
 function fixAddData(data,nodePos)
 	{
 	console.log("FIX ADD DATA",data,nodePos);
-	
+
 	var mainnode = null;
-	
+
 	var nodes = data.nodes;
-	
+
 	var centroids = {};
 	for(var x=0;x<data.centroids.length;x++)
 		{
@@ -1932,7 +1942,7 @@ function fixAddData(data,nodePos)
 			sorted.sort(function(a,b){return b.value-a.value;});
 			node.sortedTopics = sorted;
 			node.totalTopics = total;
-			
+
 			var bestTopic = sorted[0];
 			if(maintopics[bestTopic.key])
 				maintopics[bestTopic.key]+=1;
@@ -1947,17 +1957,17 @@ function fixAddData(data,nodePos)
 		}
 	startFilters(maintopics,false);
 	currentRenderer.addNewNodes(data,nodePos,mainnode);
-	
+
 	return mainnode;
 	}
-	
+
 
 function fixEdgeData(data,hasCommonWords)
 	{
 	var elements = {};
 	var elementList = [];
-	
-	
+
+
 	for(var x=0;x<data.length;x++)
 		{
 		var sentences = data[x].sentences;
@@ -2059,23 +2069,23 @@ function highlightNodeTopics(search,wikipedia)
 		.done(function(topicsdata, textStatus, jqXHR)
 			{
 			topicsdata.sort(function(a,b){return b.length - a.length});
-			
+
 			if(currentEdgeElement)
 				{
-				
+
 				var edgeurl = endpoints.highlights+
 					encodeURIComponent(currentEdgeElement.fromNode.data.label) +";"+
 					encodeURIComponent(currentEdgeElement.toNode.data.label)+
 					"&isEdge=true"
-				
+
 				$.getJSON(edgeurl)
 					.done(function(edgetopicsdata, textStatus, jqXHR)
-						{			
+						{
 						edgetopicsdata.sort(function(a,b){return b.length - a.length});
-						
+
 						var mindistance = {el : null, dist : 0.5};
-						
-						   
+
+
 						   $("#infoframe").show();
 						if(wikipedia && gotosentence)
 							{
@@ -2094,10 +2104,10 @@ function highlightNodeTopics(search,wikipedia)
 								{
 								 var scrollto = $('#infoframe').scrollTop() - (201) + mindistance.el.offset().top - 15;
 								var mindistancehtml = mindistance.el.text();
-								
+
 								var regex = new RegExp("(" + gotosentence + ")" , "gmi");
 								mindistancehtml = mindistancehtml.replace(regex, "<b class=\"exactsentence\">$1</b>");
-								
+
 								mindistance.el.html(mindistancehtml);
 								mindistance.el.addClass("selected");
 								console.log(scrollto);
@@ -2110,15 +2120,15 @@ function highlightNodeTopics(search,wikipedia)
 											   scrollTop: scrollto
 										   	}, 1000);
 									}, 100);
-								 
+
 								  setTimeout(function()
 								  	{
 								  	mindistance.el.removeClass("selected");
 								  	}, 5000);
 								}
-							
+
 							}
-						
+
 						var allhighlights = topiclist.concat(topicsdata,edgetopicsdata);
 						allhighlights.sort(function(a,b){return b.length - a.length});
 						console.log(allhighlights);
@@ -2137,7 +2147,7 @@ function highlightNodeTopics(search,wikipedia)
 						{
 						$("#infoframe").show();
 						});
-				} 
+				}
 			else
 				{
 				var allhighlights = topiclist.concat(topicsdata);
@@ -2161,29 +2171,29 @@ function highlightNodeTopics(search,wikipedia)
 			//$("#infosummary").trigger("click");
 			$("#infoframe").show();
 			});
-		
+
 	}
 
 function commondataCloud(commonconcepts,commonwords)
 	{
-	
+
 	var clouddata = [];
 	for (var x = 0; x < commonconcepts.length && x < 50; x++)
 		{
 		var common = commonconcepts[x];
-		
-		
+
+
 		var weight = 18;
-		
+
 		var found=false;
-		
+
 		for(var nodeid in supernodeUI)
 			{
 			var tmpnode = supernodeUI[nodeid].main.data;
-			
+
 			if(tmpnode.label.toLowerCase().trim() == common.toLowerCase().trim())
 				{
-				found = nodeid;				
+				found = nodeid;
 				break;
 				}
 			}
@@ -2191,22 +2201,22 @@ function commondataCloud(commonconcepts,commonwords)
 			clouddata.push('<span class="commonconcept existingnode" data-nodeid="'+found+'" data-weight="'+weight+'" style="font-size:'+weight/1.5+'px;">'+common+'</span>');
 		else
 	   	 	clouddata.push('<span class="commonconcept" data-term="'+common+'" data-weight="'+weight+'" style="font-size:'+weight/1.5+'px;"><i data-original-title="ADD NODE" class="addcommonnode fa fa-lg fa-plus-circle" ></i> '+common+'</span>');
-	   
+
 	   };
 	for (var x = 0; x < commonwords.length && x < 50; x++)
 		{
 		var common = commonwords[x];
-		
+
 		var weight = 18;
-		
+
 		var found=false;
-		
+
 		for(var nodeid in supernodeUI)
 			{
 			var tmpnode = supernodeUI[nodeid].main.data;
 			if(tmpnode.label.toLowerCase().trim() == common.toLowerCase().trim())
 				{
-				found = nodeid;				
+				found = nodeid;
 				break;
 				}
 			}
@@ -2214,7 +2224,7 @@ function commondataCloud(commonconcepts,commonwords)
 			clouddata.push('<span class="commonword existingnode" data-nodeid="'+found+'" data-weight="'+weight+'" style="font-size:'+weight/1.5+'px;">'+common+'</span>');
 		else
 	   	 	clouddata.push('<span class="commonword" data-term="'+common+'" data-weight="'+weight+'" style="font-size:'+weight/1.5+'px;">'+common+'</span>');
-	   	 
+
 	   	 };
 	//console.log(clouddata);
 	if(clouddata.length)
@@ -2232,12 +2242,12 @@ function commondataCloud(commonconcepts,commonwords)
 		tagCloudContainer.append(tagCloud);
 		$("#edgedata").append(tagCloudContainer);
 		}
-	 
-	 
-	 
-	
-	
-	
+
+
+
+
+
+
 	/*
 	var settings = {
 			 "size" : {
@@ -2253,30 +2263,30 @@ function commondataCloud(commonconcepts,commonwords)
 	tagCloud.awesomeCloud( settings );
 	*/
 	}
-	
+
 function highlightEdgeTopics(from,to,topicsdata,commondata)
 	{
 	var cards=$("#edgedata .card .links");
-		
+
 	topicsdata.sort(function(a,b){return b.length - a.length});
-	
+
 	edgetopiclist = topicsdata;
-	
-	
-	
+
+
+
 	var allhighlights = topiclist.concat(topicsdata,commondata);
 	allhighlights.sort(function(a,b){return b.length - a.length});
 
 	cards.each(function(i,currentcard)
 	 	{
 		var text = $(currentcard).html();
-		
+
 		for (var x = 0; x < allhighlights.length; x++)
 			{
 			var topic = allhighlights[x];
 			text = text.highlightAll(topic,"");
 			};
-		
+
 		$(currentcard).html(text);
 			$(currentcard).parents(".piece").show();
 
@@ -2323,7 +2333,7 @@ function setNodeStep(nodeid,step,action)
 		}
 	else if(action != "results")
 		{
-		id2step[nodeid] = step;	
+		id2step[nodeid] = step;
 		step2id[step]=
 			{
 			action:action,
@@ -2342,7 +2352,7 @@ function getHari(endpoint,data,callback)
 	var url = endpoints[endpoint];
 	if($("#toggleendpoint").attr("data-endpoint") != "graph" && docendpoints[endpoint])
 		url = docendpoints[endpoint];
-	
+
 	if(endpoint != "search")
 		{
 		data.graphId = currentsearchdata.graphId
@@ -2364,7 +2374,7 @@ function showBlockingLoader()
 function hideBlockingLoader()
 	{
 	$("#loader").fadeOut();
-	$("#graph").removeClass("blur");	
+	$("#graph").removeClass("blur");
 	}
 function showInfoLoader(message)
 	{
